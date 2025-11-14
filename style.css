@@ -1,0 +1,99 @@
+﻿body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f0f0f0;
+}
+
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #333;
+	color: white;
+	padding: 15px 25px;
+}
+
+.logo {
+	font-size: 22px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.navbar ul {
+	list-style: none;
+	display: flex;
+	gap: 20px;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar li {
+	cursor: pointer;
+	position: relative;
+	transition: 0.2s;
+	color: white;
+}
+
+	.navbar li:hover {
+		color: #00c8ff;
+	}
+
+/* Hide submenus by default using opacity and visibility */
+.submenu {
+	position: absolute;
+	background: #444;
+	padding: 10px 0;
+	top: 30px;
+	left: 0;
+	min-width: 180px;
+	border-radius: 4px;
+	flex-direction: column;
+	z-index: 1000;
+	opacity: 0; /* invisible */
+	visibility: hidden; /* prevent interaction */
+	transition: opacity 0.2s ease, visibility 0.2s ease; /* smooth fade-in */
+}
+
+/* Make submenu items visible on hover */
+.dropdown:hover > .submenu {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Submenu item styles */
+.submenu li {
+	padding: 8px 15px;
+	white-space: nowrap;
+	color: white;
+}
+
+	.submenu li:hover {
+		background: #00a2d6;
+	}
+
+
+.search-container {
+	display: flex;
+	gap: 10px;
+}
+
+	.search-container input {
+		padding: 6px 10px;
+		font-size: 14px;
+	}
+
+	.search-container button {
+		padding: 6px 12px;
+		cursor: pointer;
+	}
+
+/* HERO SECTION WITH LOCAL IMAGE */
+.hero {
+	width: 100%;
+	height: 100vh; /* Half the screen height */
+	background-image: url('C:/Users/snipe/Documents/GitHub/6Sense-Business/Pictures/Homepage.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
