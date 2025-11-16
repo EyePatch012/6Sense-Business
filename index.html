@@ -1,65 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>6Sense Business</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6Sense Business</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="topbar">
-<div class="logo" onclick="location.href='index.html'">6Sense Business</div>
+  <header class="topbar">
+    <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
+    <nav class="navbar" aria-label="Primary">
+      <ul>
+        <li class="dropdown"><a href="about.html">About Us</a></li>
+        <li class="dropdown"><a href="method.html">The 6Sense Method</a></li>
+        <li class="dropdown">
+          <a href="offerings.html">Offerings</a>
+          <ul class="submenu">
+            <li><a href="leadership.html">Leadership Reinvention</a></li>
+            <li><a href="team.html">Team Reinvention</a></li>
+            <li><a href="enterprise.html">Enterprise Reinvention</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="insights.html">Insights & Keynote Speakers</a></li>
+        <li class="dropdown"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="search-area">
+      <div class="search-container" role="search">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search the site"
+          aria-label="Search site content"
+        />
+        <button id="searchBtn" type="button">Search</button>
+      </div>
+      <p class="search-feedback" id="searchFeedback" aria-live="polite"></p>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">FUTURE-READY BUSINESSES</p>
+        <h1>Reinvent teams with intelligent foresight.</h1>
+        <p class="lead">
+          We help leaders read signals, unlock collective genius, and deliver bold growth.
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="offerings.html">Explore Offerings</a>
+          <a class="btn ghost" href="contact.html">Talk to Us</a>
+        </div>
+      </div>
+    </section>
 
-<nav class="navbar">
-<ul>
-<li class="dropdown">About Us
-<ul class="submenu"></ul>
-</li>
+    <section class="highlights">
+      <article>
+        <h2>Signal Intelligence</h2>
+        <p>Tap into market, cultural, and technological signals to anticipate disruption.</p>
+      </article>
+      <article>
+        <h2>People Powered</h2>
+        <p>Mobilize leadership teams with immersive experiences and measurable impact.</p>
+      </article>
+      <article>
+        <h2>Momentum at Scale</h2>
+        <p>Design reinvention roadmaps that compound value across the enterprise.</p>
+      </article>
+    </section>
 
+    <section class="signal-grid" aria-label="Signals we decode">
+      <article class="signal-card">
+        <p class="signal-label">01</p>
+        <h3>Market Momentum</h3>
+        <p>Live dashboards synthesize demand shifts and capital flows so you decide with confidence.</p>
+      </article>
+      <article class="signal-card">
+        <p class="signal-label">02</p>
+        <h3>People Pulse</h3>
+        <p>Experience mapping uncovers talent expectations, guiding new rituals and talent narratives.</p>
+      </article>
+      <article class="signal-card">
+        <p class="signal-label">03</p>
+        <h3>Technology Horizons</h3>
+        <p>We run immersion labs on AI, automation, and sustainability to anchor bold investments.</p>
+      </article>
+    </section>
 
-<li class="dropdown">The 6Sense Method
-<ul class="submenu"></ul>
-</li>
+    <section class="momentum" aria-label="Proof points">
+      <div class="stat-grid">
+        <div class="stat">
+          <p class="stat-value">120+</p>
+          <p class="stat-label">Executive journeys</p>
+        </div>
+        <div class="stat">
+          <p class="stat-value">30</p>
+          <p class="stat-label">Markets activated</p>
+        </div>
+        <div class="stat">
+          <p class="stat-value">4.9/5</p>
+          <p class="stat-label">Experience rating</p>
+        </div>
+      </div>
+      <div class="momentum-cta">
+        <p>Need to mobilize your team within 90 days?</p>
+        <a class="btn primary" href="contact.html">Book a working session</a>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div>
+      <p class="footer-logo">6Sense Business</p>
+      <p>Signal-driven reinvention for modern organizations.</p>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="method.html">Method</a>
+      <a href="offerings.html">Offerings</a>
+      <a href="insights.html">Insights</a>
+    </div>
+    <div class="footer-links">
+      <a href="contact.html">Contact</a>
+      <a href="mailto:hello@6sensebusiness.com">Email</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
 
-<li class="dropdown">Offerings
-<ul class="submenu">
-<li>Leadership Reinvention</li>
-<li>Team Reinvention</li>
-<li>Enterprise Reinvention</li>
-</ul>
-</li>
-
-
-<li class="dropdown">Insights & Keynote Speakers
-<ul class="submenu"></ul>
-</li>
-
-
-<li class="dropdown">Contact
-<ul class="submenu">
-<li>Email Us</li>
-</ul>
-</li>
-</ul>
-</nav>
-
-
-<div class="search-container">
-<input type="text" id="searchInput" placeholder="Search..." />
-<button id="searchBtn">Search</button>
-</div>
-</header>
-
-
-<main>
-  <section class="hero"></section>
-  <p>Homepage content will go here. Tell me what to add!</p>
-</main>
-
-
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
