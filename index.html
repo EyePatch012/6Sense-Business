@@ -1,82 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>6Sense Business</title>
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6Sense Business</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-
-<body>
-
-<!-- INTRO VIDEO SCREEN -->
-<div id="intro-screen">
-
-    <video id="intro-video" muted autoplay loop>
-        <source src="Videos/Intro.mp4" type="video/mp4">
-    </video>
-
-    <div class="intro-blur"></div>
-    <div class="intro-grain"></div>
-
-    <!-- PERFECT CENTERED LOADER + QUOTE -->
-    <div class="intro-overlay">
-        <div class="loader-circle"></div>
-        <p class="intro-quote">Like a Forest, Every Connection Matters.</p>
-         <p class="intro-quote">6sense</p>
+<body id="top">
+    <!-- INTRO VIDEO SCREEN -->
+    <div id="intro-screen">
+        <video id="intro-video" muted autoplay loop>
+            <source src="Videos/Intro.mp4" type="video/mp4">
+        </video>
+        <div class="intro-blur"></div>
+        <div class="intro-grain"></div>
+        <div class="intro-overlay">
+            <div class="loader-circle"></div>
+            <p class="intro-quote">Like a Forest, Every Connection Matters.</p>
+            <p class="intro-quote">6Sense</p>
+        </div>
     </div>
 
-</div>
+    <!-- TOP NAV BAR -->
+    <header class="topbar">
+        <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
+        <nav class="navbar">
+            <ul>
+                <li class="dropdown"><a href="#method" class="nav-link">The 6Sense Method</a></li>
+                <li class="dropdown">Offerings
+                    <ul class="submenu">
+                        <li><a href="#offerings">Leadership Reinvention</a></li>
+                        <li><a href="#offerings">Team Reinvention</a></li>
+                        <li><a href="#offerings">Enterprise Reinvention</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="dropdown"><a href="#insights" class="nav-link">Insights</a></li>
+                <li class="dropdown">Contact
+                    <ul class="submenu"><li><a href="#contact">Email Us</a></li></ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button id="searchBtn">Search</button>
+        </div>
+    </header>
 
-<!-- TOP NAV BAR -->
-<header class="topbar">
-    <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
+    <!-- HERO SECTION -->
+    <section class="hero" id="top">
+        <div class="hero-bg"></div>
+        <div class="hero-darken"></div>
+        <div class="hero-content">
+            <span class="hero-kicker">Systemic leadership • Embodied change</span>
+            <h1>Real change starts beneath the surface.</h1>
+            <p>We guide leaders, teams, and organizations through systemic transformation—unlocking momentum, clarity, and impact from within.</p>
+            <div class="hero-actions">
+                <button class="button" data-scroll="#offerings">Explore our offerings</button>
+                <button class="button secondary" data-scroll="#contact">Book a conversation</button>
+            </div>
+            <div class="hero-card">
+                Business constellations, somatic wisdom, and intuitive strategy woven together to bring your organization back into flow.
+            </div>
+        </div>
+    </section>
 
-    <nav class="navbar">
-        <ul>
-            <li class="dropdown">
-    <a href="about.html" class="nav-link">About Us</a>
-    <ul class="submenu"></ul>
-</li>
+    <!-- TRUST SIGNALS -->
+    <section class="section" id="insights">
+        <div class="container">
+            <h2 class="section-title">We work where momentum begins</h2>
+            <p class="section-subtitle">From executive teams to enterprise-wide reinvention, our approach restores the energetic flow that fuels resilient growth.</p>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <span class="badge">Leadership</span>
+                    <h3>Leadership Reinvention</h3>
+                    <p>Develop embodied leaders who can read systemic signals, release tension, and move strategy into action with confidence.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="badge">Teams</span>
+                    <h3>Team Reinvention</h3>
+                    <p>Heal entanglements, rebuild trust, and align collaboration around what matters most to the business and its stakeholders.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="badge">Enterprise</span>
+                    <h3>Enterprise Reinvention</h3>
+                    <p>Shift hidden dynamics across the whole system so transformation sticks, momentum returns, and value compounds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <li class="dropdown">The 6Sense Method <ul class="submenu"></ul></li>
+    <!-- METHOD -->
+    <section class="section" id="method">
+        <div class="container">
+            <h2 class="section-title">The 6Sense Method</h2>
+            <p class="section-subtitle">We combine systemic intelligence, somatic awareness, and intuitive sensing to surface what traditional methods miss.</p>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <h3>See the unseen</h3>
+                    <p>Reveal hidden dynamics and energy leaks that drain performance and block healthy flow.</p>
+                </div>
+                <div class="card reveal">
+                    <h3>Release resistance</h3>
+                    <p>Resolve entanglements with care so teams regain trust, clarity, and forward motion.</p>
+                </div>
+                <div class="card reveal">
+                    <h3>Anchor momentum</h3>
+                    <p>Weave insight into action through embodied practices, decision rituals, and system-aware strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <li class="dropdown">Offerings
-                <ul class="submenu">
-                    <li>Leadership Reinvention</li>
-                    <li>Team Reinvention</li>
-                    <li>Enterprise Reinvention</li>
-                </ul>
-            </li>
+    <!-- OFFERINGS DETAIL -->
+    <section class="section" id="offerings">
+        <div class="container">
+            <h2 class="section-title">Offerings tailored to your landscape</h2>
+            <p class="section-subtitle">Every engagement is crafted around your system's unique story, honoring what must stay and releasing what no longer serves.</p>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <span class="badge">Programs</span>
+                    <h3>Immersive Leadership Labs</h3>
+                    <p>Multi-week journeys blending presence work, constellation sessions, and guided integration for executives.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="badge">Advisory</span>
+                    <h3>Systemic Strategy Sprints</h3>
+                    <p>High-intensity workshops that surface root causes, reset priorities, and align teams around decisive next moves.</p>
+                </div>
+                <div class="card reveal">
+                    <span class="badge">Keynotes</span>
+                    <h3>Insights & Keynote Speakers</h3>
+                    <p>Inspirational talks and interactive sessions that illuminate unseen forces shaping modern business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <li class="dropdown">Insights & Keynote Speakers <ul class="submenu"></ul></li>
+    <!-- JOURNEY TIMELINE -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">A grounded journey</h2>
+            <p class="section-subtitle">From the first conversation to sustained momentum, each step is intentional and relational.</p>
+            <div class="timeline">
+                <div class="timeline-step reveal">
+                    <div class="timeline-number">1</div>
+                    <div>
+                        <h3>Sense & Listen</h3>
+                        <p>We listen to your system—stories, signals, and tensions—so we start with what is true.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal">
+                    <div class="timeline-number">2</div>
+                    <div>
+                        <h3>Map the Field</h3>
+                        <p>Constellation work reveals hidden dynamics and energetic leaks that quietly dictate outcomes.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal">
+                    <div class="timeline-number">3</div>
+                    <div>
+                        <h3>Release & Re-align</h3>
+                        <p>We resolve entanglements, restore trust, and anchor new agreements in embodied practice.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal">
+                    <div class="timeline-number">4</div>
+                    <div>
+                        <h3>Integrate for Momentum</h3>
+                        <p>We weave insights into your strategy so progress feels natural and growth is sustainable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <li class="dropdown">Contact
-                <ul class="submenu"><li>Email Us</li></ul>
-            </li>
-        </ul>
-    </nav>
+    <!-- TESTIMONIALS -->
+    <section class="section" aria-label="Testimonials">
+        <div class="container">
+            <h2 class="section-title">What partners experience</h2>
+            <div class="card-grid">
+                <div class="quote-card reveal">
+                    <p>“Our leadership team finally named the real blockers. Decisions are faster, and the energy is back.”</p>
+                    <div class="quote-author">Chief People Officer, Global Tech</div>
+                </div>
+                <div class="quote-card reveal">
+                    <p>“The constellation work created trust we didn’t know we’d lost. Strategy now lands with the whole organization.”</p>
+                    <div class="quote-author">CEO, Consumer Brand</div>
+                </div>
+                <div class="quote-card reveal">
+                    <p>“They move gently but powerfully. We shifted more in two days than in a year of traditional change programs.”</p>
+                    <div class="quote-author">SVP Transformation, Financial Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search..." />
-        <button id="searchBtn">Search</button>
-    </div>
-</header>
+    <!-- CONTACT CTA -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="quote-card reveal">
+                <h2 class="section-title">Ready to restore momentum?</h2>
+                <p class="section-subtitle">Tell us where you feel the tension. We’ll respond with a thoughtful next step tailored to your system.</p>
+                <div class="hero-actions">
+                    <button class="button" data-scroll="#top">Return to top</button>
+                    <button class="button secondary">contact@6sensebusiness.com</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-darken"></div>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-title">6Sense Business</div>
+                    <p>Systemic transformation, rooted in wisdom traditions and pragmatic action.</p>
+                </div>
+                <div>
+                    <div class="footer-title">Explore</div>
+                    <div class="footer-links">
+                        <a href="#method">Method</a>
+                        <a href="#offerings">Offerings</a>
+                        <a href="#insights">Insights</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-title">Connect</div>
+                    <div class="footer-links">
+                        <a href="about.html">About Us</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2024 6Sense Business. All rights reserved.</div>
+        </div>
+    </footer>
 
-    <div class="hero-content">
-        <h1>Real Change starts beneath the Surface</h1>
-        <p>
-            We guide leaders, teams, and organizations through systemic transformation �
-            unlocking momentum, clarity, and impact from within.
-        </p>
-    </div>
-</section>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
