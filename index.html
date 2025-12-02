@@ -6,59 +6,76 @@
 <title>6Sense Business</title>
 <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-<header class="topbar">
-<div class="logo" onclick="location.href='index.html'">6Sense Business</div>
 
+<!-- INTRO VIDEO SCREEN -->
+<div id="intro-screen">
 
-<nav class="navbar">
-<ul>
-<li class="dropdown">About Us
-<ul class="submenu"></ul>
-</li>
+    <video id="intro-video" muted autoplay loop>
+        <source src="Videos/Intro.mp4" type="video/mp4">
+    </video>
 
+    <div class="intro-blur"></div>
+    <div class="intro-grain"></div>
 
-<li class="dropdown">The 6Sense Method
-<ul class="submenu"></ul>
-</li>
+    <!-- PERFECT CENTERED LOADER + QUOTE -->
+    <div class="intro-overlay">
+        <div class="loader-circle"></div>
+        <p class="intro-quote">Like a Forest, Every Connection Matters.</p>
+         <p class="intro-quote">6sense</p>
+    </div>
 
-
-<li class="dropdown">Offerings
-<ul class="submenu">
-<li>Leadership Reinvention</li>
-<li>Team Reinvention</li>
-<li>Enterprise Reinvention</li>
-</ul>
-</li>
-
-
-<li class="dropdown">Insights & Keynote Speakers
-<ul class="submenu"></ul>
-</li>
-
-
-<li class="dropdown">Contact
-<ul class="submenu">
-<li>Email Us</li>
-</ul>
-</li>
-</ul>
-</nav>
-
-
-<div class="search-container">
-<input type="text" id="searchInput" placeholder="Search..." />
-<button id="searchBtn">Search</button>
 </div>
+
+<!-- TOP NAV BAR -->
+<header class="topbar">
+    <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
+
+    <nav class="navbar">
+        <ul>
+            <li class="dropdown">
+    <a href="about.html" class="nav-link">About Us</a>
+    <ul class="submenu"></ul>
+</li>
+
+            <li class="dropdown">The 6Sense Method <ul class="submenu"></ul></li>
+
+            <li class="dropdown">Offerings
+                <ul class="submenu">
+                    <li>Leadership Reinvention</li>
+                    <li>Team Reinvention</li>
+                    <li>Enterprise Reinvention</li>
+                </ul>
+            </li>
+
+            <li class="dropdown">Insights & Keynote Speakers <ul class="submenu"></ul></li>
+
+            <li class="dropdown">Contact
+                <ul class="submenu"><li>Email Us</li></ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <button id="searchBtn">Search</button>
+    </div>
 </header>
 
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-darken"></div>
 
-<main>
-  <section class="hero"></section>
-  <p>Homepage content will go here. Tell me what to add!</p>
-</main>
-
-
+    <div class="hero-content">
+        <h1>Real Change starts beneath the Surface</h1>
+        <p>
+            We guide leaders, teams, and organizations through systemic transformation —
+            unlocking momentum, clarity, and impact from within.
+        </p>
+    </div>
+</section>
 
 <script src="script.js"></script>
 </body>
