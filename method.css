@@ -13,26 +13,28 @@ body {
     position: fixed;
     inset: 0;
     z-index: 1;
-    opacity: 0.25;
+    opacity: 0.45;
     mix-blend-mode: soft-light;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    background-size: 180px 180px;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
 }
 
 .method-content {
     position: relative;
     z-index: 2;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 80px 24px 140px;
+    max-width: none;
+    margin: 0;
+    padding: 80px 0 140px;
 }
 
 .method-hero,
 .method-detail {
     min-height: 60vh;
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    justify-content: flex-start;
 }
 
 .method-detail {
@@ -41,10 +43,11 @@ body {
 
 .method-card {
     background: rgba(221, 224, 209, 0.9);
-    border-radius: 10px;
+    border-radius: 0;
     padding: 40px 48px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(6px);
+    width: 100%;
 }
 
 .method-eyebrow {
