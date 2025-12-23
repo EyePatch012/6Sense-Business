@@ -13,12 +13,16 @@ body {
     position: fixed;
     inset: 0;
     z-index: 1;
-    opacity: 0.45;
+    opacity: 0.65;
     mix-blend-mode: soft-light;
     pointer-events: none;
     background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-    background-size: 140px 140px;
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    background-size: 110px 110px, 220px 220px;
+    background-position: 0 0, 0 0;
+    animation: grainDrift 10s steps(10, end) infinite;
+    will-change: background-position;
 }
 
 .method-content {
@@ -86,5 +90,19 @@ body {
 
     .method-card h1 {
         font-size: 34px;
+    }
+}
+
+@keyframes grainDrift {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    50% {
+        background-position: 80px -60px, -40px 70px;
+    }
+
+    100% {
+        background-position: -60px 90px, 60px -40px;
     }
 }
