@@ -59,14 +59,14 @@ body {
     margin: 0 0 20px;
     font-size: 44px;
     color: #2d4533;
-    font-family: Georgia, serif;
+    font-family: inherit;
 }
 
 .method-card h2 {
     margin: 0 0 16px;
     font-size: 32px;
     color: #2d4533;
-    font-family: Georgia, serif;
+    font-family: inherit;
 }
 
 .method-card p {
