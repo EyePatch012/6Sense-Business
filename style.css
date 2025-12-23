@@ -3,6 +3,11 @@ html {
     scroll-behavior: smooth;
 }
 
+:root {
+    --homepage-gradient-start: #94a289;
+    --homepage-gradient-end: #dde0d1;
+}
+
 body {
     margin: 0;
     font-family: sans-serif;
@@ -276,7 +281,7 @@ ul {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #94a289, #dde0d1);
+    background: linear-gradient(135deg, var(--homepage-gradient-start), var(--homepage-gradient-end));
     background-size: 300% 300%;
     animation: heroWave 20s ease-in-out infinite;
     z-index: 1;
