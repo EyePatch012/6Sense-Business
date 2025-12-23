@@ -1,6 +1,43 @@
 window.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.scrollBehavior = "smooth";
     document.body.style.scrollBehavior = "smooth";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
+        let targetScroll = window.scrollY;
+        let currentScroll = window.scrollY;
+        let isTicking = false;
+
+        const clampScroll = (value) => {
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            return Math.max(0, Math.min(value, maxScroll));
+        };
+
+        const animateScroll = () => {
+            currentScroll += (targetScroll - currentScroll) * 0.12;
+            if (Math.abs(targetScroll - currentScroll) < 0.5) {
+                currentScroll = targetScroll;
+            }
+            window.scrollTo(0, currentScroll);
+            if (Math.abs(targetScroll - currentScroll) > 0.5) {
+                requestAnimationFrame(animateScroll);
+            } else {
+                isTicking = false;
+            }
+        };
+
+        window.addEventListener(
+            "wheel",
+            (event) => {
+                event.preventDefault();
+                targetScroll = clampScroll(targetScroll + event.deltaY * 1.1);
+                if (!isTicking) {
+                    isTicking = true;
+                    requestAnimationFrame(animateScroll);
+                }
+            },
+            { passive: false }
+        );
+    }
 
     const intro = document.getElementById("intro-screen");
     const video = document.getElementById("intro-video");
