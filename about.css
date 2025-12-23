@@ -76,12 +76,12 @@ body.page-fade-out {
 .about-main {
     max-width: 980px;
     margin: 60px auto;
-    padding: 0 24px;
+    padding: 0 24px 40px;
     font-size: 18px;
     line-height: 1.85;
     color: #2b2b2b;
     font-family: Georgia, serif;
-    background: #ffffff;
+    background: transparent;
 }
 
     .about-main p {
@@ -96,11 +96,14 @@ body.page-fade-out {
     border-radius: 6px;
     margin: 40px 0;
     display: block;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform: scale(0.96);
+    opacity: 0.92;
+    transition: transform 1s ease, box-shadow 1s ease, opacity 1s ease;
 }
 
-.about-extra-img:hover {
-    transform: scale(1.02);
+.about-extra-img.is-visible {
+    transform: scale(1);
+    opacity: 1;
     box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
 }
 

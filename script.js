@@ -1,4 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.style.scrollBehavior = "smooth";
+    document.body.style.scrollBehavior = "smooth";
+
     const intro = document.getElementById("intro-screen");
     const video = document.getElementById("intro-video");
 
@@ -51,5 +54,21 @@ window.addEventListener("DOMContentLoaded", () => {
         searchBtn.addEventListener("click", () => {
             alert("You searched for: " + searchInput.value);
         });
+    }
+
+    const extraImages = document.querySelectorAll(".about-extra-img");
+    if (extraImages.length > 0 && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    }
+                });
+            },
+            { threshold: 0.4 }
+        );
+
+        extraImages.forEach((image) => observer.observe(image));
     }
 });
