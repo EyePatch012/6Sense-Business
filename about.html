@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us – 6Sense Business</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css" />
 </head>
 
 <body>
@@ -19,9 +19,7 @@
                     <a href="about.html" class="nav-link">About Us</a>
                     <ul class="submenu"></ul>
                 </li>
-
                 <li class="dropdown">The 6Sense Method <ul class="submenu"></ul></li>
-
                 <li class="dropdown">
                     Offerings
                     <ul class="submenu">
@@ -30,9 +28,7 @@
                         <li>Enterprise Reinvention</li>
                     </ul>
                 </li>
-
                 <li class="dropdown">Insights & Keynote Speakers <ul class="submenu"></ul></li>
-
                 <li class="dropdown">
                     Contact
                     <ul class="submenu"><li>Email Us</li></ul>
@@ -48,10 +44,8 @@
 
     <!-- ABOUT HERO IMAGE -->
     <section class="about-hero">
-        <img src="Pictures/AboutUsBG.jpg" class="about-hero-img">
-
+        <img src="Pictures/AboutUsBG.jpg" class="about-hero-img" alt="About Us Hero" />
         <div class="about-hero-darken"></div>
-
         <div class="about-hero-content">
             <h1>About Us</h1>
             <p>
@@ -116,29 +110,42 @@
             often the root cause of resistance to change.
         </p>
 
-        <!-- EXTRA IMAGE BELOW THE TEXT -->
-        <img src="Pictures/AboutUSEXtraBG.jpg" class="about-extra-img">
+        <img src="Pictures/AboutUSEXtraBG.jpg" class="about-extra-img" alt="Team Working Together" />
 
         <p>
-            When these systemic dynamics are revealed, leaders gain access to a broader field of insight. This expanded awareness allows them to navigate tensions in a way that directly addresses and resolves them — strengthening the business and creating forward momentum. Because real change doesn’t happen by addressing symptoms — it requires seeing the whole and shifting from the source.
-            The result: An organization that gets back in sync — with empowered decisions, renewed collaboration, and a strong sense of direction. And most importantly: a return to sustainable momentum that’s felt across the culture and reflected in the bottom line.
+            When these systemic dynamics are revealed, leaders gain access to a broader field of insight.
+            This expanded awareness allows them to navigate tensions in a way that directly addresses and
+            resolves them — strengthening the business and creating forward momentum.
+            Because real change doesn’t happen by addressing symptoms — it requires seeing the whole and
+            shifting from the source.
+            The result: An organization that gets back in sync — with empowered decisions, renewed
+            collaboration, and a strong sense of direction. And most importantly: a return to sustainable
+            momentum that’s felt across the culture and reflected in the bottom line.
         </p>
+
         <p>
             We enable a systemic shift in consciousness that is anchored in human dynamics and aligned across all levels through:
         </p>
+
         <p>
             Practicing presence – enabling embodied leadership through work, constellation practices, and field awareness
         </p>
+
         <p>
-            Reading the system- identifying hidden dynamics and collective entanglements that block flow, and releasing them with care. / Guiding leaders to sense the unseen — and reveal the hidden causes of stagnation.
+            Reading the system – identifying hidden dynamics and collective entanglements that block flow, and releasing them with care. / Guiding leaders to sense the unseen — and reveal the hidden causes of stagnation.
             Empowering leaders to lead with their full humanity, beyond just their job title or function: from role to soul.
         </p>
-        <p>
-            Weaving insight with action - where deep personal growth meets organizational transformation.
-        </p>
 
+        <p>
+            Weaving insight with action – where deep personal growth meets organizational transformation.
+        </p>
     </section>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("searchBtn")?.addEventListener("click", () => {
+            const value = document.getElementById("searchInput").value;
+            alert("You searched for: " + value);
+        });
+    </script>
 </body>
 </html>
