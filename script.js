@@ -3,33 +3,46 @@ window.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("intro-video");
 
     // Fade out intro video
-    const triggerFade = () => {
-        setTimeout(() => {
-            intro.classList.add("fade-out");
+    if (intro && video) {
+        const triggerFade = () => {
             setTimeout(() => {
-                intro.style.display = "none";
-            }, 1500);
-        }, 4000);
-    };
+                intro.classList.add("fade-out");
+                setTimeout(() => {
+                    intro.style.display = "none";
+                }, 1500);
+            }, 4000);
+        };
 
-    if (video.readyState >= 3) {
-        triggerFade();
-    } else {
-        video.addEventListener("canplaythrough", triggerFade);
+        if (video.readyState >= 3) {
+            triggerFade();
+        } else {
+            video.addEventListener("canplaythrough", triggerFade);
+        }
     }
 
-    // Smooth transition to about.html
-    const aboutLink = document.getElementById("about-link");
-    if (aboutLink) {
-        aboutLink.addEventListener("click", (e) => {
+    // Smooth transition between pages
+    const pageLinks = document.querySelectorAll("a[href]");
+    pageLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("#")) {
+            return;
+        }
+        link.addEventListener("click", (e) => {
+            const url = new URL(link.href, window.location.href);
+            if (url.origin !== window.location.origin) {
+                return;
+            }
             e.preventDefault();
-            document.body.style.transition = "opacity 0.6s ease";
-            document.body.style.opacity = 0;
+            document.body.classList.add("page-fade-out");
             setTimeout(() => {
-                window.location.href = aboutLink.href;
-            }, 600);
+                window.location.href = link.href;
+            }, 550);
         });
-    }
+    });
+
+    window.addEventListener("pageshow", () => {
+        document.body.classList.remove("page-fade-out");
+    });
 
     // Search button alert
     const searchBtn = document.getElementById("searchBtn");
