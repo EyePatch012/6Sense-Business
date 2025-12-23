@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         const animateScroll = () => {
-            currentScroll += (targetScroll - currentScroll) * 0.2;
+            currentScroll += (targetScroll - currentScroll) * 0.5;
             if (Math.abs(targetScroll - currentScroll) < 0.5) {
                 currentScroll = targetScroll;
             }
