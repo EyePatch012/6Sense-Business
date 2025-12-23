@@ -1,7 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.scrollBehavior = "smooth";
     document.body.style.scrollBehavior = "smooth";
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     if (!prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
         let targetScroll = window.scrollY;
         let currentScroll = window.scrollY;
@@ -17,21 +19,19 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         const updateGrain = () => {
-            if (!methodGrain) {
-                return;
-            }
-            grainCurrent += (grainTarget - grainCurrent) * 0.1;
+            if (!methodGrain) return;
+            grainCurrent += (grainTarget - grainCurrent) * 0.2; // Faster grain animation
             methodGrain.style.setProperty("--grain-shift", `${grainCurrent.toFixed(2)}px`);
         };
 
         const animateScroll = () => {
-            currentScroll += (targetScroll - currentScroll) * 0.5;
-            if (Math.abs(targetScroll - currentScroll) < 0.5) {
+            currentScroll += (targetScroll - currentScroll) * 0.3; // Faster scroll easing
+            if (Math.abs(targetScroll - currentScroll) < 1) {
                 currentScroll = targetScroll;
             }
             window.scrollTo(0, currentScroll);
             updateGrain();
-            if (Math.abs(targetScroll - currentScroll) > 0.5) {
+            if (Math.abs(targetScroll - currentScroll) > 1) {
                 requestAnimationFrame(animateScroll);
             } else {
                 isTicking = false;
@@ -42,8 +42,8 @@ window.addEventListener("DOMContentLoaded", () => {
             "wheel",
             (event) => {
                 event.preventDefault();
-                targetScroll = clampScroll(targetScroll + event.deltaY * 1.05);
-                grainTarget += event.deltaY * 0.12;
+                targetScroll = clampScroll(targetScroll + event.deltaY * 2.5); // Increased scroll delta
+                grainTarget += event.deltaY * 0.2;
                 if (!isTicking) {
                     isTicking = true;
                     requestAnimationFrame(animateScroll);
@@ -53,10 +53,8 @@ window.addEventListener("DOMContentLoaded", () => {
         );
 
         window.addEventListener("scroll", () => {
-            if (!methodGrain) {
-                return;
-            }
-            grainTarget = window.scrollY * 0.12;
+            if (!methodGrain) return;
+            grainTarget = window.scrollY * 0.2;
             if (!isTicking) {
                 isTicking = true;
                 requestAnimationFrame(animateScroll);
@@ -64,10 +62,10 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Fade out intro video
     const intro = document.getElementById("intro-screen");
     const video = document.getElementById("intro-video");
 
-    // Fade out intro video
     if (intro && video) {
         const triggerFade = () => {
             setTimeout(() => {
@@ -89,14 +87,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const pageLinks = document.querySelectorAll("a[href]");
     pageLinks.forEach((link) => {
         const href = link.getAttribute("href");
-        if (!href || href.startsWith("#")) {
-            return;
-        }
+        if (!href || href.startsWith("#")) return;
+
         link.addEventListener("click", (e) => {
             const url = new URL(link.href, window.location.href);
-            if (url.origin !== window.location.origin) {
-                return;
-            }
+            if (url.origin !== window.location.origin) return;
+
             e.preventDefault();
             document.body.classList.add("page-fade-out");
             setTimeout(() => {
@@ -118,6 +114,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Extra images fade-in
     const extraImages = document.querySelectorAll(".about-extra-img");
     if (extraImages.length > 0 && "IntersectionObserver" in window) {
         const observer = new IntersectionObserver(
