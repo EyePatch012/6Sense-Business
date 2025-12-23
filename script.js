@@ -7,17 +7,30 @@ window.addEventListener("DOMContentLoaded", () => {
         let currentScroll = window.scrollY;
         let isTicking = false;
 
+        const methodGrain = document.querySelector(".method-grain");
+        let grainTarget = 0;
+        let grainCurrent = 0;
+
         const clampScroll = (value) => {
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             return Math.max(0, Math.min(value, maxScroll));
         };
 
+        const updateGrain = () => {
+            if (!methodGrain) {
+                return;
+            }
+            grainCurrent += (grainTarget - grainCurrent) * 0.1;
+            methodGrain.style.setProperty("--grain-shift", `${grainCurrent.toFixed(2)}px`);
+        };
+
         const animateScroll = () => {
-            currentScroll += (targetScroll - currentScroll) * 0.12;
+            currentScroll += (targetScroll - currentScroll) * 0.2;
             if (Math.abs(targetScroll - currentScroll) < 0.5) {
                 currentScroll = targetScroll;
             }
             window.scrollTo(0, currentScroll);
+            updateGrain();
             if (Math.abs(targetScroll - currentScroll) > 0.5) {
                 requestAnimationFrame(animateScroll);
             } else {
@@ -29,7 +42,8 @@ window.addEventListener("DOMContentLoaded", () => {
             "wheel",
             (event) => {
                 event.preventDefault();
-                targetScroll = clampScroll(targetScroll + event.deltaY * 1.1);
+                targetScroll = clampScroll(targetScroll + event.deltaY * 1.05);
+                grainTarget += event.deltaY * 0.12;
                 if (!isTicking) {
                     isTicking = true;
                     requestAnimationFrame(animateScroll);
@@ -37,6 +51,17 @@ window.addEventListener("DOMContentLoaded", () => {
             },
             { passive: false }
         );
+
+        window.addEventListener("scroll", () => {
+            if (!methodGrain) {
+                return;
+            }
+            grainTarget = window.scrollY * 0.12;
+            if (!isTicking) {
+                isTicking = true;
+                requestAnimationFrame(animateScroll);
+            }
+        });
     }
 
     const intro = document.getElementById("intro-screen");
