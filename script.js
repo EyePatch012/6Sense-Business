@@ -1,6 +1,32 @@
 window.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.scrollBehavior = "smooth";
     document.body.style.scrollBehavior = "smooth";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
+        const methodGrain = document.querySelector(".method-grain");
+        let scrollTicking = false;
+        const updateGrain = () => {
+            if (methodGrain) {
+                methodGrain.style.setProperty("--grain-shift", `${(window.scrollY * 0.12).toFixed(2)}px`);
+            }
+            scrollTicking = false;
+        };
+        window.addEventListener("scroll", () => {
+            if (!scrollTicking) {
+                scrollTicking = true;
+                requestAnimationFrame(updateGrain);
+            }
+        });
+
+        window.addEventListener(
+            "wheel",
+            (event) => {
+                event.preventDefault();
+                window.scrollBy({ top: event.deltaY, left: 0, behavior: "smooth" });
+            },
+            { passive: false }
+        );
+    }
 
     const intro = document.getElementById("intro-screen");
     const video = document.getElementById("intro-video");
