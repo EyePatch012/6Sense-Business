@@ -2,64 +2,16 @@ window.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.scrollBehavior = "smooth";
     document.body.style.scrollBehavior = "smooth";
 
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
-        let targetScroll = window.scrollY;
-        let currentScroll = window.scrollY;
-        let isTicking = false;
-
-        const methodGrain = document.querySelector(".method-grain");
-        let grainTarget = 0;
-        let grainCurrent = 0;
-
-        const clampScroll = (value) => {
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            return Math.max(0, Math.min(value, maxScroll));
-        };
-
-        const updateGrain = () => {
-            if (!methodGrain) return;
-            grainCurrent += (grainTarget - grainCurrent) * 0.2; // Faster grain animation
-            methodGrain.style.setProperty("--grain-shift", `${grainCurrent.toFixed(2)}px`);
-        };
-
-        const animateScroll = () => {
-            currentScroll += (targetScroll - currentScroll) * 0.3; // Faster scroll easing
-            if (Math.abs(targetScroll - currentScroll) < 1) {
-                currentScroll = targetScroll;
-            }
-            window.scrollTo(0, currentScroll);
-            updateGrain();
-            if (Math.abs(targetScroll - currentScroll) > 1) {
-                requestAnimationFrame(animateScroll);
-            } else {
-                isTicking = false;
-            }
-        };
-
+    const methodGrain = document.querySelector(".method-grain");
+    if (methodGrain) {
         window.addEventListener(
-            "wheel",
-            (event) => {
-                event.preventDefault();
-                targetScroll = clampScroll(targetScroll + event.deltaY * 2.5); // Increased scroll delta
-                grainTarget += event.deltaY * 0.2;
-                if (!isTicking) {
-                    isTicking = true;
-                    requestAnimationFrame(animateScroll);
-                }
+            "scroll",
+            () => {
+                const grainShift = window.scrollY * 0.2;
+                methodGrain.style.setProperty("--grain-shift", `${grainShift.toFixed(2)}px`);
             },
-            { passive: false }
+            { passive: true }
         );
-
-        window.addEventListener("scroll", () => {
-            if (!methodGrain) return;
-            grainTarget = window.scrollY * 0.2;
-            if (!isTicking) {
-                isTicking = true;
-                requestAnimationFrame(animateScroll);
-            }
-        });
     }
 
     // Fade out intro video
