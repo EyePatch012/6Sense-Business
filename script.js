@@ -1,6 +1,24 @@
 window.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.scrollBehavior = "smooth";
     document.body.style.scrollBehavior = "smooth";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
+        const methodGrain = document.querySelector(".method-grain");
+        if (!methodGrain) {
+            return;
+        }
+        let scrollTicking = false;
+        const updateGrain = () => {
+            methodGrain.style.setProperty("--grain-shift", `${(window.scrollY * 0.12).toFixed(2)}px`);
+            scrollTicking = false;
+        };
+        window.addEventListener("scroll", () => {
+            if (!scrollTicking) {
+                scrollTicking = true;
+                requestAnimationFrame(updateGrain);
+            }
+        });
+    }
 
     const intro = document.getElementById("intro-screen");
     const video = document.getElementById("intro-video");
