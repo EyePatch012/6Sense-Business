@@ -1,6 +1,11 @@
 ﻿/* Inherits topbar and search from global site CSS */
 
 /* About Hero Section */
+body {
+    opacity: 0;
+    animation: pageFadeIn 0.9s ease forwards;
+}
+
 .about-hero {
     position: relative;
     width: 100%;
@@ -14,6 +19,13 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transform: scale(1.03);
+    animation: imageReveal 1.4s ease forwards;
+    transition: transform 0.6s ease;
+}
+
+.about-hero:hover .about-hero-img {
+    transform: scale(1.05);
 }
 
 .about-hero-darken {
@@ -33,6 +45,9 @@
     z-index: 2;
     max-width: 800px;
     padding: 0 20px;
+    opacity: 0;
+    transform: translate(-50%, -45%);
+    animation: heroCopyReveal 1.1s ease forwards 0.3s;
 }
 
     .about-hero-content h1 {
@@ -72,4 +87,29 @@
     border-radius: 6px;
     margin: 40px 0;
     display: block;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.about-extra-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes pageFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes imageReveal {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes heroCopyReveal {
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
 }

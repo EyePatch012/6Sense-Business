@@ -3,6 +3,8 @@ body {
     margin: 0;
     font-family: sans-serif;
     background: #dde0d1;
+    opacity: 0;
+    animation: pageFadeIn 0.9s ease forwards;
 }
 
 ul {
@@ -81,6 +83,12 @@ ul {
     position: relative;
     z-index: 100;
     flex-wrap: wrap;
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.topbar:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
 }
 
 .logo {
@@ -88,6 +96,11 @@ ul {
     font-weight: bold;
     cursor: pointer;
     color: #2d4533;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-1px);
 }
 
 /* Navigation */
@@ -111,22 +124,47 @@ ul {
     color: #2d4533;
     text-decoration: none;
     font-size: 16px;
-    transition: color 0.3s;
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
+    .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+        opacity: 0.6;
+    }
+
     .nav-link:hover {
-        color: #7f9b68;
+        transform: translateY(-1px);
+    }
+
+    .nav-link:hover::after {
+        transform: scaleX(1);
     }
 
 /* Dropdown Submenus */
 .submenu {
-    display: none;
     position: absolute;
     top: 100%;
     left: 0;
     background: #94a289;
     min-width: 180px;
     z-index: 10;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+    pointer-events: none;
 }
 
     .submenu li {
@@ -136,7 +174,11 @@ ul {
     }
 
 .dropdown:hover .submenu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+    pointer-events: auto;
 }
 
 /* Search */
@@ -161,10 +203,12 @@ ul {
         color: white;
         border-radius: 4px;
         cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
         .search-container button:hover {
-            background: #7f9b68;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
         }
 
 /* Hero Section */
@@ -214,6 +258,9 @@ ul {
     color: white;
     max-width: 800px;
     padding: 0 20px;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: heroReveal 1.2s ease forwards 0.3s;
 }
 
     .hero-content h1 {
@@ -225,3 +272,16 @@ ul {
         font-size: 18px;
         line-height: 1.6;
     }
+
+@keyframes pageFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes heroReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
