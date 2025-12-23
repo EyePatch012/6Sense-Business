@@ -61,9 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                    }
+                    entry.target.classList.toggle("is-visible", entry.isIntersecting);
                 });
             },
             { threshold: 0.4 }
