@@ -1,17 +1,4 @@
-﻿/* Inherits topbar and search from global site CSS */
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    opacity: 0;
-    animation: pageFadeIn 0.9s ease forwards;
-    transition: opacity 0.6s ease;
-}
-
-    body.page-fade-out {
-        opacity: 0;
-    }
+@import url("base.css");
 
 /* About Hero Section */
 .about-hero {
@@ -27,9 +14,8 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    transform: scale(1.03);
-    animation: imageReveal 1.4s ease forwards;
-    transition: transform 0.6s ease;
+    transform: scale(1.02);
+    transition: transform 0.8s ease;
 }
 
 .about-hero:hover .about-hero-img {
@@ -53,38 +39,34 @@ body {
     z-index: 2;
     max-width: 800px;
     padding: 0 20px;
-    opacity: 0;
-    animation: heroCopyReveal 1.1s ease forwards 0.3s;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-    .about-hero-content h1 {
-        font-size: 44px;
-        margin-bottom: 20px;
-        font-weight: 600;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    }
+.about-hero-content h1 {
+    font-size: 44px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
 
-    .about-hero-content p {
-        font-size: 20px;
-        line-height: 1.7;
-        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-    }
+.about-hero-content p {
+    font-size: 20px;
+    line-height: 1.7;
+}
 
 /* About Section 1 */
 .about-main1 {
     max-width: 980px;
     margin: 60px auto;
     padding: 0 24px 40px;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.85;
-    color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    color: var(--text);
 }
 
-    .about-main1 p {
-        margin-bottom: 28px;
-        text-align: center;
-    }
+.about-main1 p {
+    margin-bottom: 28px;
+    text-align: center;
+}
 
 /* About Section 2 (Split Layout) */
 .about-main2-split {
@@ -95,58 +77,24 @@ body {
     margin: 60px 0;
 }
 
-/* Reset before animation */
-.about-main2-text,
-.about-main2-bg {
-    opacity: 0;
-}
-
 /* Left side: text */
 .about-main2-text {
     flex: 1;
     padding: 40px 48px;
     font-size: 18px;
     line-height: 1.85;
-    color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    color: var(--text);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: transparent;
-    transform: translateX(-50px);
 }
 
 /* Right side: color box */
 .about-main2-bg {
     flex: 1;
-    background-color: #dde0d1;
-    transform: translateX(50px);
-}
-
-/* Trigger animations on scroll */
-.about-main2-text.in-view {
-    animation: slideInLeft 1s ease forwards;
-}
-
-.about-main2-bg.in-view {
-    animation: slideInRight 1s ease forwards;
-}
-
-/* Responsive for Mobile */
-@media (max-width: 768px) {
-    .about-main2-split {
-        flex-direction: column;
-    }
-
-    .about-main2-text,
-    .about-main2-bg {
-        width: 100%;
-    }
-
-    .about-main2-bg {
-        height: 200px; /* Adjustable height */
-    }
+    background-color: var(--surface);
 }
 
 /* Main Content After Split Box */
@@ -156,96 +104,19 @@ body {
     padding: 0 24px 40px;
     font-size: 18px;
     line-height: 1.85;
-    color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    color: var(--text);
 }
 
-    .about-main p {
-        margin-bottom: 28px;
-        text-align: center;
-    }
-/* Main Content After Split Box */
-.about-main1 {
-    max-width: 980px;
-    margin: 60px auto;
-    padding: 0 24px 40px;
-    font-size: 25px;
-    line-height: 1.85;
-    color: #2b2b2b;
-    font-family: "Della Respira", serif;
-}
-
-    .about-main1 p {
-        margin-bottom: 28px;
-        text-align: center;
-    }
-/* Extra Image Styling */
-.about-extra-img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    margin: 40px 0;
-    display: block;
-    transform: scale(0.96);
-    opacity: 0.92;
-    transition: transform 1s ease, box-shadow 1s ease, opacity 1s ease;
-}
-
-    .about-extra-img.is-visible {
-        transform: scale(1);
-        opacity: 1;
-        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
-    }
-
-/* Animations */
-@keyframes pageFadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes imageReveal {
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes heroCopyReveal {
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
-
-@keyframes slideInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.about-main p {
+    margin-bottom: 28px;
+    text-align: center;
 }
 
 /* FULL WIDTH CONTAINER */
 .about-highlight-full {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    background-color: #dde0d1;
+    background-color: var(--surface);
     padding: 40px 0;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -256,11 +127,10 @@ body {
     max-width: 980px;
     margin: 0 auto;
     padding: 0 24px;
-    font-family: "Della Respira", serif;
-    font-size: 25px;
+    font-size: 24px;
     line-height: 1.7;
     text-align: center;
-    color: #2b2b2b;
+    color: var(--text);
 }
 
 /* Arrow image style */
@@ -275,28 +145,27 @@ body {
     position: relative;
     width: 50vw;
     margin-left: 0;
-    padding-left: 60px; /* keeps text nicely indented */
+    padding-left: 60px;
 }
 
-    .about-align-left::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 16px; /* moved from 1px to 16px – adjust to your taste */
-        width: 4px;
-        height: 100%;
-        background-color: #dde0d1;
-    }
+.about-align-left::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    width: 4px;
+    height: 100%;
+    background-color: var(--surface);
+}
 
-    /* Paragraphs inside stay intact */
-    .about-align-left p {
-        font-family: "Della Respira", serif;
-        font-size: 18px;
-        line-height: 1.85;
-        color: #2b2b2b;
-        text-align: left;
-        margin-bottom: 28px;
-    }
+.about-align-left p {
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text);
+    text-align: left;
+    margin-bottom: 28px;
+}
+
 /* RIGHT-SIDE CONTAINER: PARAGRAPH + IMAGE */
 .about-right-wrapper {
     display: flex;
@@ -313,75 +182,68 @@ body {
     padding-right: 30px;
 }
 
-    .about-align-right::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 3px;
-        height: 100%;
-        background-color: #dde0d1;
-    }
+.about-align-right::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background-color: var(--surface);
+}
 
-    .about-align-right p {
-        font-family: "Della Respira", serif;
-        font-size: 18px;
-        line-height: 1.85;
-        color: #2b2b2b;
-        text-align: right;
-    }
+.about-align-right p {
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--text);
+    text-align: right;
+}
 
 /* RIGHT-ALIGNED IMAGE */
 .about-extra-img-right {
     width: 50vw;
     max-width: none;
     border-radius: 6px;
-    transform: scale(0.96);
-    opacity: 0.92;
-    transition: transform 1s ease, box-shadow 1s ease, opacity 1s ease;
+    transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease;
 }
-
-    .about-extra-img-right.is-visible {
-        transform: scale(1);
-        opacity: 1;
-        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
-    }
 
 .about-divider-bar {
     width: 80%;
     height: 6px;
-    background-color: #dde0d1;
+    background-color: var(--surface);
     border-radius: 3px;
-    margin: 0 auto 40px; /* Center and add bottom space */
+    margin: 0 auto 40px;
 }
-.about-divider-label {
+
+.about-divider-label,
+.about-divider-label2 {
     text-align: center;
     font-size: 25px;
-    font-family: "Della Respira", serif;
-    color: #2b2b2b;
+    color: var(--text);
+}
+
+.about-divider-label {
     margin-top: 10px;
     margin-bottom: 40px;
 }
+
+.about-divider-label2 {
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
 .about-result-box {
     max-width: 980px;
     margin: 30px auto;
     padding: 30px 40px;
-    background-color: #dde0d1; /* soft neutral tone */
+    background-color: var(--surface);
     font-size: 18px;
     line-height: 1.85;
-    color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    color: var(--text);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    text-align: center; /* <-- Center all text */
-}
-.about-divider-label2 {
     text-align: center;
-    font-size: 25px;
-    font-family: "Della Respira", serif;
-    color: #2b2b2b;
-    margin-top: 100px;
-    margin-bottom: 40px;
 }
+
 /* Container to hold all four */
 .hover-circles-section {
     display: flex;
@@ -404,8 +266,8 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: #5a8f6b; /* greenish tone */
-    transition: transform 0.3s ease;
+    background-color: var(--accent-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
@@ -414,9 +276,8 @@ body {
     margin-top: 20px;
     opacity: 0;
     transform: translateY(10px);
-    font-family: "Della Respira", serif;
     font-size: 18px;
-    color: #2b2b2b;
+    color: var(--text);
     text-align: center;
     transition: opacity 0.3s ease, transform 0.3s ease;
     max-width: 250px;
@@ -430,4 +291,45 @@ body {
 
 .hover-circle:hover .circle {
     transform: scale(1.1);
+    box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 1024px) {
+    .about-align-left {
+        width: 100%;
+        padding-right: 24px;
+    }
+
+    .about-right-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 30px 24px;
+    }
+
+    .about-align-right {
+        max-width: none;
+        padding-right: 0;
+    }
+
+    .about-align-right::after {
+        display: none;
+    }
+
+    .about-extra-img-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-main2-split {
+        flex-direction: column;
+    }
+
+    .about-main2-bg {
+        height: 200px;
+    }
+
+    .about-hero-content h1 {
+        font-size: 34px;
+    }
 }
