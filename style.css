@@ -381,25 +381,55 @@ ul {
     list-style: disc;
 }
 
-.contact-email-box {
+.contact-form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-width: 420px;
-    margin: 16px 0 20px;
+    gap: 12px;
+    max-width: 720px;
+    margin: 18px 0 24px;
 }
 
-.contact-email-box label {
+.contact-form label {
     font-size: 16px;
     color: #2d4533;
 }
 
-.contact-email-box input {
-    padding: 10px 12px;
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 14px;
     font-size: 16px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px solid #c1c7bc;
-    background: #ffffff;
+    background: #f7f8f3;
+    font-family: inherit;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    align-self: flex-start;
+    padding: 10px 22px;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    background: #2d4533;
+    color: #f5f5f0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.contact-email-note {
+    font-size: 16px;
+    color: #2b2b2b;
 }
 
 @keyframes pageFadeIn {
