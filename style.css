@@ -181,14 +181,24 @@ ul {
     will-change: opacity, transform;
 }
 
-    .submenu li {
-        padding: 10px 20px;
-        white-space: nowrap;
-        color: white;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.35s ease, transform 0.35s ease;
-    }
+.submenu li {
+    padding: 10px 20px;
+    white-space: nowrap;
+    color: white;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.submenu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu a:hover {
+    text-decoration: none;
+}
 
     .submenu li:nth-child(1) {
         transition-delay: 0.05s;
@@ -321,10 +331,39 @@ ul {
         margin-bottom: 20px;
     }
 
-    .hero-content p {
-        font-size: 18px;
-        line-height: 1.6;
-    }
+.hero-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.section-hero {
+    height: 70vh;
+}
+
+.section-content {
+    max-width: 980px;
+    margin: 60px auto;
+    padding: 0 24px 80px;
+    font-size: 18px;
+    line-height: 1.85;
+    color: #2b2b2b;
+}
+
+.section-content h2 {
+    margin: 32px 0 12px;
+    font-size: 30px;
+    color: #2d4533;
+}
+
+.section-content p {
+    margin: 0 0 22px;
+}
+
+.section-content ul {
+    padding-left: 20px;
+    margin: 0 0 22px;
+    list-style: disc;
+}
 
 @keyframes pageFadeIn {
     to {
