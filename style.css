@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Della+Respira&display=swap");
+﻿
 
 /* Reset & Global */
 html {
@@ -7,7 +7,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
     background: #ECEEDF;
     opacity: 0;
     animation: pageFadeIn 0.9s ease forwards;
@@ -304,11 +304,13 @@ ul {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #5a9b63, #c8eac6);
-    background-size: 300% 300%;
-    animation: heroWave 20s ease-in-out infinite;
+    background: #7be0c0;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: repeat;
     z-index: 1;
 }
+
 
 @keyframes heroWave {
     0% {
@@ -444,3 +446,4 @@ ul {
         transform: translateY(0);
     }
 }
+

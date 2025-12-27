@@ -19,27 +19,16 @@ body {
     width: 100%;
     height: 70vh;
     overflow: hidden;
-    background: #f4f4f0;
+    background: #77998e;
+    background-image: url("data:image/svg+xml,%3Csvg width='1600' height='900' viewBox='0 0 1600 900' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='1600' height='900' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    background-size: cover;
 }
 
-.about-hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transform: scale(1.03);
-    animation: imageReveal 1.4s ease forwards;
-    transition: transform 0.6s ease;
-}
-
-.about-hero:hover .about-hero-img {
-    transform: scale(1.05);
-}
 
 .about-hero-darken {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0);
     z-index: 1;
 }
 
@@ -78,7 +67,7 @@ body {
     font-size: 30px;
     line-height: 1.85;
     color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
 }
 
     .about-main1 p {
@@ -108,7 +97,7 @@ body {
     font-size: 18px;
     line-height: 1.85;
     color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,7 +109,7 @@ body {
 /* Right side: color box */
 .about-main2-bg {
     flex: 1;
-    background-color: #dde0d1;
+    background-color: #77998e;
     transform: translateX(50px);
 }
 
@@ -157,7 +146,7 @@ body {
     font-size: 18px;
     line-height: 1.85;
     color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
 }
 
     .about-main p {
@@ -172,7 +161,7 @@ body {
     font-size: 25px;
     line-height: 1.85;
     color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
 }
 
     .about-main1 p {
@@ -245,7 +234,7 @@ body {
 .about-highlight-full {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    background-color: #dde0d1;
+    background-color: #77998e;
     padding: 40px 0;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -256,7 +245,7 @@ body {
     max-width: 980px;
     margin: 0 auto;
     padding: 0 24px;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
     font-size: 25px;
     line-height: 1.7;
     text-align: center;
@@ -285,12 +274,12 @@ body {
         left: 16px; /* moved from 1px to 16px – adjust to your taste */
         width: 4px;
         height: 100%;
-        background-color: #dde0d1;
+        background-color: #77998e;
     }
 
     /* Paragraphs inside stay intact */
     .about-align-left p {
-        font-family: "Della Respira", serif;
+        font-family: "Open Sans", serif;
         font-size: 18px;
         line-height: 1.85;
         color: #2b2b2b;
@@ -320,11 +309,11 @@ body {
         right: 0;
         width: 3px;
         height: 100%;
-        background-color: #dde0d1;
+        background-color: #77998e;
     }
 
     .about-align-right p {
-        font-family: "Della Respira", serif;
+        font-family: "Open Sans", serif;
         font-size: 18px;
         line-height: 1.85;
         color: #2b2b2b;
@@ -350,14 +339,14 @@ body {
 .about-divider-bar {
     width: 80%;
     height: 6px;
-    background-color: #dde0d1;
+    background-color: #77998e;
     border-radius: 3px;
     margin: 0 auto 40px; /* Center and add bottom space */
 }
 .about-divider-label {
     text-align: center;
     font-size: 25px;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
     color: #2b2b2b;
     margin-top: 10px;
     margin-bottom: 40px;
@@ -366,18 +355,18 @@ body {
     max-width: 980px;
     margin: 30px auto;
     padding: 30px 40px;
-    background-color: #dde0d1; /* soft neutral tone */
+    background-color: #77998e; /* soft neutral tone */
     font-size: 18px;
     line-height: 1.85;
     color: #2b2b2b;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     text-align: center; /* <-- Center all text */
 }
 .about-divider-label2 {
     text-align: center;
     font-size: 25px;
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
     color: #2b2b2b;
     margin-top: 100px;
     margin-bottom: 40px;
@@ -404,7 +393,7 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: #5a8f6b; /* greenish tone */
+    background-color: #77998e; /* greenish tone */
     transition: transform 0.3s ease;
     cursor: pointer;
 }
@@ -414,7 +403,7 @@ body {
     margin-top: 20px;
     opacity: 0;
     transform: translateY(10px);
-    font-family: "Della Respira", serif;
+    font-family: "Open Sans", serif;
     font-size: 18px;
     color: #2b2b2b;
     text-align: center;
