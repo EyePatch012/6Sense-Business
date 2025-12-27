@@ -193,11 +193,27 @@ ul {
 .submenu a {
     color: white;
     text-decoration: none;
-    display: block;
+    display: inline-block;
+    position: relative;
+    padding: 6px 0;
 }
 
-.submenu a:hover {
-    text-decoration: none;
+.submenu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.submenu a:hover::after {
+    transform: scaleX(1);
 }
 
     .submenu li:nth-child(1) {
@@ -363,6 +379,27 @@ ul {
     padding-left: 20px;
     margin: 0 0 22px;
     list-style: disc;
+}
+
+.contact-email-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 420px;
+    margin: 16px 0 20px;
+}
+
+.contact-email-box label {
+    font-size: 16px;
+    color: #2d4533;
+}
+
+.contact-email-box input {
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #c1c7bc;
+    background: #ffffff;
 }
 
 @keyframes pageFadeIn {
