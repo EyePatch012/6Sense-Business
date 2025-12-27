@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+﻿window.addEventListener("DOMContentLoaded", () => {
     // Disable native smooth scrolling so we can provide a cinematic scroll feel.
     document.documentElement.style.scrollBehavior = "auto";
     document.body.style.scrollBehavior = "auto";
@@ -67,8 +67,8 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Extra images fade-in
-    const extraImages = document.querySelectorAll(".about-extra-img");
+    // ✅ Fade-in + Zoom scroll effect for both image classes
+    const extraImages = document.querySelectorAll(".about-extra-img, .about-extra-img-right");
     if (extraImages.length > 0 && "IntersectionObserver" in window) {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -83,13 +83,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     // ---------------------------------------------------------------------
-    // Scroll-based cinematic section animations (no HTML/CSS changes needed)
+    // Scroll-based cinematic section animations
     // ---------------------------------------------------------------------
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const sections = Array.from(document.querySelectorAll("section"));
 
     if (!prefersReducedMotion && sections.length > 0) {
-        // Apply baseline animation styles inline so we don't touch existing CSS.
         sections.forEach((section) => {
             section.style.opacity = "0";
             section.style.transform = "translateY(60px)";
@@ -97,20 +96,17 @@ window.addEventListener("DOMContentLoaded", () => {
             section.style.willChange = "opacity, transform";
         });
 
-        // Helper to toggle active section (one at a time).
         const setActiveSection = (activeSection) => {
             sections.forEach((section) => {
                 section.classList.toggle("section-active", section === activeSection);
             });
         };
 
-        // Observe visibility to animate sections in/out and identify the active one.
         const sectionObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     const { target, isIntersecting, intersectionRatio } = entry;
 
-                    // Fade and lift sections in/out as they enter/leave the viewport.
                     if (isIntersecting) {
                         target.style.opacity = "1";
                         target.style.transform = "translateY(0px)";
@@ -119,7 +115,6 @@ window.addEventListener("DOMContentLoaded", () => {
                         target.style.transform = "translateY(60px)";
                     }
 
-                    // Mark a single section as "active" when it's mostly in view.
                     if (intersectionRatio >= 0.6) {
                         setActiveSection(target);
                     }
@@ -132,9 +127,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         sections.forEach((section) => sectionObserver.observe(section));
 
-        // -----------------------------------------------------------------
-        // Cinematic smooth scrolling (controlled, eased scrolling behavior)
-        // -----------------------------------------------------------------
+        // Smooth scroll engine
         let currentScroll = window.scrollY;
         let targetScroll = window.scrollY;
         let isAnimatingScroll = false;
@@ -147,9 +140,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
         const animateScroll = () => {
-            // Ease toward the target for a smooth, cinematic feel.
             currentScroll += (targetScroll - currentScroll) * 0.12;
-
             if (Math.abs(targetScroll - currentScroll) < 0.5) {
                 currentScroll = targetScroll;
             }
@@ -170,17 +161,14 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        // Wheel-based scroll control for a smooth, curated scroll experience.
-        const handleWheel = (event) => {
+        window.addEventListener("wheel", (event) => {
             event.preventDefault();
             updateMaxScroll();
-
             targetScroll = clamp(targetScroll + event.deltaY, 0, maxScroll);
             requestScrollAnimation();
-        };
+        }, { passive: false });
 
-        // Keyboard-based scrolling with the same eased feel.
-        const handleKeydown = (event) => {
+        window.addEventListener("keydown", (event) => {
             if (
                 event.target instanceof HTMLElement &&
                 (event.target.isContentEditable ||
@@ -217,22 +205,30 @@ window.addEventListener("DOMContentLoaded", () => {
             }
 
             requestScrollAnimation();
-        };
+        });
 
-        window.addEventListener("wheel", handleWheel, { passive: false });
-        window.addEventListener("keydown", handleKeydown);
         window.addEventListener("resize", updateMaxScroll);
 
-        // Sync target/current when the user scrolls via other means (e.g., scrollbar drag).
-        window.addEventListener(
-            "scroll",
-            () => {
-                if (!isAnimatingScroll) {
-                    currentScroll = window.scrollY;
-                    targetScroll = window.scrollY;
-                }
+        window.addEventListener("scroll", () => {
+            if (!isAnimatingScroll) {
+                currentScroll = window.scrollY;
+                targetScroll = window.scrollY;
+            }
+        }, { passive: true });
+    }
+
+    // Slide-in animation for .about-main2-text and .about-main2-bg
+    const slideElements = document.querySelectorAll(".about-main2-text, .about-main2-bg");
+    if (slideElements.length > 0 && "IntersectionObserver" in window) {
+        const slideObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    entry.target.classList.toggle("in-view", entry.isIntersecting);
+                });
             },
-            { passive: true }
+            { threshold: 0.3 }
         );
+
+        slideElements.forEach((el) => slideObserver.observe(el));
     }
 });
