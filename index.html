@@ -4,29 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>6Sense Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
-
-<!-- INTRO VIDEO SCREEN -->
-<div id="intro-screen">
+<div id="intro-screen" aria-hidden="true">
   <video id="intro-video" autoplay muted playsinline preload="auto">
     <source src="Videos/Intro5.mp4" type="video/mp4" />
   </video>
   <div class="intro-overlay">
     <div class="loader-circle"></div>
     <p class="intro-quote">Like a Forest, Every Connection Matters.</p>
-    <p class="intro-quote">6sense</p>
+    <p class="intro-quote">6Sense</p>
   </div>
 </div>
 
-<!-- NAVIGATION -->
 <header class="topbar">
   <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
 
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Primary">
     <ul class="nav-list">
-      <li><a href="about.html" class="nav-link" id="about-link">About Us</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="method.html" class="nav-link">The 6Sense Method</a></li>
       <li class="dropdown">
         <span class="nav-link">Offerings</span>
@@ -47,18 +48,78 @@
   </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-darken"></div>
-  <div class="hero-content">
-    <h1>Real Change starts beneath the Surface</h1>
+<main class="home-page">
+  <section class="hero reveal-section" data-depth="0.22">
+    <div class="hero-bg"></div>
+    <div class="hero-darken"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Systemic Leadership Transformation</p>
+      <h1>Real Change Starts Beneath the Surface.</h1>
+      <p>
+        We guide leaders, teams, and organizations through deep systemic transformation
+        to unlock clarity, momentum, and meaningful impact.
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn-primary" href="method.html">Explore the 6Sense Method</a>
+        <a class="btn-secondary" href="contact.html">Book a Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="value-grid reveal-section">
+    <article>
+      <h2>Leadership Reinvention</h2>
+      <p>Shift from reactive leadership to conscious, high-impact decision making rooted in systems awareness.</p>
+      <a href="leadership.html">Learn more</a>
+    </article>
+    <article>
+      <h2>Team Reinvention</h2>
+      <p>Restore trust, flow, and collaboration by uncovering hidden dynamics that shape collective performance.</p>
+      <a href="team.html">Learn more</a>
+    </article>
+    <article>
+      <h2>Enterprise Reinvention</h2>
+      <p>Align strategy, culture, and execution across your organization for sustainable growth and transformation.</p>
+      <a href="enterprise.html">Learn more</a>
+    </article>
+  </section>
+
+  <section class="impact-panel reveal-section" data-depth="0.14">
+    <div class="impact-copy">
+      <p class="eyebrow">What Changes</p>
+      <h2>From Hidden Friction to Natural Flow</h2>
+      <p>
+        Most organizations address symptoms. We work with root patterns. By releasing hidden constraints,
+        teams gain energy, leaders gain perspective, and systems regain their natural momentum.
+      </p>
+    </div>
+    <div class="impact-sequence">
+      <span>Hidden Dynamics</span>
+      <span class="arrow">→</span>
+      <span>Drained Energy</span>
+      <span class="arrow">→</span>
+      <span>Lost Momentum</span>
+      <span class="arrow">→</span>
+      <span>Missed Potential</span>
+      <hr>
+      <span>Released Dynamics</span>
+      <span class="arrow">→</span>
+      <span>Renewed Energy</span>
+      <span class="arrow">→</span>
+      <span>Natural Flow</span>
+      <span class="arrow">→</span>
+      <span>Sustainable Growth</span>
+    </div>
+  </section>
+
+  <section class="closing-banner reveal-section">
+    <h2>Business Can Be a Force for Collective Good.</h2>
     <p>
-      We guide leaders, teams, and organizations through systemic transformation �
-      unlocking momentum, clarity, and impact from within.
+      6Sense helps organizations evolve beyond performance metrics into conscious ecosystems where
+      results, well-being, and positive impact grow together.
     </p>
-  </div>
-</section>
+  </section>
+</main>
 
 <script src="script.js"></script>
 </body>
