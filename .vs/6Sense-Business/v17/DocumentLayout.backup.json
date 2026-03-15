@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\about.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:about.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\about.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:about.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\method.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:method.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -34,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "method.css",
               "DocumentMoniker": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\method.css",
               "RelativeDocumentMoniker": "method.css",
@@ -46,25 +46,24 @@
               "RelativeToolTip": "method.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-12-27T14:55:00.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-27T14:55:00.67Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "style.css",
               "DocumentMoniker": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\style.css",
               "RelativeDocumentMoniker": "style.css",
               "ToolTip": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\style.css",
               "RelativeToolTip": "style.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAwBAAAAAAAAAADwvzIBAADpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-12-27T14:44:43.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\index.html",
               "RelativeDocumentMoniker": "index.html",
@@ -72,25 +71,24 @@
               "RelativeToolTip": "index.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-12-27T14:43:55.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-27T14:43:55.44Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "script.js",
               "DocumentMoniker": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\script.js",
               "RelativeDocumentMoniker": "script.js",
               "ToolTip": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\script.js",
               "RelativeToolTip": "script.js",
-              "ViewState": "AgIAAM0AAAAAAAAAAAAcwOoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-12-27T11:42:51.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "about.css",
               "DocumentMoniker": "C:\\Users\\snipe\\Documents\\GitHub\\6Sense-Business\\about.css",
               "RelativeDocumentMoniker": "about.css",
@@ -111,8 +109,7 @@
               "RelativeToolTip": "about.html",
               "ViewState": "AgIAAJgAAAAAAAAAAAAAwK4AAACBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-12-02T00:21:29.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T00:21:29.036Z"
             }
           ]
         }

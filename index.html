@@ -1,65 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6Sense Business</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6Sense Business</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<!-- INTRO VIDEO SCREEN -->
-<div id="intro-screen">
-  <video id="intro-video" autoplay muted playsinline preload="auto">
-    <source src="Videos/Intro5.mp4" type="video/mp4" />
-  </video>
-  <div class="intro-overlay">
-    <div class="loader-circle"></div>
-    <p class="intro-quote">Like a Forest, Every Connection Matters.</p>
-    <p class="intro-quote">6sense</p>
-  </div>
-</div>
+    <!-- INTRO VIDEO SCREEN -->
+    <div id="intro-screen">
+        <video id="intro-video" autoplay muted playsinline preload="auto">
+            <source src="Videos/Intro5.mp4" type="video/mp4" />
+        </video>
 
-<!-- NAVIGATION -->
-<header class="topbar">
-  <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
+        <div class="intro-overlay">
+            <div class="loader-circle"></div>
+            <p class="intro-quote">Like a Forest, Every Connection Matters.</p>
+            <p class="intro-quote">6sense</p>
+        </div>
+    </div>
 
-  <nav class="navbar">
-    <ul class="nav-list">
-      <li><a href="about.html" class="nav-link" id="about-link">About Us</a></li>
-      <li><a href="method.html" class="nav-link">The 6Sense Method</a></li>
-      <li class="dropdown">
-        <span class="nav-link">Offerings</span>
-        <ul class="submenu">
-          <li><a href="leadership.html">Leadership Reinvention</a></li>
-          <li><a href="team.html">Team Reinvention</a></li>
-          <li><a href="enterprise.html">Enterprise Reinvention</a></li>
-        </ul>
-      </li>
-      <li><a href="insights.html" class="nav-link">Insights & Keynote Speakers</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-    </ul>
-  </nav>
 
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search..." />
-    <button id="searchBtn">Search</button>
-  </div>
-</header>
+    <!-- NAVIGATION -->
+    <header class="topbar">
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-darken"></div>
-  <div class="hero-content">
-    <h1>Real Change starts beneath the Surface</h1>
-    <p>
-      We guide leaders, teams, and organizations through systemic transformation �
-      unlocking momentum, clarity, and impact from within.
-    </p>
-  </div>
-</section>
+        <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
 
-<script src="script.js"></script>
+        <nav class="navbar">
+            <ul class="nav-list">
+
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+
+                <li><a href="method.html" class="nav-link">The 6Sense Method</a></li>
+
+                <li class="dropdown">
+                    <span class="nav-link">Offerings</span>
+                    <ul class="submenu">
+                        <li><a href="leadership.html">Leadership Reinvention</a></li>
+                        <li><a href="team.html">Team Reinvention</a></li>
+                        <li><a href="enterprise.html">Enterprise Reinvention</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="insights.html" class="nav-link">Insights & Keynote Speakers</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button id="searchBtn">Search</button>
+        </div>
+
+    </header>
+
+
+    <!-- COLOR PALETTE SWITCHER -->
+    <div class="palette-switcher">
+
+        <label>Palette</label>
+
+        <select id="paletteSelect">
+
+            <option value="sand">Sand / Cream / Grey</option>
+
+            <option value="bluegreen">Bluegreen / Beige / Cream</option>
+
+            <option value="gold">Gold / Bluegrey / Sandbrown</option>
+
+            <option value="brown">Brown Sand Variations</option>
+
+            <option value="turquoise">Turquoise Variations</option>
+
+        </select>
+
+    </div>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-bg"></div>
+
+        <div class="hero-darken"></div>
+
+        <div class="hero-content">
+
+            <h1>Real Change starts beneath the Surface</h1>
+
+            <p>
+                We guide leaders, teams, and organizations through systemic transformation —
+                unlocking momentum, clarity, and impact from within.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+
+    <!-- PALETTE SWITCH SCRIPT -->
+    <script>
+
+        const palettes = {
+
+            sand: {
+                r1: "224,219,200",
+                r2: "237,234,223",
+                r3: "191,189,180",
+                r4: "237,234,223",
+                l1: "#e0dbc8",
+                l2: "#edeadf",
+                l3: "#bfbdb4"
+            },
+
+            bluegreen: {
+                r1: "157,199,188",
+                r2: "233,237,192",
+                r3: "237,234,223",
+                r4: "233,237,192",
+                l1: "#9dc7bc",
+                l2: "#e9edc0",
+                l3: "#edeadf"
+            },
+
+            gold: {
+                r1: "201,195,121",
+                r2: "151,174,189",
+                r3: "194,180,151",
+                r4: "151,174,189",
+                l1: "#c9c379",
+                l2: "#97aebd",
+                l3: "#c2b497"
+            },
+
+            brown: {
+                r1: "218,210,193",
+                r2: "200,188,161",
+                r3: "237,233,224",
+                r4: "200,188,161",
+                l1: "#dad2c1",
+                l2: "#c8bca1",
+                l3: "#ede9e0"
+            },
+
+            turquoise: {
+                r1: "175,206,197",
+                r2: "165,200,190",
+                r3: "215,231,226",
+                r4: "165,200,190",
+                l1: "#afcec5",
+                l2: "#a5c8be",
+                l3: "#d7e7e2"
+            }
+
+        };
+
+
+        const select = document.getElementById("paletteSelect");
+        const root = document.documentElement;
+
+        function applyPalette(name) {
+
+            const p = palettes[name];
+
+            root.style.setProperty("--hero-r1", p.r1);
+            root.style.setProperty("--hero-r2", p.r2);
+            root.style.setProperty("--hero-r3", p.r3);
+            root.style.setProperty("--hero-r4", p.r4);
+            root.style.setProperty("--hero-l1", p.l1);
+            root.style.setProperty("--hero-l2", p.l2);
+            root.style.setProperty("--hero-l3", p.l3);
+
+        }
+
+        applyPalette("sand");
+
+        select.addEventListener("change", function () {
+            applyPalette(this.value);
+        });
+
+    </script>
+
+
 </body>
 </html>

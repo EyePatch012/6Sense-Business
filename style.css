@@ -1,4 +1,14 @@
-﻿/* Reset & Global */
+﻿:root {
+    --hero-r1: 224, 219, 200;
+    --hero-r2: 237, 234, 223;
+    --hero-r3: 191, 189, 180;
+    --hero-r4: 237, 234, 223;
+    --hero-l1: #e0dbc8;
+    --hero-l2: #edeadf;
+    --hero-l3: #bfbdb4;
+}
+
+/* Reset & Global */
 html {
     scroll-behavior: smooth;
 }
@@ -288,6 +298,40 @@ ul {
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
         }
 
+/* Palette Switcher */
+.palette-switcher {
+    position: fixed;
+    top: 92px;
+    right: 20px;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(247, 248, 243, 0.9);
+    border: 1px solid rgba(193, 199, 188, 0.8);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+    .palette-switcher label {
+        font-size: 14px;
+        color: #2d4533;
+        white-space: nowrap;
+    }
+
+    .palette-switcher select {
+        padding: 8px 10px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid #c1c7bc;
+        background: #f7f8f3;
+        color: #2d4533;
+        font-family: inherit;
+        cursor: pointer;
+    }
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -304,7 +348,9 @@ ul {
     position: absolute;
     inset: -10%;
     z-index: 1;
-    radial-gradient(circle at 72% 24%, rgba(191, 189, 180, 0.18) 0%, transparent 44%), radial-gradient(circle at 78% 72%, rgba(237, 234, 223, 0.16) 0%, transparent 48%), linear-gradient(135deg, #d8d8cf 0%, #e4e2d8 46%, #c8c7bf 100%);
+    background: radial-gradient(circle at 18% 72%, rgba(var(--hero-r1), 0.24) 0%, transparent 42%), radial-gradient(circle at 28% 22%, rgba(var(--hero-r2), 0.22) 0%, transparent 46%), radial-gradient(circle at 72% 24%, rgba(var(--hero-r3), 0.18) 0%, transparent 44%), radial-gradient(circle at 78% 72%, rgba(var(--hero-r4), 0.16) 0%, transparent 48%), linear-gradient(135deg, var(--hero-l1) 0%, var(--hero-l2) 46%, var(--hero-l3) 100%);
+    background-size: 135% 135%;
+    background-position: 50% 50%;
     filter: saturate(88%);
     transform: scale(1.04);
     animation: heroFlow 40s ease-in-out infinite alternate;
@@ -484,4 +530,19 @@ ul {
     100% {
         transform: translate(0, 0);
     }
+}
+
+@media (max-width: 900px) {
+    .palette-switcher {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        justify-content: space-between;
+    }
+
+        .palette-switcher select {
+            width: 100%;
+            max-width: 220px;
+        }
 }
