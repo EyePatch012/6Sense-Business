@@ -1,6 +1,4 @@
-﻿
-
-/* Reset & Global */
+﻿/* Reset & Global */
 html {
     scroll-behavior: smooth;
 }
@@ -14,9 +12,9 @@ body {
     transition: opacity 0.6s ease;
 }
 
-body.page-fade-out {
-    opacity: 0;
-}
+    body.page-fade-out {
+        opacity: 0;
+    }
 
 ul {
     list-style: none;
@@ -97,10 +95,10 @@ ul {
     transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-.topbar:hover {
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    transform: translateY(-1px);
-}
+    .topbar:hover {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
+    }
 
 .logo {
     font-size: 22px;
@@ -110,9 +108,9 @@ ul {
     transition: transform 0.3s ease;
 }
 
-.logo:hover {
-    transform: translateY(-1px);
-}
+    .logo:hover {
+        transform: translateY(-1px);
+    }
 
 /* Navigation */
 .navbar {
@@ -158,9 +156,9 @@ ul {
         transform: translateY(-1px);
     }
 
-    .nav-link:hover::after {
-        transform: scaleX(1);
-    }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
 
 /* Dropdown Submenus */
 .submenu {
@@ -181,40 +179,40 @@ ul {
     will-change: opacity, transform;
 }
 
-.submenu li {
-    padding: 10px 20px;
-    white-space: nowrap;
-    color: white;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
+    .submenu li {
+        padding: 10px 20px;
+        white-space: nowrap;
+        color: white;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+    }
 
-.submenu a {
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    padding: 6px 0;
-}
+    .submenu a {
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        padding: 6px 0;
+    }
 
-.submenu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-    opacity: 0.7;
-}
+        .submenu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+        }
 
-.submenu a:hover::after {
-    transform: scaleX(1);
-}
+        .submenu a:hover::after {
+            transform: scaleX(1);
+        }
 
     .submenu li:nth-child(1) {
         transition-delay: 0.05s;
@@ -238,10 +236,10 @@ ul {
     animation: submenuPop 0.45s ease;
 }
 
-.dropdown:hover .submenu li {
-    opacity: 1;
-    transform: translateY(0);
-}
+    .dropdown:hover .submenu li {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
 @keyframes submenuPop {
     0% {
@@ -301,42 +299,44 @@ ul {
     text-align: center;
 }
 
+/* Soft Aberkyn-style drifting gradient */
 .hero-bg {
     position: absolute;
-    inset: 0;
-    background: #7be0c0;
-    background-blend-mode: overlay;
-    background-size: cover;
-    background-repeat: repeat;
+    inset: -10%;
     z-index: 1;
+    radial-gradient(circle at 72% 24%, rgba(191, 189, 180, 0.18) 0%, transparent 44%), radial-gradient(circle at 78% 72%, rgba(237, 234, 223, 0.16) 0%, transparent 48%), linear-gradient(135deg, #d8d8cf 0%, #e4e2d8 46%, #c8c7bf 100%);
+    filter: saturate(88%);
+    transform: scale(1.04);
+    animation: heroFlow 40s ease-in-out infinite alternate;
 }
 
-
-@keyframes heroWave {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+/* Fine grain like the reference */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.11;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.38) 0.45px, transparent 0.65px), radial-gradient(rgba(0, 0, 0, 0.18) 0.4px, transparent 0.65px);
+    background-size: 3px 3px, 4px 4px;
+    background-position: 0 0, 1px 1px;
+    mix-blend-mode: soft-light;
+    animation: grainDrift 12s steps(6) infinite;
 }
 
+/* No dark overlay */
 .hero-darken {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: transparent;
     z-index: 2;
 }
 
 .hero-content {
     position: relative;
     z-index: 3;
-    color: white;
+    color: #2f2d28;
     max-width: 800px;
     padding: 0 20px;
     opacity: 0;
@@ -349,10 +349,10 @@ ul {
         margin-bottom: 20px;
     }
 
-.hero-content p {
-    font-size: 18px;
-    line-height: 1.6;
-}
+    .hero-content p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
 
 .section-hero {
     height: 70vh;
@@ -367,21 +367,21 @@ ul {
     color: #2b2b2b;
 }
 
-.section-content h2 {
-    margin: 32px 0 12px;
-    font-size: 30px;
-    color: #2d4533;
-}
+    .section-content h2 {
+        margin: 32px 0 12px;
+        font-size: 30px;
+        color: #2d4533;
+    }
 
-.section-content p {
-    margin: 0 0 22px;
-}
+    .section-content p {
+        margin: 0 0 22px;
+    }
 
-.section-content ul {
-    padding-left: 20px;
-    margin: 0 0 22px;
-    list-style: disc;
-}
+    .section-content ul {
+        padding-left: 20px;
+        margin: 0 0 22px;
+        list-style: disc;
+    }
 
 .contact-form {
     display: flex;
@@ -391,43 +391,43 @@ ul {
     margin: 18px 0 24px;
 }
 
-.contact-form label {
-    font-size: 16px;
-    color: #2d4533;
-}
+    .contact-form label {
+        font-size: 16px;
+        color: #2d4533;
+    }
 
-.contact-form input,
-.contact-form textarea {
-    padding: 12px 14px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #c1c7bc;
-    background: #f7f8f3;
-    font-family: inherit;
-}
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px 14px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #c1c7bc;
+        background: #f7f8f3;
+        font-family: inherit;
+    }
 
-.contact-form textarea {
-    resize: vertical;
-}
+    .contact-form textarea {
+        resize: vertical;
+    }
 
-.contact-form button {
-    align-self: flex-start;
-    padding: 10px 22px;
-    font-size: 14px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 999px;
-    background: #2d4533;
-    color: #f5f5f0;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .contact-form button {
+        align-self: flex-start;
+        padding: 10px 22px;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 999px;
+        background: #2d4533;
+        color: #f5f5f0;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.contact-form button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-}
+        .contact-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
 
 .contact-email-note {
     font-size: 16px;
@@ -447,3 +447,41 @@ ul {
     }
 }
 
+@keyframes heroFlow {
+    0% {
+        background-position: 46% 50%;
+        transform: scale(1.04) translate3d(0, 0, 0);
+    }
+
+    50% {
+        background-position: 54% 48%;
+        transform: scale(1.05) translate3d(0.3%, 0.3%, 0);
+    }
+
+    100% {
+        background-position: 50% 54%;
+        transform: scale(1.04) translate3d(-0.3%, 0.2%, 0);
+    }
+}
+
+@keyframes grainDrift {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-0.4%, 0.3%);
+    }
+
+    50% {
+        transform: translate(0.4%, -0.3%);
+    }
+
+    75% {
+        transform: translate(-0.2%, 0.2%);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
