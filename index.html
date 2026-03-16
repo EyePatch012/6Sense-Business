@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -6,9 +7,11 @@
     <title>6Sense Business</title>
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
     <!-- INTRO VIDEO SCREEN -->
+
     <div id="intro-screen">
         <video id="intro-video" autoplay muted playsinline preload="auto">
             <source src="Videos/Intro5.mp4" type="video/mp4" />
@@ -22,13 +25,18 @@
     </div>
 
     <!-- NAVIGATION -->
+
     <header class="topbar">
+
         <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
 
         <nav class="navbar">
             <ul class="nav-list">
+
                 <li><a href="about.html" class="nav-link">About Us</a></li>
+
                 <li><a href="method.html" class="nav-link">The 6Sense Method</a></li>
+
                 <li class="dropdown">
                     <span class="nav-link">Offerings</span>
                     <ul class="submenu">
@@ -37,8 +45,10 @@
                         <li><a href="enterprise.html">Enterprise Reinvention</a></li>
                     </ul>
                 </li>
+
                 <li><a href="insights.html" class="nav-link">Insights & Keynote Speakers</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
+
             </ul>
         </nav>
 
@@ -46,13 +56,17 @@
             <input type="text" id="searchInput" placeholder="Search..." />
             <button id="searchBtn">Search</button>
         </div>
+
     </header>
 
-    <!-- COLOR PALETTE SWITCHER -->
+    <!-- PALETTE SWITCHER -->
+
     <div class="palette-switcher">
-        <label for="paletteSelect">Palette</label>
+
+        <label>Palette</label>
 
         <select id="paletteSelect">
+
             <option value="sand">Sand / Cream / Grey</option>
             <option value="bluegreen">Bluegreen / Beige / Cream</option>
             <option value="gold">Gold / Bluegrey / Sandbrown</option>
@@ -60,31 +74,47 @@
             <option value="turquoise">Turquoise Variations</option>
 
             <option value="turquoiseLight">Turquoise Light / Grey Cream / Very Light Cream</option>
-            <option value="lightMint">Light Mint / Almost White / Grey White Mixed</option>
+            <option value="lightMint">Light Mint / Almost White / Grey White</option>
             <option value="beigeDarkBlue">Very Light Beige / Yellow White / Grey Dark Blue</option>
-            <option value="darkBlueWhiteGreen">Dark Blue / Full White / Moderately Dark Green</option>
-            <option value="lightGreenLightGraySand">Very Light Green / Very Light Gray / Very Light Sand</option>
+            <option value="darkBlueWhiteGreen">Dark Blue / White / Dark Green</option>
+            <option value="lightGreenLightGraySand">Light Green / Light Gray / Light Sand</option>
+
+            <option value="lightgreenWhiteBlue">Lightgreen / White / GreyLightBlue</option>
+            <option value="blueGreyLight">BlueGreyLight / White / BlueGreyDark</option>
+            <option value="navyGrey">NavyGrey / NearWhite / TurquoiseGrey</option>
+            <option value="lightGreenGrey">LightGreenGrey / White / DarkGreenGrey</option>
+            <option value="greyBlueSoft">GreyBlueSoft / UltraLightGrey / GreyBlue</option>
+
         </select>
+
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
+
     <section class="hero">
+
         <div class="hero-bg"></div>
         <div class="hero-darken"></div>
 
         <div class="hero-content">
+
             <h1>Real Change starts beneath the Surface</h1>
+
             <p>
                 We guide leaders, teams, and organizations through systemic transformation —
                 unlocking momentum, clarity, and impact from within.
             </p>
+
         </div>
+
     </section>
 
     <script src="script.js"></script>
 
     <script>
+
         const palettes = {
+
             sand: {
                 r1: "224,219,200",
                 r2: "237,234,223",
@@ -183,34 +213,84 @@
                 l1: "#aebcaf",
                 l2: "#e4e9e4",
                 l3: "#f4efd9"
+            },
+
+            lightgreenWhiteBlue: {
+                r1: "163,194,161",
+                r2: "236,244,237",
+                r3: "167,199,189",
+                r4: "236,244,237",
+                l1: "#a3c2a1",
+                l2: "#ecf4ed",
+                l3: "#a7c7bd"
+            },
+
+            blueGreyLight: {
+                r1: "180,204,197",
+                r2: "235,242,240",
+                r3: "113,127,123",
+                r4: "235,242,240",
+                l1: "#b4ccc5",
+                l2: "#ebf2f0",
+                l3: "#717f7b"
+            },
+
+            navyGrey: {
+                r1: "63,80,112",
+                r2: "217,220,226",
+                r3: "141,199,197",
+                r4: "217,220,226",
+                l1: "#3f5070",
+                l2: "#d9dce2",
+                l3: "#8dc7c5"
+            },
+
+            lightGreenGrey: {
+                r1: "180,212,182",
+                r2: "250,251,251",
+                r3: "72,85,73",
+                r4: "250,251,251",
+                l1: "#b4d4b6",
+                l2: "#fafbfb",
+                l3: "#485549"
+            },
+
+            greyBlueSoft: {
+                r1: "146,170,168",
+                r2: "236,242,241",
+                r3: "102,116,115",
+                r4: "236,242,241",
+                l1: "#92aaa8",
+                l2: "#ecf2f1",
+                l3: "#667473"
             }
+
         };
 
         const select = document.getElementById("paletteSelect");
         const root = document.documentElement;
 
         function applyPalette(name) {
+
             const p = palettes[name];
-            if (!p) return;
 
             root.style.setProperty("--hero-r1", p.r1);
             root.style.setProperty("--hero-r2", p.r2);
             root.style.setProperty("--hero-r3", p.r3);
             root.style.setProperty("--hero-r4", p.r4);
+
             root.style.setProperty("--hero-l1", p.l1);
             root.style.setProperty("--hero-l2", p.l2);
             root.style.setProperty("--hero-l3", p.l3);
 
-            localStorage.setItem("heroPalette", name);
         }
 
-        const savedPalette = localStorage.getItem("heroPalette") || "sand";
-        select.value = savedPalette;
-        applyPalette(savedPalette);
+        applyPalette("sand");
 
         select.addEventListener("change", function () {
             applyPalette(this.value);
         });
+
     </script>
 
 </body>
