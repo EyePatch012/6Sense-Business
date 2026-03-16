@@ -1,8 +1,8 @@
 ﻿:root {
-    --hero-r1: 224, 219, 200;
-    --hero-r2: 237, 234, 223;
-    --hero-r3: 191, 189, 180;
-    --hero-r4: 237, 234, 223;
+    --hero-r1: 224,219,200;
+    --hero-r2: 237,234,223;
+    --hero-r3: 191,189,180;
+    --hero-r4: 237,234,223;
     --hero-l1: #e0dbc8;
     --hero-l2: #edeadf;
     --hero-l3: #bfbdb4;
@@ -330,6 +330,7 @@ ul {
         color: #2d4533;
         font-family: inherit;
         cursor: pointer;
+        min-width: 280px;
     }
 
 /* Hero Section */
@@ -543,6 +544,7 @@ ul {
 
         .palette-switcher select {
             width: 100%;
-            max-width: 220px;
+            min-width: 0;
+            max-width: 100%;
         }
 }

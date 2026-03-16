@@ -6,7 +6,6 @@
     <title>6Sense Business</title>
     <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
     <!-- INTRO VIDEO SCREEN -->
@@ -22,19 +21,14 @@
         </div>
     </div>
 
-
     <!-- NAVIGATION -->
     <header class="topbar">
-
         <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
 
         <nav class="navbar">
             <ul class="nav-list">
-
                 <li><a href="about.html" class="nav-link">About Us</a></li>
-
                 <li><a href="method.html" class="nav-link">The 6Sense Method</a></li>
-
                 <li class="dropdown">
                     <span class="nav-link">Offerings</span>
                     <ul class="submenu">
@@ -43,10 +37,8 @@
                         <li><a href="enterprise.html">Enterprise Reinvention</a></li>
                     </ul>
                 </li>
-
                 <li><a href="insights.html" class="nav-link">Insights & Keynote Speakers</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
-
             </ul>
         </nav>
 
@@ -54,61 +46,45 @@
             <input type="text" id="searchInput" placeholder="Search..." />
             <button id="searchBtn">Search</button>
         </div>
-
     </header>
-
 
     <!-- COLOR PALETTE SWITCHER -->
     <div class="palette-switcher">
-
-        <label>Palette</label>
+        <label for="paletteSelect">Palette</label>
 
         <select id="paletteSelect">
-
             <option value="sand">Sand / Cream / Grey</option>
-
             <option value="bluegreen">Bluegreen / Beige / Cream</option>
-
             <option value="gold">Gold / Bluegrey / Sandbrown</option>
-
             <option value="brown">Brown Sand Variations</option>
-
             <option value="turquoise">Turquoise Variations</option>
 
+            <option value="turquoiseLight">Turquoise Light / Grey Cream / Very Light Cream</option>
+            <option value="lightMint">Light Mint / Almost White / Grey White Mixed</option>
+            <option value="beigeDarkBlue">Very Light Beige / Yellow White / Grey Dark Blue</option>
+            <option value="darkBlueWhiteGreen">Dark Blue / Full White / Moderately Dark Green</option>
+            <option value="lightGreenLightGraySand">Very Light Green / Very Light Gray / Very Light Sand</option>
         </select>
-
     </div>
-
 
     <!-- HERO SECTION -->
     <section class="hero">
-
         <div class="hero-bg"></div>
-
         <div class="hero-darken"></div>
 
         <div class="hero-content">
-
             <h1>Real Change starts beneath the Surface</h1>
-
             <p>
                 We guide leaders, teams, and organizations through systemic transformation —
                 unlocking momentum, clarity, and impact from within.
             </p>
-
         </div>
-
     </section>
-
 
     <script src="script.js"></script>
 
-
-    <!-- PALETTE SWITCH SCRIPT -->
     <script>
-
         const palettes = {
-
             sand: {
                 r1: "224,219,200",
                 r2: "237,234,223",
@@ -157,17 +133,65 @@
                 l1: "#afcec5",
                 l2: "#a5c8be",
                 l3: "#d7e7e2"
+            },
+
+            turquoiseLight: {
+                r1: "181,209,213",
+                r2: "224,224,202",
+                r3: "246,246,239",
+                r4: "224,224,202",
+                l1: "#b5d1d5",
+                l2: "#e0e0ca",
+                l3: "#f6f6ef"
+            },
+
+            lightMint: {
+                r1: "202,224,216",
+                r2: "250,251,251",
+                r3: "217,219,206",
+                r4: "250,251,251",
+                l1: "#cae0d8",
+                l2: "#fafbfb",
+                l3: "#d9dbce"
+            },
+
+            beigeDarkBlue: {
+                r1: "217,208,191",
+                r2: "245,244,230",
+                r3: "109,118,155",
+                r4: "245,244,230",
+                l1: "#d9d0bf",
+                l2: "#f5f4e6",
+                l3: "#6d769b"
+            },
+
+            darkBlueWhiteGreen: {
+                r1: "38,50,104",
+                r2: "251,251,249",
+                r3: "96,114,97",
+                r4: "251,251,249",
+                l1: "#263268",
+                l2: "#fbfbf9",
+                l3: "#607261"
+            },
+
+            lightGreenLightGraySand: {
+                r1: "174,188,175",
+                r2: "228,233,228",
+                r3: "244,239,217",
+                r4: "228,233,228",
+                l1: "#aebcaf",
+                l2: "#e4e9e4",
+                l3: "#f4efd9"
             }
-
         };
-
 
         const select = document.getElementById("paletteSelect");
         const root = document.documentElement;
 
         function applyPalette(name) {
-
             const p = palettes[name];
+            if (!p) return;
 
             root.style.setProperty("--hero-r1", p.r1);
             root.style.setProperty("--hero-r2", p.r2);
@@ -177,16 +201,17 @@
             root.style.setProperty("--hero-l2", p.l2);
             root.style.setProperty("--hero-l3", p.l3);
 
+            localStorage.setItem("heroPalette", name);
         }
 
-        applyPalette("sand");
+        const savedPalette = localStorage.getItem("heroPalette") || "sand";
+        select.value = savedPalette;
+        applyPalette(savedPalette);
 
         select.addEventListener("change", function () {
             applyPalette(this.value);
         });
-
     </script>
-
 
 </body>
 </html>
