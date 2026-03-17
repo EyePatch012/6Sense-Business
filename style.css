@@ -366,10 +366,10 @@ ul {
     pointer-events: none;
     background-image: url("Pictures/Noise.png");
     background-repeat: repeat;
-    background-size: 220px 220px;
-    opacity: 0.28;
+    background-size: 180px 180px;
+    opacity: 0.32;
     mix-blend-mode: overlay;
-    animation: grainDrift 8s steps(8) infinite;
+    animation: grainFlicker 0.00001s steps(1) infinite;
 }
 
 /* No dark overlay */
@@ -511,25 +511,60 @@ ul {
     }
 }
 
-@keyframes grainDrift {
+@keyframes grainFlicker {
     0% {
-        transform: translate(0, 0);
+        background-position: 0 0;
+        opacity: 0.28;
     }
 
-    25% {
-        transform: translate(-0.4%, 0.3%);
+    10% {
+        background-position: -12px 8px;
+        opacity: 0.36;
+    }
+
+    20% {
+        background-position: 7px -14px;
+        opacity: 0.30;
+    }
+
+    30% {
+        background-position: -18px 4px;
+        opacity: 0.40;
+    }
+
+    40% {
+        background-position: 14px 16px;
+        opacity: 0.26;
     }
 
     50% {
-        transform: translate(0.4%, -0.3%);
+        background-position: -6px -10px;
+        opacity: 0.38;
     }
 
-    75% {
-        transform: translate(-0.2%, 0.2%);
+    60% {
+        background-position: 16px -6px;
+        opacity: 0.29;
+    }
+
+    70% {
+        background-position: -10px 14px;
+        opacity: 0.35;
+    }
+
+    80% {
+        background-position: 4px -18px;
+        opacity: 0.31;
+    }
+
+    90% {
+        background-position: -14px -4px;
+        opacity: 0.39;
     }
 
     100% {
-        transform: translate(0, 0);
+        background-position: 10px 12px;
+        opacity: 0.30;
     }
 }
 
