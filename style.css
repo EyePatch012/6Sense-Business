@@ -366,10 +366,12 @@ ul {
     pointer-events: none;
     background-image: url("Pictures/Noise.png");
     background-repeat: repeat;
-    background-size: 180px 180px;
-    opacity: 0.32;
+    /* controls grain size */
+    background-size: 160px 160px;
+    /* controls grain strength */
+    opacity: 0.35;
+    /* how it blends with your gradient */
     mix-blend-mode: overlay;
-    animation: grainFlicker 0.00001s steps(1) infinite;
 }
 
 /* No dark overlay */
@@ -508,63 +510,6 @@ ul {
     100% {
         background-position: 50% 54%;
         transform: scale(1.04) translate3d(-0.3%, 0.2%, 0);
-    }
-}
-
-@keyframes grainFlicker {
-    0% {
-        background-position: 0 0;
-        opacity: 0.28;
-    }
-
-    10% {
-        background-position: -12px 8px;
-        opacity: 0.36;
-    }
-
-    20% {
-        background-position: 7px -14px;
-        opacity: 0.30;
-    }
-
-    30% {
-        background-position: -18px 4px;
-        opacity: 0.40;
-    }
-
-    40% {
-        background-position: 14px 16px;
-        opacity: 0.26;
-    }
-
-    50% {
-        background-position: -6px -10px;
-        opacity: 0.38;
-    }
-
-    60% {
-        background-position: 16px -6px;
-        opacity: 0.29;
-    }
-
-    70% {
-        background-position: -10px 14px;
-        opacity: 0.35;
-    }
-
-    80% {
-        background-position: 4px -18px;
-        opacity: 0.31;
-    }
-
-    90% {
-        background-position: -14px -4px;
-        opacity: 0.39;
-    }
-
-    100% {
-        background-position: 10px 12px;
-        opacity: 0.30;
     }
 }
 
