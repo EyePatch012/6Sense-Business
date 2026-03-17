@@ -59,24 +59,16 @@
     <!-- PALETTE SWITCHER -->
     <div class="palette-switcher">
 
-        <label>Palette</label>
+        <label for="paletteSelect">Palette</label>
 
         <select id="paletteSelect">
 
-            <option value="bluegreen">Bluegreen / Beige / Cream</option>
             <option value="gold">Gold / Bluegrey / Sandbrown</option>
-            <option value="turquoise">Turquoise Variations</option>
-            <option value="beigeDarkBlue">Very Light Beige / Yellow White / Grey Dark Blue</option>
-            <option value="darkBlueWhiteGreen">Dark Blue / White / Dark Green</option>
             <option value="navyGrey">NavyGrey / NearWhite / TurquoiseGrey</option>
-            <option value="lightGreenGrey">LightGreenGrey / White / DarkGreenGrey</option>
             <option value="greyBlueSoft">GreyBlueSoft / UltraLightGrey / GreyBlue</option>
-
-            <option value="darkBlueDarkGreenSand">Dark Blue / Dark Green / Light Sand</option>
             <option value="oliveMossMint">Olive Green / Moss Green / Very Light Mint Green</option>
             <option value="mintDarkMossOlive">Very Light Mint Green / Dark Moss / Olive</option>
             <option value="armyGreens">3 Shades of Army Green</option>
-            <option value="brownOceanLightBrown">Brown / Deep Ocean Blue / Light Brown</option>
             <option value="darkBrownBeigeSilver">Dark Brown / Beige / Silverwhite</option>
             <option value="darkTealBabyBlueTeal">Darkteal / Babyblue / Teal</option>
             <option value="darkGreyOrangeBrownGreyBrown">Darkgrey / Orangebrown / Greybrown</option>
@@ -107,18 +99,7 @@
     <script src="script.js"></script>
 
     <script>
-
         const palettes = {
-
-            bluegreen: {
-                r1: "157,199,188",
-                r2: "233,237,192",
-                r3: "237,234,223",
-                r4: "233,237,192",
-                l1: "#9dc7bc",
-                l2: "#e9edc0",
-                l3: "#edeadf"
-            },
 
             gold: {
                 r1: "201,195,121",
@@ -128,36 +109,6 @@
                 l1: "#c9c379",
                 l2: "#97aebd",
                 l3: "#c2b497"
-            },
-
-            turquoise: {
-                r1: "175,206,197",
-                r2: "165,200,190",
-                r3: "215,231,226",
-                r4: "165,200,190",
-                l1: "#afcec5",
-                l2: "#a5c8be",
-                l3: "#d7e7e2"
-            },
-
-            beigeDarkBlue: {
-                r1: "217,208,191",
-                r2: "245,244,230",
-                r3: "109,118,155",
-                r4: "245,244,230",
-                l1: "#d9d0bf",
-                l2: "#f5f4e6",
-                l3: "#6d769b"
-            },
-
-            darkBlueWhiteGreen: {
-                r1: "38,50,104",
-                r2: "251,251,249",
-                r3: "96,114,97",
-                r4: "251,251,249",
-                l1: "#263268",
-                l2: "#fbfbf9",
-                l3: "#607261"
             },
 
             navyGrey: {
@@ -170,16 +121,6 @@
                 l3: "#8dc7c5"
             },
 
-            lightGreenGrey: {
-                r1: "180,212,182",
-                r2: "250,251,251",
-                r3: "72,85,73",
-                r4: "250,251,251",
-                l1: "#b4d4b6",
-                l2: "#fafbfb",
-                l3: "#485549"
-            },
-
             greyBlueSoft: {
                 r1: "146,170,168",
                 r2: "236,242,241",
@@ -188,16 +129,6 @@
                 l1: "#92aaa8",
                 l2: "#ecf2f1",
                 l3: "#667473"
-            },
-
-            darkBlueDarkGreenSand: {
-                r1: "25,44,89",
-                r2: "30,87,78",
-                r3: "214,214,178",
-                r4: "30,87,78",
-                l1: "#192c59",
-                l2: "#1e574e",
-                l3: "#d6d6b2"
             },
 
             oliveMossMint: {
@@ -228,16 +159,6 @@
                 l1: "#353f33",
                 l2: "#888d6f",
                 l3: "#606b5a"
-            },
-
-            brownOceanLightBrown: {
-                r1: "92,70,33",
-                r2: "108,153,197",
-                r3: "136,118,96",
-                r4: "108,153,197",
-                l1: "#5c4621",
-                l2: "#6c99c5",
-                l3: "#887660"
             },
 
             darkBrownBeigeSilver: {
@@ -289,12 +210,11 @@
             root.style.setProperty("--hero-l3", p.l3);
         }
 
-        applyPalette("bluegreen");
+        applyPalette("gold");
 
         select.addEventListener("change", function () {
             applyPalette(this.value);
         });
-
     </script>
 
 </body>
