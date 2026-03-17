@@ -361,15 +361,15 @@ ul {
 .hero::before {
     content: "";
     position: absolute;
-    inset: -15%;
+    inset: -20%;
     z-index: 2;
     pointer-events: none;
-    opacity: 0.11;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.38) 0.45px, transparent 0.65px), radial-gradient(rgba(0, 0, 0, 0.18) 0.4px, transparent 0.65px);
-    background-size: 3px 3px, 4px 4px;
-    background-position: 0 0, 1px 1px;
-    mix-blend-mode: soft-light;
-    animation: grainDrift 12s steps(6) infinite;
+    background-image: url("Pictures/Noise.png");
+    background-repeat: repeat;
+    background-size: 220px 220px;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    animation: grainDrift 8s steps(8) infinite;
 }
 
 /* No dark overlay */
