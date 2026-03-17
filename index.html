@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -11,7 +10,6 @@
 <body>
 
     <!-- INTRO VIDEO SCREEN -->
-
     <div id="intro-screen">
         <video id="intro-video" autoplay muted playsinline preload="auto">
             <source src="Videos/Intro5.mp4" type="video/mp4" />
@@ -25,7 +23,6 @@
     </div>
 
     <!-- NAVIGATION -->
-
     <header class="topbar">
 
         <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
@@ -60,37 +57,35 @@
     </header>
 
     <!-- PALETTE SWITCHER -->
-
     <div class="palette-switcher">
 
         <label>Palette</label>
 
         <select id="paletteSelect">
 
-            <option value="sand">Sand / Cream / Grey</option>
             <option value="bluegreen">Bluegreen / Beige / Cream</option>
             <option value="gold">Gold / Bluegrey / Sandbrown</option>
-            <option value="brown">Brown Sand Variations</option>
             <option value="turquoise">Turquoise Variations</option>
-
-            <option value="turquoiseLight">Turquoise Light / Grey Cream / Very Light Cream</option>
-            <option value="lightMint">Light Mint / Almost White / Grey White</option>
             <option value="beigeDarkBlue">Very Light Beige / Yellow White / Grey Dark Blue</option>
             <option value="darkBlueWhiteGreen">Dark Blue / White / Dark Green</option>
-            <option value="lightGreenLightGraySand">Light Green / Light Gray / Light Sand</option>
-
-            <option value="lightgreenWhiteBlue">Lightgreen / White / GreyLightBlue</option>
-            <option value="blueGreyLight">BlueGreyLight / White / BlueGreyDark</option>
             <option value="navyGrey">NavyGrey / NearWhite / TurquoiseGrey</option>
             <option value="lightGreenGrey">LightGreenGrey / White / DarkGreenGrey</option>
             <option value="greyBlueSoft">GreyBlueSoft / UltraLightGrey / GreyBlue</option>
+
+            <option value="darkBlueDarkGreenSand">Dark Blue / Dark Green / Light Sand</option>
+            <option value="oliveMossMint">Olive Green / Moss Green / Very Light Mint Green</option>
+            <option value="mintDarkMossOlive">Very Light Mint Green / Dark Moss / Olive</option>
+            <option value="armyGreens">3 Shades of Army Green</option>
+            <option value="brownOceanLightBrown">Brown / Deep Ocean Blue / Light Brown</option>
+            <option value="darkBrownBeigeSilver">Dark Brown / Beige / Silverwhite</option>
+            <option value="darkTealBabyBlueTeal">Darkteal / Babyblue / Teal</option>
+            <option value="darkGreyOrangeBrownGreyBrown">Darkgrey / Orangebrown / Greybrown</option>
 
         </select>
 
     </div>
 
     <!-- HERO -->
-
     <section class="hero">
 
         <div class="hero-bg"></div>
@@ -115,16 +110,6 @@
 
         const palettes = {
 
-            sand: {
-                r1: "224,219,200",
-                r2: "237,234,223",
-                r3: "191,189,180",
-                r4: "237,234,223",
-                l1: "#e0dbc8",
-                l2: "#edeadf",
-                l3: "#bfbdb4"
-            },
-
             bluegreen: {
                 r1: "157,199,188",
                 r2: "233,237,192",
@@ -145,16 +130,6 @@
                 l3: "#c2b497"
             },
 
-            brown: {
-                r1: "218,210,193",
-                r2: "200,188,161",
-                r3: "237,233,224",
-                r4: "200,188,161",
-                l1: "#dad2c1",
-                l2: "#c8bca1",
-                l3: "#ede9e0"
-            },
-
             turquoise: {
                 r1: "175,206,197",
                 r2: "165,200,190",
@@ -163,26 +138,6 @@
                 l1: "#afcec5",
                 l2: "#a5c8be",
                 l3: "#d7e7e2"
-            },
-
-            turquoiseLight: {
-                r1: "181,209,213",
-                r2: "224,224,202",
-                r3: "246,246,239",
-                r4: "224,224,202",
-                l1: "#b5d1d5",
-                l2: "#e0e0ca",
-                l3: "#f6f6ef"
-            },
-
-            lightMint: {
-                r1: "202,224,216",
-                r2: "250,251,251",
-                r3: "217,219,206",
-                r4: "250,251,251",
-                l1: "#cae0d8",
-                l2: "#fafbfb",
-                l3: "#d9dbce"
             },
 
             beigeDarkBlue: {
@@ -203,36 +158,6 @@
                 l1: "#263268",
                 l2: "#fbfbf9",
                 l3: "#607261"
-            },
-
-            lightGreenLightGraySand: {
-                r1: "174,188,175",
-                r2: "228,233,228",
-                r3: "244,239,217",
-                r4: "228,233,228",
-                l1: "#aebcaf",
-                l2: "#e4e9e4",
-                l3: "#f4efd9"
-            },
-
-            lightgreenWhiteBlue: {
-                r1: "163,194,161",
-                r2: "236,244,237",
-                r3: "167,199,189",
-                r4: "236,244,237",
-                l1: "#a3c2a1",
-                l2: "#ecf4ed",
-                l3: "#a7c7bd"
-            },
-
-            blueGreyLight: {
-                r1: "180,204,197",
-                r2: "235,242,240",
-                r3: "113,127,123",
-                r4: "235,242,240",
-                l1: "#b4ccc5",
-                l2: "#ebf2f0",
-                l3: "#717f7b"
             },
 
             navyGrey: {
@@ -263,6 +188,86 @@
                 l1: "#92aaa8",
                 l2: "#ecf2f1",
                 l3: "#667473"
+            },
+
+            darkBlueDarkGreenSand: {
+                r1: "25,44,89",
+                r2: "30,87,78",
+                r3: "214,214,178",
+                r4: "30,87,78",
+                l1: "#192c59",
+                l2: "#1e574e",
+                l3: "#d6d6b2"
+            },
+
+            oliveMossMint: {
+                r1: "125,161,114",
+                r2: "67,105,85",
+                r3: "37,150,190",
+                r4: "67,105,85",
+                l1: "#7da172",
+                l2: "#436955",
+                l3: "#2596be"
+            },
+
+            mintDarkMossOlive: {
+                r1: "165,185,166",
+                r2: "56,74,64",
+                r3: "105,126,98",
+                r4: "56,74,64",
+                l1: "#a5b9a6",
+                l2: "#384a40",
+                l3: "#697e62"
+            },
+
+            armyGreens: {
+                r1: "53,63,51",
+                r2: "136,141,111",
+                r3: "96,107,90",
+                r4: "136,141,111",
+                l1: "#353f33",
+                l2: "#888d6f",
+                l3: "#606b5a"
+            },
+
+            brownOceanLightBrown: {
+                r1: "92,70,33",
+                r2: "108,153,197",
+                r3: "136,118,96",
+                r4: "108,153,197",
+                l1: "#5c4621",
+                l2: "#6c99c5",
+                l3: "#887660"
+            },
+
+            darkBrownBeigeSilver: {
+                r1: "55,40,24",
+                r2: "165,148,132",
+                r3: "202,197,195",
+                r4: "165,148,132",
+                l1: "#372818",
+                l2: "#a59484",
+                l3: "#cac5c3"
+            },
+
+            darkTealBabyBlueTeal: {
+                r1: "19,53,59",
+                r2: "175,200,207",
+                r3: "64,141,150",
+                r4: "175,200,207",
+                l1: "#13353b",
+                l2: "#afc8cf",
+                l3: "#408d96"
+            },
+
+            darkGreyOrangeBrownGreyBrown: {
+                r1: "58,73,73",
+                r2: "197,135,85",
+                r3: "117,95,87",
+                r4: "197,135,85",
+                l1: "#3a4949",
+                l2: "#c58755",
+                l3: "#755f57"
             }
 
         };
@@ -271,8 +276,8 @@
         const root = document.documentElement;
 
         function applyPalette(name) {
-
             const p = palettes[name];
+            if (!p) return;
 
             root.style.setProperty("--hero-r1", p.r1);
             root.style.setProperty("--hero-r2", p.r2);
@@ -282,10 +287,9 @@
             root.style.setProperty("--hero-l1", p.l1);
             root.style.setProperty("--hero-l2", p.l2);
             root.style.setProperty("--hero-l3", p.l3);
-
         }
 
-        applyPalette("sand");
+        applyPalette("bluegreen");
 
         select.addEventListener("change", function () {
             applyPalette(this.value);
