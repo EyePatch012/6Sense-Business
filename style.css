@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --hero-r1: 224,219,200;
     --hero-r2: 237,234,223;
     --hero-r3: 191,189,180;
@@ -342,22 +342,60 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
+    background: linear-gradient(90deg, var(--hero-l1) 0%, var(--hero-l2) 52%, var(--hero-l3) 100%);
 }
 
-/* Soft Aberkyn-style drifting gradient */
+/* Stable base, only the color bands move linearly underneath the fixed grain */
 .hero-bg {
     position: absolute;
-    inset: -10%;
+    inset: -18%;
     z-index: 1;
-    background: radial-gradient(circle at 18% 72%, rgba(var(--hero-r1), 0.24) 0%, transparent 42%), radial-gradient(circle at 28% 22%, rgba(var(--hero-r2), 0.22) 0%, transparent 46%), radial-gradient(circle at 72% 24%, rgba(var(--hero-r3), 0.18) 0%, transparent 44%), radial-gradient(circle at 78% 72%, rgba(var(--hero-r4), 0.16) 0%, transparent 48%), linear-gradient(135deg, var(--hero-l1) 0%, var(--hero-l2) 46%, var(--hero-l3) 100%);
-    background-size: 135% 135%;
-    background-position: 50% 50%;
-    filter: saturate(88%);
-    transform: scale(1.04);
-    animation: heroFlow 5s ease-in-out infinite alternate;
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--hero-l1) 0%, var(--hero-l2) 54%, var(--hero-l3) 100%);
+    filter: saturate(96%);
 }
 
-/* Fine grain like the reference */
+.hero-bg::before,
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.hero-bg::before {
+    background:
+        linear-gradient(90deg,
+            rgba(var(--hero-r1), 0.00) 0%,
+            rgba(var(--hero-r1), 0.38) 14%,
+            rgba(var(--hero-r2), 0.10) 28%,
+            rgba(var(--hero-r3), 0.26) 42%,
+            rgba(var(--hero-r4), 0.08) 56%,
+            rgba(var(--hero-r2), 0.24) 72%,
+            rgba(var(--hero-r3), 0.00) 100%);
+    filter: blur(34px);
+    mix-blend-mode: soft-light;
+    animation: linearShiftA 18s linear infinite;
+}
+
+.hero-bg::after {
+    background:
+        linear-gradient(90deg,
+            rgba(var(--hero-r3), 0.00) 0%,
+            rgba(var(--hero-r2), 0.14) 16%,
+            rgba(var(--hero-r4), 0.22) 34%,
+            rgba(var(--hero-r1), 0.06) 50%,
+            rgba(var(--hero-r3), 0.22) 66%,
+            rgba(var(--hero-r2), 0.10) 82%,
+            rgba(var(--hero-r1), 0.00) 100%);
+    filter: blur(48px);
+    mix-blend-mode: overlay;
+    opacity: 0.92;
+    animation: linearShiftB 28s linear infinite;
+}
+
+/* Fine grain like the reference - fixed and stable on top */
 .hero::before {
     content: "";
     position: absolute;
@@ -366,11 +404,9 @@ ul {
     pointer-events: none;
     background-image: url("Pictures/Noise.png");
     background-repeat: repeat;
-    /* controls grain size */
     background-size: 160px 160px;
-    /* controls grain strength */
+    background-position: 0 0;
     opacity: 0.35;
-    /* how it blends with your gradient */
     mix-blend-mode: overlay;
 }
 
@@ -496,20 +532,23 @@ ul {
     }
 }
 
-@keyframes heroFlow {
+@keyframes linearShiftA {
     0% {
-        background-position: 46% 50%;
-        transform: scale(1.04) translate3d(0, 0, 0);
-    }
-
-    50% {
-        background-position: 54% 48%;
-        transform: scale(1.05) translate3d(0.3%, 0.3%, 0);
+        transform: translateX(-18%) scale(1.08);
     }
 
     100% {
-        background-position: 50% 54%;
-        transform: scale(1.04) translate3d(-0.3%, 0.2%, 0);
+        transform: translateX(18%) scale(1.08);
+    }
+}
+
+@keyframes linearShiftB {
+    0% {
+        transform: translateX(16%) scale(1.1);
+    }
+
+    100% {
+        transform: translateX(-16%) scale(1.1);
     }
 }
 
