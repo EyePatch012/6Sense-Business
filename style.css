@@ -354,7 +354,7 @@ ul {
     background-position: 50% 50%;
     filter: saturate(88%);
     transform: scale(1.04);
-    animation: heroFlow 40s ease-in-out infinite alternate;
+    animation: heroFlow 5s ease-in-out infinite alternate;
 }
 
 /* Fine grain like the reference */
