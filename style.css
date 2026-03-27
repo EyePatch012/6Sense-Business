@@ -612,28 +612,28 @@ ul {
     left: -30%;
     top: -28%;
     background: radial-gradient(circle at 36% 38%, rgba(var(--hero-r1), 0.34) 0%, rgba(var(--hero-r1), 0) 74%);
-    animation: ambientFloatOne 68s cubic-bezier(.42,0,.2,1) infinite;
+    animation: ambientFloatOne 20s cubic-bezier(.42,0,.2,1) infinite;
 }
 
 .hero-ambient__blob--2 {
     right: -26%;
     top: -30%;
     background: radial-gradient(circle at 62% 34%, rgba(var(--hero-r2), 0.30) 0%, rgba(var(--hero-r2), 0) 74%);
-    animation: ambientFloatTwo 82s cubic-bezier(.42,0,.2,1) infinite;
+    animation: ambientFloatTwo 24s cubic-bezier(.42,0,.2,1) infinite;
 }
 
 .hero-ambient__blob--3 {
     left: -22%;
     bottom: -52%;
     background: radial-gradient(circle at 54% 42%, rgba(var(--hero-r3), 0.28) 0%, rgba(var(--hero-r3), 0) 76%);
-    animation: ambientFloatThree 74s cubic-bezier(.42,0,.2,1) infinite;
+    animation: ambientFloatThree 22s cubic-bezier(.42,0,.2,1) infinite;
 }
 
 .hero-ambient__blob--4 {
     right: -10%;
     bottom: -48%;
     background: radial-gradient(circle at 58% 50%, rgba(var(--hero-r4), 0.24) 0%, rgba(var(--hero-r4), 0) 76%);
-    animation: ambientFloatFour 90s cubic-bezier(.42,0,.2,1) infinite;
+    animation: ambientFloatFour 28s cubic-bezier(.42,0,.2,1) infinite;
 }
 
 .hero-ambient__blob--5 {
@@ -643,7 +643,7 @@ ul {
     height: 62vmax;
     mix-blend-mode: overlay;
     background: radial-gradient(circle at 52% 34%, rgba(var(--hero-r2), 0.20) 0%, rgba(var(--hero-r2), 0) 78%);
-    animation: ambientFloatFive 96s cubic-bezier(.42,0,.2,1) infinite;
+    animation: ambientFloatFive 30s cubic-bezier(.42,0,.2,1) infinite;
 }
 
 @keyframes ambientFloatOne {
