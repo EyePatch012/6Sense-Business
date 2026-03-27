@@ -6,14 +6,6 @@
     --hero-l1: #e0dbc8;
     --hero-l2: #edeadf;
     --hero-l3: #bfbdb4;
-    --hero-next-r1: 224,219,200;
-    --hero-next-r2: 237,234,223;
-    --hero-next-r3: 191,189,180;
-    --hero-next-r4: 237,234,223;
-    --hero-next-l1: #e0dbc8;
-    --hero-next-l2: #edeadf;
-    --hero-next-l3: #bfbdb4;
-    --hero-overlay-opacity: 0;
 }
 
 /* Reset & Global */
@@ -350,102 +342,45 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(90deg, var(--hero-l1) 0%, var(--hero-l2) 52%, var(--hero-l3) 100%);
+    background: linear-gradient(135deg, var(--hero-l1) 0%, var(--hero-l2) 55%, var(--hero-l3) 100%);
 }
 
-/* Stable base, only the color bands move linearly underneath the fixed grain */
+/* Smooth static color field to avoid visible scanline/banding artifacts */
 .hero-bg {
     position: absolute;
-    inset: -18%;
+    inset: -10%;
     z-index: 1;
     overflow: hidden;
-    background: linear-gradient(90deg, var(--hero-l1) 0%, var(--hero-l2) 54%, var(--hero-l3) 100%);
+    background: linear-gradient(135deg, var(--hero-l1) 0%, var(--hero-l2) 52%, var(--hero-l3) 100%);
     filter: saturate(96%);
-}
-
-.hero-bg-overlay {
-    position: absolute;
-    inset: -18%;
-    z-index: 2;
-    overflow: hidden;
-    background: linear-gradient(90deg, var(--hero-next-l1) 0%, var(--hero-next-l2) 54%, var(--hero-next-l3) 100%);
-    filter: saturate(96%);
-    opacity: var(--hero-overlay-opacity);
-    transition: opacity 4.2s cubic-bezier(.22,.61,.36,1);
-    pointer-events: none;
+    transform: translateZ(0);
 }
 
 .hero-bg::before,
-.hero-bg::after,
-.hero-bg-overlay::before,
-.hero-bg-overlay::after {
+.hero-bg::after {
     content: "";
     position: absolute;
-    inset: -12%;
+    inset: 0;
     pointer-events: none;
-    will-change: transform;
+    will-change: opacity;
 }
 
 .hero-bg::before {
     background:
-        linear-gradient(90deg,
-            rgba(var(--hero-r1), 0.00) 0%,
-            rgba(var(--hero-r1), 0.38) 14%,
-            rgba(var(--hero-r2), 0.10) 28%,
-            rgba(var(--hero-r3), 0.26) 42%,
-            rgba(var(--hero-r4), 0.08) 56%,
-            rgba(var(--hero-r2), 0.24) 72%,
-            rgba(var(--hero-r3), 0.00) 100%);
-    filter: blur(34px);
+        radial-gradient(circle at 18% 22%, rgba(var(--hero-r1), 0.30) 0%, rgba(var(--hero-r1), 0) 58%),
+        radial-gradient(circle at 82% 30%, rgba(var(--hero-r2), 0.24) 0%, rgba(var(--hero-r2), 0) 54%),
+        radial-gradient(circle at 72% 76%, rgba(var(--hero-r3), 0.22) 0%, rgba(var(--hero-r3), 0) 60%);
+    filter: blur(44px);
     mix-blend-mode: soft-light;
-    animation: linearShiftA 18s linear infinite;
-}
-
-.hero-bg-overlay::before {
-    background:
-        linear-gradient(90deg,
-            rgba(var(--hero-next-r1), 0.00) 0%,
-            rgba(var(--hero-next-r1), 0.38) 14%,
-            rgba(var(--hero-next-r2), 0.10) 28%,
-            rgba(var(--hero-next-r3), 0.26) 42%,
-            rgba(var(--hero-next-r4), 0.08) 56%,
-            rgba(var(--hero-next-r2), 0.24) 72%,
-            rgba(var(--hero-next-r3), 0.00) 100%);
-    filter: blur(34px);
-    mix-blend-mode: soft-light;
-    animation: linearShiftA 18s linear infinite;
 }
 
 .hero-bg::after {
     background:
-        linear-gradient(90deg,
-            rgba(var(--hero-r3), 0.00) 0%,
-            rgba(var(--hero-r2), 0.14) 16%,
-            rgba(var(--hero-r4), 0.22) 34%,
-            rgba(var(--hero-r1), 0.06) 50%,
-            rgba(var(--hero-r3), 0.22) 66%,
-            rgba(var(--hero-r2), 0.10) 82%,
-            rgba(var(--hero-r1), 0.00) 100%);
-    filter: blur(48px);
+        radial-gradient(circle at 24% 74%, rgba(var(--hero-r4), 0.16) 0%, rgba(var(--hero-r4), 0) 56%),
+        radial-gradient(circle at 76% 58%, rgba(var(--hero-r2), 0.14) 0%, rgba(var(--hero-r2), 0) 52%);
+    filter: blur(56px);
     mix-blend-mode: overlay;
-    opacity: 0.92;
-    animation: linearShiftB 28s linear infinite;
-}
-
-.hero-bg-overlay::after {
-    background:
-        linear-gradient(90deg,
-            rgba(var(--hero-next-r3), 0.00) 0%,
-            rgba(var(--hero-next-r2), 0.14) 16%,
-            rgba(var(--hero-next-r4), 0.22) 34%,
-            rgba(var(--hero-next-r1), 0.06) 50%,
-            rgba(var(--hero-next-r3), 0.22) 66%,
-            rgba(var(--hero-next-r2), 0.10) 82%,
-            rgba(var(--hero-next-r1), 0.00) 100%);
-    filter: blur(48px);
-    mix-blend-mode: overlay;
-    opacity: 0.92;
-    animation: linearShiftB 28s linear infinite;
+    opacity: 0.9;
 }
 
 /* Fine grain like the reference - fixed and stable on top */
@@ -453,13 +388,13 @@ ul {
     content: "";
     position: absolute;
     inset: -20%;
-    z-index: 3;
+    z-index: 2;
     pointer-events: none;
     background-image: url("Pictures/Noise.png");
     background-repeat: repeat;
     background-size: 160px 160px;
     background-position: 0 0;
-    opacity: 0.35;
+    opacity: 0.22;
     mix-blend-mode: overlay;
 }
 
@@ -468,12 +403,12 @@ ul {
     position: absolute;
     inset: 0;
     background: transparent;
-    z-index: 4;
+    z-index: 2;
 }
 
 .hero-content {
     position: relative;
-    z-index: 5;
+    z-index: 3;
     color: #2f2d28;
     max-width: 800px;
     padding: 0 20px;
@@ -585,26 +520,6 @@ ul {
     }
 }
 
-@keyframes linearShiftA {
-    0% {
-        transform: translateX(-18%) scale(1.08);
-    }
-
-    100% {
-        transform: translateX(18%) scale(1.08);
-    }
-}
-
-@keyframes linearShiftB {
-    0% {
-        transform: translateX(16%) scale(1.1);
-    }
-
-    100% {
-        transform: translateX(-16%) scale(1.1);
-    }
-}
-
 @media (max-width: 900px) {
     .palette-switcher {
         top: auto;
@@ -623,13 +538,7 @@ ul {
 
 @media (prefers-reduced-motion: reduce) {
     .hero-bg::before,
-    .hero-bg::after,
-    .hero-bg-overlay::before,
-    .hero-bg-overlay::after {
+    .hero-bg::after {
         animation: none;
-    }
-
-    .hero-bg-overlay {
-        transition-duration: 0.01ms;
     }
 }
