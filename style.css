@@ -594,117 +594,117 @@ ul {
     pointer-events: none;
     overflow: hidden;
     background:
-        radial-gradient(circle at 78% 8%, rgba(88, 85, 255, 0.2) 0%, rgba(88, 85, 255, 0) 42%),
-        radial-gradient(circle at 12% 92%, rgba(187, 66, 255, 0.18) 0%, rgba(187, 66, 255, 0) 48%);
+        radial-gradient(circle at 82% 10%, rgba(var(--hero-r2), 0.15) 0%, rgba(var(--hero-r2), 0) 46%),
+        radial-gradient(circle at 10% 88%, rgba(var(--hero-r3), 0.14) 0%, rgba(var(--hero-r3), 0) 52%);
 }
 
 .hero-ambient__blob {
     position: absolute;
-    width: 74vmax;
-    height: 74vmax;
+    width: 86vmax;
+    height: 66vmax;
     border-radius: 50%;
     transform-origin: center;
     mix-blend-mode: soft-light;
-    opacity: 0.55;
+    opacity: 0.34;
     will-change: transform, opacity;
-    filter: blur(72px);
+    filter: blur(110px);
 }
 
 .hero-ambient__blob--1 {
-    left: -26%;
-    top: -34%;
-    background: radial-gradient(circle at 35% 35%, rgba(255, 112, 196, 0.52) 0%, rgba(255, 112, 196, 0) 72%);
-    animation: ambientFloatOne 28s ease-in-out infinite alternate;
+    left: -30%;
+    top: -28%;
+    background: radial-gradient(circle at 36% 38%, rgba(var(--hero-r1), 0.34) 0%, rgba(var(--hero-r1), 0) 74%);
+    animation: ambientFloatOne 34s ease-in-out infinite alternate;
 }
 
 .hero-ambient__blob--2 {
-    right: -18%;
-    top: -26%;
-    background: radial-gradient(circle at 62% 30%, rgba(130, 110, 255, 0.58) 0%, rgba(130, 110, 255, 0) 72%);
-    animation: ambientFloatTwo 36s ease-in-out infinite alternate;
+    right: -26%;
+    top: -30%;
+    background: radial-gradient(circle at 62% 34%, rgba(var(--hero-r2), 0.30) 0%, rgba(var(--hero-r2), 0) 74%);
+    animation: ambientFloatTwo 42s ease-in-out infinite alternate;
 }
 
 .hero-ambient__blob--3 {
-    left: -8%;
-    bottom: -46%;
-    background: radial-gradient(circle at 50% 44%, rgba(155, 255, 244, 0.46) 0%, rgba(155, 255, 244, 0) 74%);
-    animation: ambientFloatThree 48s ease-in-out infinite alternate;
+    left: -22%;
+    bottom: -52%;
+    background: radial-gradient(circle at 54% 42%, rgba(var(--hero-r3), 0.28) 0%, rgba(var(--hero-r3), 0) 76%);
+    animation: ambientFloatThree 52s ease-in-out infinite alternate;
 }
 
 .hero-ambient__blob--4 {
-    right: 2%;
-    bottom: -40%;
-    background: radial-gradient(circle at 58% 52%, rgba(191, 116, 255, 0.5) 0%, rgba(191, 116, 255, 0) 71%);
-    animation: ambientFloatFour 56s ease-in-out infinite alternate;
+    right: -10%;
+    bottom: -48%;
+    background: radial-gradient(circle at 58% 50%, rgba(var(--hero-r4), 0.24) 0%, rgba(var(--hero-r4), 0) 76%);
+    animation: ambientFloatFour 58s ease-in-out infinite alternate;
 }
 
 .hero-ambient__blob--5 {
-    left: 28%;
-    top: -30%;
-    width: 58vmax;
-    height: 58vmax;
+    left: 16%;
+    top: -36%;
+    width: 72vmax;
+    height: 62vmax;
     mix-blend-mode: overlay;
-    background: radial-gradient(circle at 48% 36%, rgba(130, 108, 255, 0.56) 0%, rgba(130, 108, 255, 0) 76%);
-    animation: ambientFloatFive 60s ease-in-out infinite alternate;
+    background: radial-gradient(circle at 52% 34%, rgba(var(--hero-r2), 0.20) 0%, rgba(var(--hero-r2), 0) 78%);
+    animation: ambientFloatFive 64s ease-in-out infinite alternate;
 }
 
 @keyframes ambientFloatOne {
     0% {
-        transform: translate3d(-4%, -3%, 0) rotate(0deg) scale(1.02);
-        opacity: 0.48;
+        transform: translate3d(-2%, -1%, 0) rotate(-2deg) scale(1.03);
+        opacity: 0.28;
     }
 
     100% {
-        transform: translate3d(8%, 6%, 0) rotate(10deg) scale(1.14);
-        opacity: 0.66;
+        transform: translate3d(4%, 3%, 0) rotate(6deg) scale(1.1);
+        opacity: 0.38;
     }
 }
 
 @keyframes ambientFloatTwo {
     0% {
-        transform: translate3d(5%, -4%, 0) rotate(0deg) scale(1.02);
-        opacity: 0.5;
+        transform: translate3d(3%, -3%, 0) rotate(2deg) scale(1.02);
+        opacity: 0.26;
     }
 
     100% {
-        transform: translate3d(-7%, 7%, 0) rotate(-12deg) scale(1.16);
-        opacity: 0.7;
+        transform: translate3d(-4%, 4%, 0) rotate(-5deg) scale(1.09);
+        opacity: 0.36;
     }
 }
 
 @keyframes ambientFloatThree {
     0% {
-        transform: translate3d(-6%, 5%, 0) rotate(0deg) scale(1.04);
-        opacity: 0.42;
+        transform: translate3d(-3%, 4%, 0) rotate(0deg) scale(1.04);
+        opacity: 0.24;
     }
 
     100% {
-        transform: translate3d(8%, -8%, 0) rotate(12deg) scale(1.18);
-        opacity: 0.63;
+        transform: translate3d(5%, -5%, 0) rotate(7deg) scale(1.11);
+        opacity: 0.34;
     }
 }
 
 @keyframes ambientFloatFour {
     0% {
-        transform: translate3d(3%, 5%, 0) rotate(0deg) scale(1.05);
-        opacity: 0.42;
+        transform: translate3d(2%, 3%, 0) rotate(-1deg) scale(1.04);
+        opacity: 0.22;
     }
 
     100% {
-        transform: translate3d(-8%, -7%, 0) rotate(-14deg) scale(1.2);
-        opacity: 0.62;
+        transform: translate3d(-5%, -4%, 0) rotate(-6deg) scale(1.1);
+        opacity: 0.32;
     }
 }
 
 @keyframes ambientFloatFive {
     0% {
-        transform: translate3d(-3%, -3%, 0) rotate(0deg) scale(1);
-        opacity: 0.44;
+        transform: translate3d(-2%, -2%, 0) rotate(0deg) scale(1);
+        opacity: 0.18;
     }
 
     100% {
-        transform: translate3d(6%, 5%, 0) rotate(15deg) scale(1.16);
-        opacity: 0.64;
+        transform: translate3d(4%, 3%, 0) rotate(8deg) scale(1.08);
+        opacity: 0.28;
     }
 }
 
