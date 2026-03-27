@@ -93,6 +93,7 @@
     <section class="hero">
 
         <div class="hero-bg"></div>
+        <div class="hero-bg-overlay"></div>
         <div class="hero-darken"></div>
 
         <div class="hero-content">
@@ -327,25 +328,99 @@
 
         const select = document.getElementById("paletteSelect");
         const root = document.documentElement;
+        const paletteNames = Object.keys(palettes);
+        const LOOP_INTERVAL_MS = 11000;
+        const TRANSITION_MS = 4200;
 
-        function applyPalette(name) {
-            const p = palettes[name];
-            if (!p) return;
+        let activePaletteName = "mintDarkMossOlive";
+        let loopTimer = null;
+        let transitionInProgress = false;
 
-            root.style.setProperty("--hero-r1", p.r1);
-            root.style.setProperty("--hero-r2", p.r2);
-            root.style.setProperty("--hero-r3", p.r3);
-            root.style.setProperty("--hero-r4", p.r4);
-
-            root.style.setProperty("--hero-l1", p.l1);
-            root.style.setProperty("--hero-l2", p.l2);
-            root.style.setProperty("--hero-l3", p.l3);
+        function setPaletteVars(palette, targetPrefix = "--hero") {
+            root.style.setProperty(`${targetPrefix}-r1`, palette.r1);
+            root.style.setProperty(`${targetPrefix}-r2`, palette.r2);
+            root.style.setProperty(`${targetPrefix}-r3`, palette.r3);
+            root.style.setProperty(`${targetPrefix}-r4`, palette.r4);
+            root.style.setProperty(`${targetPrefix}-l1`, palette.l1);
+            root.style.setProperty(`${targetPrefix}-l2`, palette.l2);
+            root.style.setProperty(`${targetPrefix}-l3`, palette.l3);
         }
 
-        applyPalette("gold");
+        function hexToRgb(hex) {
+            const parsedHex = hex.replace("#", "");
+            const value = parseInt(parsedHex, 16);
+            return {
+                r: (value >> 16) & 255,
+                g: (value >> 8) & 255,
+                b: value & 255
+            };
+        }
+
+        function paletteLuminance(palette) {
+            const { r, g, b } = hexToRgb(palette.l2);
+            return (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
+        }
+
+        function pickContrastingRandomPalette(currentName) {
+            const current = palettes[currentName];
+            if (!current) return paletteNames[Math.floor(Math.random() * paletteNames.length)];
+
+            const currentLum = paletteLuminance(current);
+            const ranked = paletteNames
+                .filter((name) => name !== currentName)
+                .map((name) => {
+                    const diff = Math.abs(paletteLuminance(palettes[name]) - currentLum);
+                    return { name, diff };
+                })
+                .sort((a, b) => b.diff - a.diff);
+
+            const variedSet = ranked.slice(0, Math.max(3, Math.ceil(ranked.length / 2)));
+            return variedSet[Math.floor(Math.random() * variedSet.length)].name;
+        }
+
+        function applyPaletteImmediately(name) {
+            const palette = palettes[name];
+            if (!palette) return;
+
+            activePaletteName = name;
+            setPaletteVars(palette, "--hero");
+            setPaletteVars(palette, "--hero-next");
+            root.style.setProperty("--hero-overlay-opacity", "0");
+            select.value = name;
+        }
+
+        function transitionToPalette(name) {
+            if (transitionInProgress || name === activePaletteName) return;
+            const palette = palettes[name];
+            if (!palette) return;
+
+            transitionInProgress = true;
+            setPaletteVars(palette, "--hero-next");
+            root.style.setProperty("--hero-overlay-opacity", "1");
+
+            window.setTimeout(() => {
+                setPaletteVars(palette, "--hero");
+                root.style.setProperty("--hero-overlay-opacity", "0");
+                activePaletteName = name;
+                select.value = name;
+                transitionInProgress = false;
+            }, TRANSITION_MS);
+        }
+
+        function startRandomLoop() {
+            window.clearInterval(loopTimer);
+            loopTimer = window.setInterval(() => {
+                const nextPalette = pickContrastingRandomPalette(activePaletteName);
+                transitionToPalette(nextPalette);
+            }, LOOP_INTERVAL_MS);
+        }
+
+        applyPaletteImmediately(activePaletteName);
+        startRandomLoop();
 
         select.addEventListener("change", function () {
-            applyPalette(this.value);
+            applyPaletteImmediately(this.value);
+            startRandomLoop();
         });
     </script>
 
