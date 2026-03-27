@@ -362,7 +362,7 @@ ul {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    will-change: opacity;
+    will-change: transform, opacity;
 }
 
 .hero-bg::before {
@@ -372,6 +372,8 @@ ul {
         radial-gradient(circle at 72% 76%, rgba(var(--hero-r3), 0.22) 0%, rgba(var(--hero-r3), 0) 60%);
     filter: blur(44px);
     mix-blend-mode: soft-light;
+    transform: translate3d(-2%, -1%, 0) scale(1.05);
+    animation: heroFlowA 24s ease-in-out infinite alternate;
 }
 
 .hero-bg::after {
@@ -381,6 +383,8 @@ ul {
     filter: blur(56px);
     mix-blend-mode: overlay;
     opacity: 0.9;
+    transform: translate3d(2%, 1%, 0) scale(1.08);
+    animation: heroFlowB 30s ease-in-out infinite alternate;
 }
 
 /* Fine grain like the reference - fixed and stable on top */
@@ -520,6 +524,40 @@ ul {
     }
 }
 
+@keyframes heroFlowA {
+    0% {
+        transform: translate3d(-3%, -2%, 0) scale(1.04);
+        opacity: 0.82;
+    }
+
+    50% {
+        transform: translate3d(2%, 1%, 0) scale(1.1);
+        opacity: 0.92;
+    }
+
+    100% {
+        transform: translate3d(4%, 3%, 0) scale(1.06);
+        opacity: 0.84;
+    }
+}
+
+@keyframes heroFlowB {
+    0% {
+        transform: translate3d(3%, 2%, 0) scale(1.08);
+        opacity: 0.74;
+    }
+
+    50% {
+        transform: translate3d(-1%, -2%, 0) scale(1.13);
+        opacity: 0.92;
+    }
+
+    100% {
+        transform: translate3d(-4%, -3%, 0) scale(1.07);
+        opacity: 0.76;
+    }
+}
+
 @media (max-width: 900px) {
     .palette-switcher {
         top: auto;
@@ -540,5 +578,6 @@ ul {
     .hero-bg::before,
     .hero-bg::after {
         animation: none;
+        transform: none;
     }
 }
