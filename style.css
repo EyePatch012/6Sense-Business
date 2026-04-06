@@ -11,13 +11,6 @@
     --hero-text-muted: rgba(244, 247, 241, 0.9);
     --hero-text-shadow: 0 2px 24px rgba(7, 10, 8, 0.24);
 
-    --hero-flow-speed: 36s;
-    --hero-flow-speed-2: 48s;
-    --hero-noise-opacity: 0.09;
-    --hero-noise-fine-opacity: 0.045;
-    --hero-noise-size: 180px;
-    --hero-noise-size-fine: 120px;
-
     --surface-bg: #f2f4ef;
     --surface-elevated: rgba(250, 251, 248, 0.92);
     --surface-border: rgba(144, 157, 140, 0.33);
@@ -282,75 +275,22 @@ ul {
     place-items: center;
     padding: clamp(3rem, 9vh, 7rem) 1.5rem;
     text-align: center;
-    background: linear-gradient(160deg, var(--hero-l1) 0%, var(--hero-l2) 56%, var(--hero-l3) 100%);
+    background: #0f1712;
 }
 
-.hero-bg,
-.hero-flow,
-.hero-noise,
+.hero-video,
 .hero-vignette {
     position: absolute;
     pointer-events: none;
 }
 
-.hero-bg {
-    inset: -6%;
+.hero-video {
+    inset: 0;
     z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transform: translateZ(0);
-    background:
-        radial-gradient(circle at 12% 16%, rgba(var(--hero-r1), 0.34) 0%, rgba(var(--hero-r1), 0) 56%),
-        radial-gradient(circle at 85% 18%, rgba(var(--hero-r2), 0.32) 0%, rgba(var(--hero-r2), 0) 58%),
-        radial-gradient(circle at 68% 84%, rgba(var(--hero-r3), 0.28) 0%, rgba(var(--hero-r3), 0) 60%),
-        linear-gradient(160deg, var(--hero-l1) 0%, var(--hero-l2) 56%, var(--hero-l3) 100%);
-    filter: saturate(102%);
-}
-
-.hero-flow {
-    inset: -18%;
-    z-index: 1;
-    border-radius: 50%;
-    mix-blend-mode: soft-light;
-    filter: blur(70px);
-    will-change: transform;
-}
-
-.hero-flow-a {
-    background:
-        radial-gradient(ellipse at 22% 30%, rgba(var(--hero-r1), 0.45) 0%, rgba(var(--hero-r1), 0) 58%),
-        radial-gradient(ellipse at 76% 66%, rgba(var(--hero-r4), 0.28) 0%, rgba(var(--hero-r4), 0) 60%);
-    animation: heroFlowA var(--hero-flow-speed) ease-in-out infinite alternate;
-}
-
-.hero-flow-b {
-    background:
-        radial-gradient(ellipse at 74% 22%, rgba(var(--hero-r2), 0.34) 0%, rgba(var(--hero-r2), 0) 56%),
-        radial-gradient(ellipse at 25% 76%, rgba(var(--hero-r3), 0.26) 0%, rgba(var(--hero-r3), 0) 62%);
-    animation: heroFlowB var(--hero-flow-speed-2) ease-in-out infinite alternate;
-}
-
-.hero-noise {
-    inset: -14%;
-    z-index: 2;
-    mix-blend-mode: soft-light;
-    transform: translate3d(0, 0, 0);
-}
-
-.hero-noise-coarse {
-    opacity: var(--hero-noise-opacity);
-    background-size: var(--hero-noise-size) var(--hero-noise-size);
-    background-image:
-        repeating-radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.24) 0 1px, transparent 1px 4px),
-        repeating-linear-gradient(34deg, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 5px);
-    animation: grainShiftA 5.4s steps(8) infinite;
-}
-
-.hero-noise-fine {
-    opacity: var(--hero-noise-fine-opacity);
-    background-size: var(--hero-noise-size-fine) var(--hero-noise-size-fine);
-    background-image:
-        repeating-radial-gradient(circle at 60% 50%, rgba(255, 255, 255, 0.26) 0 0.7px, transparent 0.7px 2.5px),
-        repeating-linear-gradient(140deg, rgba(0, 0, 0, 0.1) 0 0.8px, transparent 0.8px 2.8px);
-    animation: grainShiftB 3.8s steps(10) infinite;
 }
 
 .hero-vignette {
@@ -489,47 +429,6 @@ ul {
     }
 }
 
-@keyframes heroFlowA {
-    0% {
-        transform: translate3d(-2.5%, -1.8%, 0) scale(1.04) rotate(-1deg);
-    }
-    50% {
-        transform: translate3d(1.3%, 1.2%, 0) scale(1.1) rotate(0.8deg);
-    }
-    100% {
-        transform: translate3d(3.2%, 2.2%, 0) scale(1.06) rotate(1.3deg);
-    }
-}
-
-@keyframes heroFlowB {
-    0% {
-        transform: translate3d(2.5%, 1.5%, 0) scale(1.06) rotate(1deg);
-    }
-    50% {
-        transform: translate3d(-1.6%, -1.2%, 0) scale(1.1) rotate(-0.7deg);
-    }
-    100% {
-        transform: translate3d(-3.1%, -2.3%, 0) scale(1.07) rotate(-1.4deg);
-    }
-}
-
-@keyframes grainShiftA {
-    0% { transform: translate3d(0, 0, 0); }
-    25% { transform: translate3d(-1.4%, 1.1%, 0); }
-    50% { transform: translate3d(1.6%, -1.2%, 0); }
-    75% { transform: translate3d(-0.8%, -1%, 0); }
-    100% { transform: translate3d(0.9%, 1.2%, 0); }
-}
-
-@keyframes grainShiftB {
-    0% { transform: translate3d(0, 0, 0); }
-    20% { transform: translate3d(1.2%, -1.1%, 0); }
-    40% { transform: translate3d(-1.3%, 0.7%, 0); }
-    60% { transform: translate3d(0.9%, 1.1%, 0); }
-    80% { transform: translate3d(-0.8%, -0.9%, 0); }
-    100% { transform: translate3d(1.1%, 0.6%, 0); }
-}
-
 @media (max-width: 980px) {
     .topbar {
         padding: 12px 16px;
@@ -578,8 +477,7 @@ ul {
         scroll-behavior: auto !important;
     }
 
-    .hero-flow,
-    .hero-noise {
+    .hero-video {
         animation: none !important;
     }
 }

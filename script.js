@@ -25,6 +25,32 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const root = document.documentElement;
     const paletteSelect = document.getElementById("paletteSelect");
+    const heroVideo = document.getElementById("hero-palette-video");
+    const heroVideoSource = heroVideo?.querySelector("source");
+    const heroVideoFallbackSrc = "Videos/Intro4.mp4";
+
+    const getPaletteVideoSrc = (paletteName) => `Videos/${paletteName}.mp4`;
+
+    const applyHeroVideo = (paletteName) => {
+        if (!heroVideo || !heroVideoSource) return;
+
+        heroVideoSource.src = getPaletteVideoSrc(paletteName);
+        heroVideo.load();
+        heroVideo.play().catch(() => {
+            // Autoplay can be blocked by browser policies; muted+playsinline should handle most cases.
+        });
+    };
+
+    if (heroVideo && heroVideoSource) {
+        heroVideo.addEventListener("error", () => {
+            if (heroVideoSource.getAttribute("src") === heroVideoFallbackSrc) return;
+            heroVideoSource.src = heroVideoFallbackSrc;
+            heroVideo.load();
+            heroVideo.play().catch(() => {
+                // Ignore play errors for fallback too.
+            });
+        });
+    }
 
     const hexToRgb = (hex) => {
         const cleanHex = hex.replace("#", "");
@@ -66,6 +92,7 @@ window.addEventListener("DOMContentLoaded", () => {
         root.style.setProperty("--hero-l2", palette.l2);
         root.style.setProperty("--hero-l3", palette.l3);
         applyReadableText(palette);
+        applyHeroVideo(name);
 
         try {
             localStorage.setItem("6sense-palette", name);
