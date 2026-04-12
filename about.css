@@ -1,6 +1,6 @@
 ﻿/* Inherits topbar and search from global site CSS */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {
@@ -24,11 +24,14 @@ body {
     background-size: cover;
 }
 
+.about-hero .palette-video {
+    z-index: 0;
+}
 
 .about-hero-darken {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.14) 0%, rgba(0, 0, 0, 0.1) 100%);
     z-index: 1;
 }
 
@@ -110,7 +113,13 @@ body {
 .about-main2-bg {
     flex: 1;
     background-color: #77998e;
+    position: relative;
+    overflow: hidden;
     transform: translateX(50px);
+}
+
+.about-main2-bg .palette-video {
+    filter: saturate(0.9) brightness(0.92);
 }
 
 /* Trigger animations on scroll */
@@ -232,6 +241,8 @@ body {
 
 /* FULL WIDTH CONTAINER */
 .about-highlight-full {
+    position: relative;
+    overflow: hidden;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     background-color: #77998e;
@@ -240,8 +251,15 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
+.about-highlight-full .palette-video {
+    z-index: 0;
+    filter: saturate(0.88) brightness(0.9);
+}
+
 /* CONTENT BOX INSIDE (STAYS CENTERED OR CAN BE LEFT ALIGNED) */
 .about-highlight-box {
+    position: relative;
+    z-index: 1;
     max-width: 980px;
     margin: 0 auto;
     padding: 0 24px;
