@@ -104,6 +104,23 @@ window.addEventListener("DOMContentLoaded", () => {
         addFallbackHandler(videoEl, sourceEl);
     });
 
+    if (paletteVideoLayers.length > 0 && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const videoEl = entry.target;
+                if (entry.isIntersecting) {
+                    videoEl.play().catch(() => {
+                        // Ignore blocked autoplay attempts.
+                    });
+                } else {
+                    videoEl.pause();
+                }
+            });
+        }, { threshold: 0.05 });
+
+        paletteVideoLayers.forEach((videoEl) => observer.observe(videoEl));
+    }
+
     const hexToRgb = (hex) => {
         const cleanHex = hex.replace("#", "");
         const bigint = parseInt(cleanHex, 16);
