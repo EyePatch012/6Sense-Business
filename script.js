@@ -68,17 +68,18 @@ window.addEventListener("DOMContentLoaded", () => {
         heroVideoSource.src = getPaletteVideoSrc(paletteName);
         heroVideo.load();
         heroVideo.play().catch(() => {
-            // Autoplay can be blocked by browser policies; muted+playsinline should handle most cases.
+            // Ignore autoplay errors
         });
     };
 
     if (heroVideo && heroVideoSource) {
         heroVideo.addEventListener("error", () => {
             if (heroVideoSource.getAttribute("src") === heroVideoFallbackSrc) return;
+
             heroVideoSource.src = heroVideoFallbackSrc;
             heroVideo.load();
             heroVideo.play().catch(() => {
-                // Ignore play errors for fallback too.
+                // Ignore autoplay errors on fallback too
             });
         });
     }
@@ -86,6 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const hexToRgb = (hex) => {
         const cleanHex = hex.replace("#", "");
         const bigint = parseInt(cleanHex, 16);
+
         return {
             r: (bigint >> 16) & 255,
             g: (bigint >> 8) & 255,
@@ -96,14 +98,20 @@ window.addEventListener("DOMContentLoaded", () => {
     const relativeLuminance = ({ r, g, b }) => {
         const channel = (value) => {
             const normalized = value / 255;
-            return normalized <= 0.03928 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+            return normalized <= 0.03928
+                ? normalized / 12.92
+                : ((normalized + 0.055) / 1.055) ** 2.4;
         };
 
         return 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
     };
 
     const applyReadableText = (palette) => {
-        const avgLuminance = (relativeLuminance(hexToRgb(palette.l1)) + relativeLuminance(hexToRgb(palette.l2)) + relativeLuminance(hexToRgb(palette.l3))) / 3;
+        const avgLuminance =
+            (relativeLuminance(hexToRgb(palette.l1)) +
+                relativeLuminance(hexToRgb(palette.l2)) +
+                relativeLuminance(hexToRgb(palette.l3))) / 3;
+
         const isLightPalette = avgLuminance > 0.44;
 
         root.style.setProperty("--hero-text", isLightPalette ? "#112017" : "#f2f6ef");
@@ -122,29 +130,33 @@ window.addEventListener("DOMContentLoaded", () => {
         root.style.setProperty("--hero-l1", palette.l1);
         root.style.setProperty("--hero-l2", palette.l2);
         root.style.setProperty("--hero-l3", palette.l3);
+
         applyReadableText(palette);
         applyHeroVideo(name);
 
         try {
             localStorage.setItem("6sense-palette", name);
         } catch (_error) {
-            // Ignore storage errors (private browsing, security settings)
+            // Ignore storage errors
         }
     };
 
+    // Apply palette on every page, not just pages with the select
+    const defaultPalette = "anchorGreyMistyGreenMistyBlue";
+    let savedPalette = "";
+
+    try {
+        savedPalette = localStorage.getItem("6sense-palette") || "";
+    } catch (_error) {
+        savedPalette = "";
+    }
+
+    const paletteToApply = palettes[savedPalette] ? savedPalette : defaultPalette;
+    applyPalette(paletteToApply);
+
+    // Only wire up the dropdown if it exists
     if (paletteSelect) {
-        const defaultPalette = paletteSelect.value || "mintDarkMossOlive";
-        let savedPalette = "";
-
-        try {
-            savedPalette = localStorage.getItem("6sense-palette") || "";
-        } catch (_error) {
-            savedPalette = "";
-        }
-
-        const paletteToApply = palettes[savedPalette] ? savedPalette : defaultPalette;
         paletteSelect.value = paletteToApply;
-        applyPalette(paletteToApply);
 
         paletteSelect.addEventListener("change", (event) => {
             applyPalette(event.target.value);
