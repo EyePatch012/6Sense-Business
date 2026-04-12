@@ -110,7 +110,13 @@ body {
 .about-main2-bg {
     flex: 1;
     background-color: #77998e;
+    position: relative;
+    overflow: hidden;
     transform: translateX(50px);
+}
+
+.about-main2-bg .palette-video {
+    filter: saturate(0.9) brightness(0.92);
 }
 
 /* Trigger animations on scroll */
