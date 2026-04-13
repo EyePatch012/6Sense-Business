@@ -36,7 +36,7 @@ body {
     z-index: 2;
     max-width: none;
     margin: 0;
-    padding: 80px 0 140px;
+    padding: 0 0 140px;
 }
 
 .method-hero,
@@ -47,17 +47,33 @@ body {
     justify-content: flex-start;
 }
 
+.method-hero {
+    min-height: calc(100vh - 73px);
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 7vh, 5rem) 1.2rem 2.2rem;
+}
+
 .method-detail {
     padding-top: 40px;
+    padding-inline: 1.2rem;
+    min-height: auto;
+    justify-content: center;
 }
 
 .method-card {
     background: rgba(221, 224, 209, 0.9);
-    border-radius: 0;
+    border-radius: 18px;
     padding: 40px 48px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(6px);
-    width: 100%;
+    width: min(1120px, 96vw);
+}
+
+.method-hero .method-card {
+    width: min(980px, 92vw);
+    background: rgba(236, 241, 231, 0.76);
+    border: 1px solid rgba(238, 244, 234, 0.44);
 }
 
 .method-eyebrow {
@@ -90,6 +106,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .method-hero {
+        min-height: calc(100vh - 124px);
+    }
+
     .method-card {
         padding: 32px;
     }
