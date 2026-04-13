@@ -56,6 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const root = document.documentElement;
     const paletteSelect = document.getElementById("paletteSelect");
+    const pagePaletteStorageKey = `6sense-palette:${window.location.pathname}`;
     const heroVideo = document.getElementById("hero-palette-video");
     const heroVideoSource = heroVideo?.querySelector("source");
     const heroVideoFallbackSrc = "Videos/Intro4.mp4";
@@ -180,7 +181,7 @@ window.addEventListener("DOMContentLoaded", () => {
         applyPaletteVideos(name);
 
         try {
-            localStorage.setItem("6sense-palette", name);
+            localStorage.setItem(pagePaletteStorageKey, name);
         } catch (_error) {
             // Ignore storage errors (private browsing, security settings)
         }
@@ -190,7 +191,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let savedPalette = "";
 
     try {
-        savedPalette = localStorage.getItem("6sense-palette") || "";
+        savedPalette = localStorage.getItem(pagePaletteStorageKey) || "";
     } catch (_error) {
         savedPalette = "";
     }
