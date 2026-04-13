@@ -34,9 +34,32 @@
             <button id="searchBtn">Search</button>
         </div>
     </header>
+    <div class="palette-switcher">
+        <label for="paletteSelect">Palette</label>
+        <select id="paletteSelect" aria-label="Color palette">
+            <option value="anchorGreyMistyGreenMistyBlue">F&amp;B Anchor Grey / Misty Green / Misty Blue</option>
+            <option value="springDustYellowstoneYellowstoneDark">F&amp;B Spring Dust / Yellowstone / Yellowstone Dark</option>
+            <option value="stickyBlueLightStickyBlueDarkStickyBlue">F&amp;B Sticky Blue / Light Sticky Blue / Dark Sticky Blue</option>
+            <option value="greyUltraLightGreyBlue">F&amp;B Grey / Ultra Light Grey / Blue</option>
+            <option value="greenUltraLightGreyBlue">F&amp;B Green / Ultra Light Grey / Blue</option>
+            <option value="greenLightGreenWhite">F&amp;B Green / Light Green / White</option>
+            <option value="lightBlueLightBlueGreyDarkBlueGrey">F&amp;B Light Blue / Blue Grey / Dark Blue Grey</option>
+            <option value="greenBlueGreenDarkBlue">F&amp;B Green / Blue Green / Dark Blue</option>
+            <option value="lightGreyDarkGreyBlueNavyBlue">F&amp;B Light Grey / Dark Grey Blue / Navy Blue</option>
+            <option value="goldSandCream">F&amp;B Gold / Sand / Cream</option>
+            <option value="goldGoldCream">F&amp;B Gold / Gold / Cream</option>
+            <option value="greyBlueGreyWhite">Grey Blue / Grey / White</option>
+            <option value="forestGreenLightForestGreenWhite">Forest Green / Light Forest Green / White</option>
+        </select>
+    </div>
+
 
     <section class="hero section-hero">
-        <div class="hero-bg"></div>
+        <div class="hero-bg" data-palette-video-target>
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Videos/Intro4.mp4" type="video/mp4" />
+            </video>
+        </div>
         <div class="hero-darken"></div>
         <div class="hero-content">
             <h1>Team Reinvention</h1>

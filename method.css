@@ -6,6 +6,7 @@ body {
     position: fixed;
     inset: 0;
     background: #84967b;
+    overflow: hidden;
     z-index: 0;
 }
 

@@ -56,32 +56,87 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const root = document.documentElement;
     const paletteSelect = document.getElementById("paletteSelect");
+    const pagePaletteStorageKey = `6sense-palette:${window.location.pathname}`;
     const heroVideo = document.getElementById("hero-palette-video");
     const heroVideoSource = heroVideo?.querySelector("source");
     const heroVideoFallbackSrc = "Videos/Intro4.mp4";
 
     const getPaletteVideoSrc = (paletteName) => `Videos/${paletteName}.mp4`;
 
-    const applyHeroVideo = (paletteName) => {
-        if (!heroVideo || !heroVideoSource) return;
+    const ensureVideoLayer = (container) => {
+        if (!container) return null;
+        const existingVideo = container.querySelector("video.palette-video");
+        if (existingVideo) return existingVideo;
 
-        heroVideoSource.src = getPaletteVideoSrc(paletteName);
-        heroVideo.load();
-        heroVideo.play().catch(() => {
+        const videoEl = document.createElement("video");
+        videoEl.className = "palette-video";
+        videoEl.autoplay = true;
+        videoEl.muted = true;
+        videoEl.loop = true;
+        videoEl.playsInline = true;
+        videoEl.preload = "metadata";
+        videoEl.setAttribute("aria-hidden", "true");
+
+        const sourceEl = document.createElement("source");
+        sourceEl.src = heroVideoFallbackSrc;
+        sourceEl.type = "video/mp4";
+        videoEl.appendChild(sourceEl);
+        container.prepend(videoEl);
+        return videoEl;
+    };
+
+    const ensurePaletteVideoLayers = () => {
+        const autoTargets = document.querySelectorAll(".hero-bg, .method-bg, .about-hero, .about-main2-bg, .about-highlight-full, .about-result-box");
+        autoTargets.forEach((target) => {
+            target.setAttribute("data-palette-video-target", "");
+            ensureVideoLayer(target);
+        });
+
+        return Array.from(document.querySelectorAll("[data-palette-video-target] video.palette-video"));
+    };
+
+    const paletteVideoLayers = ensurePaletteVideoLayers();
+
+    const applyVideoSource = (videoEl, sourceEl, paletteName) => {
+        sourceEl.src = getPaletteVideoSrc(paletteName);
+        videoEl.load();
+        videoEl.play().catch(() => {
             // Autoplay can be blocked by browser policies; muted+playsinline should handle most cases.
         });
     };
 
-    if (heroVideo && heroVideoSource) {
-        heroVideo.addEventListener("error", () => {
-            if (heroVideoSource.getAttribute("src") === heroVideoFallbackSrc) return;
-            heroVideoSource.src = heroVideoFallbackSrc;
-            heroVideo.load();
-            heroVideo.play().catch(() => {
+    const applyPaletteVideos = (paletteName) => {
+        if (heroVideo && heroVideoSource) {
+            applyVideoSource(heroVideo, heroVideoSource, paletteName);
+        }
+
+        paletteVideoLayers.forEach((videoEl) => {
+            const sourceEl = videoEl.querySelector("source");
+            if (!sourceEl) return;
+            applyVideoSource(videoEl, sourceEl, paletteName);
+        });
+    };
+
+    const addFallbackHandler = (videoEl, sourceEl) => {
+        videoEl.addEventListener("error", () => {
+            if (sourceEl.getAttribute("src") === heroVideoFallbackSrc) return;
+            sourceEl.src = heroVideoFallbackSrc;
+            videoEl.load();
+            videoEl.play().catch(() => {
                 // Ignore play errors for fallback too.
             });
         });
+    };
+
+    if (heroVideo && heroVideoSource) {
+        addFallbackHandler(heroVideo, heroVideoSource);
     }
+
+    paletteVideoLayers.forEach((videoEl) => {
+        const sourceEl = videoEl.querySelector("source");
+        if (!sourceEl) return;
+        addFallbackHandler(videoEl, sourceEl);
+    });
 
     const hexToRgb = (hex) => {
         const cleanHex = hex.replace("#", "");
@@ -123,32 +178,73 @@ window.addEventListener("DOMContentLoaded", () => {
         root.style.setProperty("--hero-l2", palette.l2);
         root.style.setProperty("--hero-l3", palette.l3);
         applyReadableText(palette);
-        applyHeroVideo(name);
+        applyPaletteVideos(name);
 
         try {
-            localStorage.setItem("6sense-palette", name);
+            localStorage.setItem(pagePaletteStorageKey, name);
         } catch (_error) {
             // Ignore storage errors (private browsing, security settings)
         }
     };
 
+    const defaultPalette = paletteSelect?.value || "anchorGreyMistyGreenMistyBlue";
+    let savedPalette = "";
+
+    try {
+        savedPalette = localStorage.getItem(pagePaletteStorageKey) || "";
+    } catch (_error) {
+        savedPalette = "";
+    }
+
+    const paletteToApply = palettes[savedPalette] ? savedPalette : defaultPalette;
+    applyPalette(paletteToApply);
+
     if (paletteSelect) {
-        const defaultPalette = paletteSelect.value || "mintDarkMossOlive";
-        let savedPalette = "";
-
-        try {
-            savedPalette = localStorage.getItem("6sense-palette") || "";
-        } catch (_error) {
-            savedPalette = "";
-        }
-
-        const paletteToApply = palettes[savedPalette] ? savedPalette : defaultPalette;
         paletteSelect.value = paletteToApply;
-        applyPalette(paletteToApply);
-
         paletteSelect.addEventListener("change", (event) => {
             applyPalette(event.target.value);
         });
+    }
+
+    // Premium navbar behavior: compact style on scroll + active-link route highlighting.
+    const topbar = document.querySelector(".topbar");
+    const updateTopbarState = () => {
+        if (!topbar) return;
+        topbar.classList.toggle("is-scrolled", window.scrollY > 12);
+    };
+    updateTopbarState();
+    window.addEventListener("scroll", updateTopbarState, { passive: true });
+
+    // Highlight current page in navigation for better wayfinding.
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".nav-link[href]").forEach((linkEl) => {
+        const href = (linkEl.getAttribute("href") || "").split("#")[0];
+        if (href === currentPage) {
+            linkEl.classList.add("active");
+        }
+    });
+
+    // Staggered reveal animation for text/content blocks on scroll.
+    const revealTargets = document.querySelectorAll(
+        ".section-content > *, .about-main p, .about-main1 p, .about-align-left p, .about-align-right p, .about-result-box p, .about-divider-label, .about-divider-label2"
+    );
+    revealTargets.forEach((node, index) => {
+        node.classList.add("reveal-on-scroll");
+        node.style.transitionDelay = `${Math.min(index * 40, 260)}ms`;
+    });
+
+    if ("IntersectionObserver" in window && revealTargets.length > 0) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.16, rootMargin: "0px 0px -7% 0px" });
+
+        revealTargets.forEach((node) => revealObserver.observe(node));
+    } else {
+        revealTargets.forEach((node) => node.classList.add("is-visible"));
     }
 
     const intro = document.getElementById("intro-screen");

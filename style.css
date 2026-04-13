@@ -23,7 +23,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {
@@ -93,8 +93,10 @@ ul {
     animation: fadeIn 1.3s ease forwards 0.5s;
 }
 
+/* Premium sticky header with subtle glass effect and scroll state transitions. */
 .topbar {
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 120;
     display: flex;
     align-items: center;
@@ -105,6 +107,17 @@ ul {
     background: var(--surface-elevated);
     border-bottom: 1px solid rgba(124, 137, 119, 0.25);
     backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(14, 22, 18, 0.04);
+    transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, padding 0.35s ease;
+}
+
+/* Applied via JS when the user scrolls, to give a refined compact nav feel. */
+.topbar.is-scrolled {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgba(247, 249, 245, 0.95);
+    border-bottom-color: rgba(124, 137, 119, 0.35);
+    box-shadow: 0 12px 28px rgba(14, 22, 18, 0.12);
 }
 
 .logo {
@@ -137,6 +150,7 @@ ul {
     text-decoration: none;
     font-size: 0.98rem;
     line-height: 1.3;
+    transition: color 0.2s ease;
 }
 
 .nav-link::after {
@@ -155,6 +169,16 @@ ul {
 
 .nav-link:hover::after,
 .nav-link:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Active page marker for professional navigation orientation. */
+.nav-link.active {
+    color: color-mix(in srgb, var(--ink-main) 78%, #1f7d58 22%);
+    font-weight: 600;
+}
+
+.nav-link.active::after {
     transform: scaleX(1);
 }
 
@@ -233,6 +257,14 @@ ul {
     color: #f8faf6;
     background: #2b4132;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.2s ease;
+}
+
+.search-container button:hover,
+.search-container button:focus-visible {
+    background: #34513e;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 14px rgba(28, 45, 34, 0.2);
 }
 
 .palette-switcher {
@@ -276,6 +308,39 @@ ul {
     padding: clamp(3rem, 9vh, 7rem) 1.5rem;
     text-align: center;
     background: #0f1712;
+}
+
+.section-hero {
+    position: relative;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: #0f1712;
+}
+
+.hero-darken {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+        radial-gradient(circle at 50% 42%, transparent 0%, rgba(0, 0, 0, 0.08) 56%, rgba(0, 0, 0, 0.22) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.26) 100%);
+    pointer-events: none;
+}
+
+.palette-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translateZ(0);
+    pointer-events: none;
 }
 
 .hero-video,
@@ -334,13 +399,18 @@ ul {
     height: 70vh;
 }
 
+/* Elevated content treatment used across all inner pages for a premium card-like reading flow. */
 .section-content {
     max-width: 980px;
     margin: 60px auto;
-    padding: 0 24px 80px;
+    padding: 30px 28px 80px;
     font-size: 18px;
     line-height: 1.85;
     color: #2b2b2b;
+    background: linear-gradient(180deg, rgba(252, 253, 251, 0.88), rgba(247, 249, 245, 0.92));
+    border: 1px solid rgba(133, 150, 138, 0.18);
+    border-radius: 18px;
+    box-shadow: 0 18px 36px rgba(20, 28, 24, 0.08);
 }
 
 .section-content h2 {
@@ -351,6 +421,19 @@ ul {
 
 .section-content p {
     margin: 0 0 22px;
+}
+
+/* Reveal animation hooks are toggled in JS to keep motion intentional and polished. */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section-content ul {
@@ -445,6 +528,11 @@ ul {
     .palette-switcher select {
         min-width: 0;
         width: 100%;
+    }
+
+    .section-content {
+        padding: 24px 20px 64px;
+        border-radius: 14px;
     }
 }
 
