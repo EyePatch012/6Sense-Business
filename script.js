@@ -224,9 +224,52 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Dropdown reliability fix: allow click-to-open mode and close on outside click.
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach((dropdown) => {
+        const trigger = dropdown.querySelector(".nav-link");
+        if (!trigger) return;
+
+        if (trigger.tagName !== "A") {
+            trigger.setAttribute("tabindex", "0");
+            trigger.setAttribute("role", "button");
+            trigger.setAttribute("aria-expanded", "false");
+        }
+
+        trigger.addEventListener("click", (event) => {
+            // Only prevent default when trigger is a non-link label.
+            if (trigger.tagName !== "A") {
+                event.preventDefault();
+            }
+            const isOpen = dropdown.classList.toggle("is-open");
+            if (trigger.tagName !== "A") {
+                trigger.setAttribute("aria-expanded", String(isOpen));
+            }
+        });
+
+        trigger.addEventListener("keydown", (event) => {
+            if (trigger.tagName === "A") return;
+            if (event.key !== "Enter" && event.key !== " ") return;
+            event.preventDefault();
+            const isOpen = dropdown.classList.toggle("is-open");
+            trigger.setAttribute("aria-expanded", String(isOpen));
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        dropdowns.forEach((dropdown) => {
+            if (dropdown.contains(event.target)) return;
+            dropdown.classList.remove("is-open");
+            const trigger = dropdown.querySelector(".nav-link");
+            if (trigger && trigger.tagName !== "A") {
+                trigger.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
+
     // Staggered reveal animation for text/content blocks on scroll.
     const revealTargets = document.querySelectorAll(
-        ".section-content > *, .about-main p, .about-main1 p, .about-align-left p, .about-align-right p, .about-result-box p, .about-divider-label, .about-divider-label2"
+        ".section-content > *, .detail-band > *, .feature-card, .about-main p, .about-main1 p, .about-align-left p, .about-align-right p, .about-result-box p, .about-divider-label, .about-divider-label2"
     );
     revealTargets.forEach((node, index) => {
         node.classList.add("reveal-on-scroll");
