@@ -269,7 +269,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Staggered reveal animation for text/content blocks on scroll.
     const revealTargets = document.querySelectorAll(
-        ".section-content > *, .detail-band > *, .feature-card, .about-main p, .about-main1 p, .about-align-left p, .about-align-right p, .about-result-box p, .about-divider-label, .about-divider-label2"
+        ".section-content > *, .detail-band > *, .impact-strip > *, .feature-card, .about-main p, .about-main1 p, .about-align-left p, .about-align-right p, .about-result-box p, .about-divider-label, .about-divider-label2"
     );
     revealTargets.forEach((node, index) => {
         node.classList.add("reveal-on-scroll");
