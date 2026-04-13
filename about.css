@@ -370,6 +370,8 @@ body {
     margin-bottom: 40px;
 }
 .about-result-box {
+    position: relative;
+    overflow: hidden;
     max-width: 980px;
     margin: 30px auto;
     padding: 30px 40px;
@@ -380,6 +382,16 @@ body {
     font-family: "Open Sans", serif;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     text-align: center; /* <-- Center all text */
+}
+
+.about-result-box .palette-video {
+    z-index: 0;
+    filter: saturate(0.9) brightness(0.9);
+}
+
+.about-result-box p {
+    position: relative;
+    z-index: 1;
 }
 .about-divider-label2 {
     text-align: center;
