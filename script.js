@@ -62,26 +62,80 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const getPaletteVideoSrc = (paletteName) => `Videos/${paletteName}.mp4`;
 
-    const applyHeroVideo = (paletteName) => {
-        if (!heroVideo || !heroVideoSource) return;
+    const ensureVideoLayer = (container) => {
+        if (!container) return null;
+        const existingVideo = container.querySelector("video.palette-video");
+        if (existingVideo) return existingVideo;
 
-        heroVideoSource.src = getPaletteVideoSrc(paletteName);
-        heroVideo.load();
-        heroVideo.play().catch(() => {
+        const videoEl = document.createElement("video");
+        videoEl.className = "palette-video";
+        videoEl.autoplay = true;
+        videoEl.muted = true;
+        videoEl.loop = true;
+        videoEl.playsInline = true;
+        videoEl.preload = "metadata";
+        videoEl.setAttribute("aria-hidden", "true");
+
+        const sourceEl = document.createElement("source");
+        sourceEl.src = heroVideoFallbackSrc;
+        sourceEl.type = "video/mp4";
+        videoEl.appendChild(sourceEl);
+        container.prepend(videoEl);
+        return videoEl;
+    };
+
+    const ensurePaletteVideoLayers = () => {
+        const autoTargets = document.querySelectorAll(".hero-bg, .method-bg, .about-hero, .about-main2-bg, .about-highlight-full, .about-result-box");
+        autoTargets.forEach((target) => {
+            target.setAttribute("data-palette-video-target", "");
+            ensureVideoLayer(target);
+        });
+
+        return Array.from(document.querySelectorAll("[data-palette-video-target] video.palette-video"));
+    };
+
+    const paletteVideoLayers = ensurePaletteVideoLayers();
+
+    const applyVideoSource = (videoEl, sourceEl, paletteName) => {
+        sourceEl.src = getPaletteVideoSrc(paletteName);
+        videoEl.load();
+        videoEl.play().catch(() => {
             // Autoplay can be blocked by browser policies; muted+playsinline should handle most cases.
         });
     };
 
-    if (heroVideo && heroVideoSource) {
-        heroVideo.addEventListener("error", () => {
-            if (heroVideoSource.getAttribute("src") === heroVideoFallbackSrc) return;
-            heroVideoSource.src = heroVideoFallbackSrc;
-            heroVideo.load();
-            heroVideo.play().catch(() => {
+    const applyPaletteVideos = (paletteName) => {
+        if (heroVideo && heroVideoSource) {
+            applyVideoSource(heroVideo, heroVideoSource, paletteName);
+        }
+
+        paletteVideoLayers.forEach((videoEl) => {
+            const sourceEl = videoEl.querySelector("source");
+            if (!sourceEl) return;
+            applyVideoSource(videoEl, sourceEl, paletteName);
+        });
+    };
+
+    const addFallbackHandler = (videoEl, sourceEl) => {
+        videoEl.addEventListener("error", () => {
+            if (sourceEl.getAttribute("src") === heroVideoFallbackSrc) return;
+            sourceEl.src = heroVideoFallbackSrc;
+            videoEl.load();
+            videoEl.play().catch(() => {
                 // Ignore play errors for fallback too.
             });
         });
+    };
+
+    if (heroVideo && heroVideoSource) {
+        addFallbackHandler(heroVideo, heroVideoSource);
     }
+
+    paletteVideoLayers.forEach((videoEl) => {
+        const sourceEl = videoEl.querySelector("source");
+        if (!sourceEl) return;
+        addFallbackHandler(videoEl, sourceEl);
+    });
 
     const hexToRgb = (hex) => {
         const cleanHex = hex.replace("#", "");
@@ -123,7 +177,7 @@ window.addEventListener("DOMContentLoaded", () => {
         root.style.setProperty("--hero-l2", palette.l2);
         root.style.setProperty("--hero-l3", palette.l3);
         applyReadableText(palette);
-        applyHeroVideo(name);
+        applyPaletteVideos(name);
 
         try {
             localStorage.setItem("6sense-palette", name);
@@ -132,20 +186,20 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    const defaultPalette = paletteSelect?.value || "anchorGreyMistyGreenMistyBlue";
+    let savedPalette = "";
+
+    try {
+        savedPalette = localStorage.getItem("6sense-palette") || "";
+    } catch (_error) {
+        savedPalette = "";
+    }
+
+    const paletteToApply = palettes[savedPalette] ? savedPalette : defaultPalette;
+    applyPalette(paletteToApply);
+
     if (paletteSelect) {
-        const defaultPalette = paletteSelect.value || "mintDarkMossOlive";
-        let savedPalette = "";
-
-        try {
-            savedPalette = localStorage.getItem("6sense-palette") || "";
-        } catch (_error) {
-            savedPalette = "";
-        }
-
-        const paletteToApply = palettes[savedPalette] ? savedPalette : defaultPalette;
         paletteSelect.value = paletteToApply;
-        applyPalette(paletteToApply);
-
         paletteSelect.addEventListener("change", (event) => {
             applyPalette(event.target.value);
         });
