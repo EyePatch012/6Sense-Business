@@ -130,6 +130,10 @@ ul {
     position: relative;
 }
 
+.dropdown {
+    padding-bottom: 10px;
+}
+
 .nav-link {
     position: relative;
     display: inline-block;
@@ -165,7 +169,7 @@ ul {
 .submenu {
     position: absolute;
     left: 0;
-    top: calc(100% + 8px);
+    top: 100%;
     min-width: 220px;
     padding: 8px;
     background: color-mix(in srgb, var(--hero-l2) 74%, #152019 26%);
@@ -195,6 +199,15 @@ ul {
 .submenu a:hover,
 .submenu a:focus-visible {
     background: rgba(255, 255, 255, 0.12);
+}
+
+.submenu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -12px;
+    height: 12px;
 }
 
 .dropdown:hover .submenu,
@@ -516,16 +529,20 @@ ul {
 }
 
 .site-footer-slogan {
-    max-width: 980px;
-    margin: 20px auto 56px;
-    padding: 0 24px;
+    width: 100%;
+    margin: 30px 0 0;
+    padding: 28px 24px;
     font-size: 1.05rem;
-    line-height: 1.6;
-    color: #2b2b2b;
+    line-height: 1.65;
+    color: #f2f6ef;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--hero-l2) 82%, #111 18%), color-mix(in srgb, var(--hero-l1) 74%, #111 26%));
+    border-top: 1px solid rgba(255,255,255,0.14);
 }
 
 .site-footer-slogan p {
     margin: 0;
+    max-width: 980px;
+    margin-inline: auto;
 }
 
 .offer-axis-wrap {
@@ -533,6 +550,7 @@ ul {
 }
 
 .offer-axis-lines {
+    display: none;
     position: absolute;
     inset: -30px -20px auto -20px;
     height: 86px;
@@ -561,7 +579,7 @@ ul {
 }
 
 .offer-window .palette-video {
-    opacity: 0.58;
+    opacity: 0.52;
 }
 
 .offer-window-content {
@@ -571,12 +589,14 @@ ul {
 
 .offer-window-panel {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 42%;
     z-index: 2;
     pointer-events: none;
-    background: linear-gradient(90deg, rgba(24,35,28,0.7), rgba(24,35,28,0.12));
-    transform-origin: left center;
-    transform: scaleX(0.55);
+    background: linear-gradient(90deg, rgba(18,28,22,0.62), rgba(18,28,22,0.1));
+    transform: translateX(0%);
 }
 
 .offer-grid { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 28px; }

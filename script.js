@@ -303,103 +303,17 @@ window.addEventListener("DOMContentLoaded", () => {
             section.style.willChange = "opacity, transform";
         });
 
-        const sectionObserver = new IntersectionObserver((entries) => {
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
-                entry.target.style.opacity = entry.isIntersecting ? "1" : "0";
-                entry.target.style.transform = entry.isIntersecting ? "translateY(0)" : "translateY(54px)";
-                entry.target.classList.toggle("section-active", entry.intersectionRatio >= 0.6);
+                if (!entry.isIntersecting) return;
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                entry.target.classList.add("section-active");
+                observer.unobserve(entry.target);
             });
-        }, { threshold: [0, 0.3, 0.6, 1] });
+        }, { threshold: 0.24 });
 
         sections.forEach((section) => sectionObserver.observe(section));
-
-        let currentScroll = window.scrollY;
-        let targetScroll = window.scrollY;
-        let isAnimating = false;
-
-        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-        const getMaxScroll = () => Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
-        const isInteractiveTarget = (target) => target instanceof HTMLElement && (
-            target.closest("input, textarea, select, button, [contenteditable='true'], .palette-switcher, .submenu")
-        );
-
-        const animateScroll = () => {
-            currentScroll += (targetScroll - currentScroll) * 0.12;
-
-            if (Math.abs(targetScroll - currentScroll) < 0.5) {
-                currentScroll = targetScroll;
-            }
-
-            window.scrollTo(0, currentScroll);
-
-            if (currentScroll !== targetScroll) {
-                requestAnimationFrame(animateScroll);
-            } else {
-                isAnimating = false;
-            }
-        };
-
-        const requestAnimation = () => {
-            if (!isAnimating) {
-                isAnimating = true;
-                requestAnimationFrame(animateScroll);
-            }
-        };
-
-        window.addEventListener("wheel", (event) => {
-            if (isInteractiveTarget(event.target) || event.ctrlKey) return;
-
-            event.preventDefault();
-            targetScroll = clamp(targetScroll + event.deltaY, 0, getMaxScroll());
-            requestAnimation();
-        }, { passive: false });
-
-        window.addEventListener("keydown", (event) => {
-            if (isInteractiveTarget(event.target)) return;
-
-            const maxScroll = getMaxScroll();
-            const keyDelta = {
-                ArrowDown: 120,
-                ArrowUp: -120,
-                PageDown: window.innerHeight * 0.9,
-                PageUp: -window.innerHeight * 0.9
-            };
-
-            if (event.key === "Home") {
-                event.preventDefault();
-                targetScroll = 0;
-                requestAnimation();
-                return;
-            }
-
-            if (event.key === "End") {
-                event.preventDefault();
-                targetScroll = maxScroll;
-                requestAnimation();
-                return;
-            }
-
-            if (event.code === "Space") {
-                event.preventDefault();
-                const delta = window.innerHeight * (event.shiftKey ? -0.9 : 0.9);
-                targetScroll = clamp(targetScroll + delta, 0, maxScroll);
-                requestAnimation();
-                return;
-            }
-
-            if (!(event.key in keyDelta)) return;
-
-            event.preventDefault();
-            targetScroll = clamp(targetScroll + keyDelta[event.key], 0, maxScroll);
-            requestAnimation();
-        });
-
-        window.addEventListener("scroll", () => {
-            if (!isAnimating) {
-                currentScroll = window.scrollY;
-                targetScroll = window.scrollY;
-            }
-        }, { passive: true });
     }
 
     const slideBullets = Array.from(document.querySelectorAll(".about-slide-bullets li"));
@@ -448,13 +362,11 @@ window.addEventListener("DOMContentLoaded", () => {
             const rect = windowOpenSection.getBoundingClientRect();
             const total = rect.height + window.innerHeight;
             const progress = Math.min(Math.max((window.innerHeight - rect.top) / total, 0), 1);
-            const openProgress = Math.min(progress * 1.3, 1);
-            const slideProgress = Math.max((progress - 0.55) / 0.45, 0);
-            const baseScale = 0.55;
-            const scaleX = Math.max(baseScale * (1 - openProgress), 0.03);
-            const translateX = slideProgress * 105;
-            windowPanel.style.transform = `translateX(${translateX}%) scaleX(${scaleX})`;
-            windowPanel.style.opacity = `${1 - slideProgress * 0.95}`;
+            const openProgress = Math.min(progress * 1.2, 1);
+            const slideProgress = Math.max((progress - 0.6) / 0.4, 0);
+            const translateX = (openProgress * 55) + (slideProgress * 115);
+            windowPanel.style.transform = `translateX(${translateX}%)`;
+            windowPanel.style.opacity = `${1 - (openProgress * 0.5) - (slideProgress * 0.45)}`;
         };
 
         onWindowScroll();
