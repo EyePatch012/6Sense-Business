@@ -396,10 +396,10 @@ window.addEventListener("DOMContentLoaded", () => {
             const progress = Math.min(Math.max((window.innerHeight - rect.top) / total, 0), 1);
             const openProgress = Math.min(progress * 1.1, 1);
             const slideProgress = Math.max((progress - 0.62) / 0.38, 0);
-            const translateX = (openProgress * 38) + (slideProgress * 92);
-            windowPanel.style.transform = `translateX(${translateX}%)`;
-            const panelOpacity = Math.max(0.06, 0.42 - (openProgress * 0.18) - (slideProgress * 0.22));
-            windowPanel.style.opacity = `${panelOpacity}`;
+            const doorOpen = Math.min(openProgress + slideProgress * 0.35, 1);
+            const panelOpacity = Math.max(0.08, 0.34 - (openProgress * 0.18) - (slideProgress * 0.14));
+            windowPanel.style.setProperty("--door-open", `${doorOpen.toFixed(3)}`);
+            windowPanel.style.setProperty("--door-fade", `${panelOpacity.toFixed(3)}`);
         };
 
         onWindowScroll();

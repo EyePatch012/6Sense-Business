@@ -592,10 +592,44 @@ ul {
     inset: 0;
     z-index: 2;
     pointer-events: none;
-    opacity: 0.34;
-    background: radial-gradient(120% 100% at left center, rgba(8,14,11,0.45), rgba(8,14,11,0.12) 55%, transparent 78%);
-    transform: translateX(0%);
+    --door-open: 0;
+    --door-fade: 0.34;
 }
+
+.offer-window-panel::before,
+.offer-window-panel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50.4%;
+    opacity: var(--door-fade);
+    background: linear-gradient(90deg, rgba(8,14,11,0.42), rgba(8,14,11,0.16));
+    transition: opacity 0.2s linear;
+    will-change: transform, opacity;
+}
+
+.offer-window-panel::before {
+    left: 0;
+    transform: translateX(calc(var(--door-open) * -112%));
+}
+
+.offer-window-panel::after {
+    right: 0;
+    transform: translateX(calc(var(--door-open) * 112%)) scaleX(-1);
+}
+
+.offer-window-panel > .door-seam {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.12);
+    opacity: calc(var(--door-fade) * 0.6);
+}
+
 
 .offer-grid { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 28px; }
 .offer-quick-menu { position: sticky; top: 110px; height: fit-content; display: grid; gap: 10px; }
@@ -634,9 +668,14 @@ ul {
 .gradient-demo-mode .about-highlight-full,
 .gradient-demo-mode .about-result-box,
 .gradient-demo-mode .method-bg {
-    background: linear-gradient(120deg, var(--hero-l2), var(--hero-l1), var(--hero-l3), var(--hero-l2));
-    background-size: 240% 240%;
-    animation: paletteGradientFlow 16s ease-in-out infinite;
+    background-image:
+        radial-gradient(circle at 18% 26%, color-mix(in srgb, var(--hero-l1) 80%, #ffffff 20%) 0%, transparent 48%),
+        radial-gradient(circle at 82% 22%, color-mix(in srgb, var(--hero-l3) 82%, #0b1116 18%) 0%, transparent 52%),
+        radial-gradient(circle at 52% 82%, color-mix(in srgb, var(--hero-l2) 84%, #0f1619 16%) 0%, transparent 56%),
+        linear-gradient(130deg, color-mix(in srgb, var(--hero-l2) 88%, #050709 12%), color-mix(in srgb, var(--hero-l1) 72%, var(--hero-l3) 28%) 48%, color-mix(in srgb, var(--hero-l3) 78%, #0a1016 22%));
+    background-size: 180% 180%, 190% 190%, 170% 170%, 100% 100%;
+    background-position: 12% 26%, 86% 18%, 52% 80%, 50% 50%;
+    animation: paletteGradientFlow 22s cubic-bezier(0.42, 0.0, 0.2, 1) infinite;
 }
 
 .gradient-demo-mode video.palette-video,
@@ -645,11 +684,20 @@ ul {
 }
 
 .gradient-demo-mode .offer-window-panel {
-    opacity: 0.22;
+    --door-fade: 0.22;
 }
 
 @keyframes paletteGradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 12% 26%, 86% 18%, 52% 80%, 50% 50%;
+    }
+    33% {
+        background-position: 24% 44%, 72% 30%, 44% 68%, 50% 50%;
+    }
+    66% {
+        background-position: 18% 20%, 80% 36%, 58% 72%, 50% 50%;
+    }
+    100% {
+        background-position: 12% 26%, 86% 18%, 52% 80%, 50% 50%;
+    }
 }
