@@ -3,37 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leadership Reinvention – 6Sense Business</title>
+    <title>What We Offer – 6Sense Business</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-    <!-- TOP NAV BAR -->
     <header class="topbar">
         <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
-
         <nav class="navbar">
             <ul class="nav-list">
-                <li><a href="about.html" class="nav-link">About Us</a></li>
-                <li><a href="method.html" class="nav-link">The 6Sense Method</a></li>
-                <li class="dropdown">
-                    <span class="nav-link">Offerings</span>
-                    <ul class="submenu">
-                        <li><a href="leadership.html">Leadership Reinvention</a></li>
-                        <li><a href="team.html">Team Reinvention</a></li>
-                        <li><a href="enterprise.html">Enterprise Reinvention</a></li>
-                    </ul>
-                </li>
-                <li><a href="insights.html" class="nav-link">Insights & Keynote Speakers</a></li>
+                <li><a href="about.html" class="nav-link">Who We Are</a></li>
+                <li><a href="leadership.html" class="nav-link">What We Offer</a></li>
+                <li><a href="leadership.html#offering-leadership" class="nav-link">Leadership Reinvention</a></li>
+                <li><a href="leadership.html#offering-team" class="nav-link">Team Reinvention</a></li>
+                <li><a href="leadership.html#offering-enterprise" class="nav-link">Enterprise Reinvention</a></li>
+                <li><a href="method.html" class="nav-link">Our Approach: The 6th Sense Method</a></li>
+                <li><a href="insights.html" class="nav-link">Insights &amp; Keynote Speakers</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
-
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search..." />
             <button id="searchBtn">Search</button>
         </div>
     </header>
+
     <div class="palette-switcher">
         <label for="paletteSelect">Palette</label>
         <select id="paletteSelect" aria-label="Color palette">
@@ -53,42 +46,117 @@
         </select>
     </div>
 
-
-    <section class="hero section-hero">
+    <section class="hero section-hero offer-hero">
         <div class="hero-bg" data-palette-video-target>
             <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
                 <source src="Videos/Intro4.mp4" type="video/mp4" />
             </video>
         </div>
         <div class="hero-darken"></div>
-        <div class="hero-content">
-            <h1>Leadership Reinvention</h1>
+        <div class="hero-content offer-axis-wrap">
+            <div class="offer-axis-lines" aria-hidden="true"></div>
+            <h1>What we offer</h1>
+            <p>Systemic reinvention for sustainable performance</p>
+        </div>
+    </section>
+
+    <section class="offer-window" data-window-open>
+        <div class="offer-window-panel"></div>
+        <div class="section-content">
             <p>
-                Leaders thrive when they can sense the whole system and respond with clarity,
-                courage, and grounded presence.
+                Every organisation is founded with a core intention - a reason it exists, creates value, and attracts people. Over time, pressure and growth can pull organisations away from this intention. Strategy becomes reactive and decisions are driven by urgency rather than clarity.
+            </p>
+            <p>
+                We help organisations realign strategy, leadership, and execution with their highest potential - restoring momentum and performance.
             </p>
         </div>
     </section>
 
-    <section class="section-content">
-        <h2>Embodied Leadership</h2>
-        <p>
-            We help leaders reconnect with intuition, somatic wisdom, and the deeper narrative
-            shaping their decisions. This creates alignment between intention and action.
+    <section class="section-content offer-grid">
+        <aside class="offer-quick-menu">
+            <a href="#framework">Framework</a>
+            <a href="#offerings">Our offerings</a>
+            <a href="#offering-leadership">Leadership</a>
+            <a href="#offering-team">Team</a>
+            <a href="#offering-enterprise">Organization</a>
+        </aside>
+        <div>
+            <p>
+                When strategy is driven by scarcity, pressure, or outdated assumptions, organizations tend to align around lower-level patterns that limit performance. Real transformation occurs when strategy is realigned with the highest potential embedded in the organization’s original intent — and when leaders and teams are invited to operate from their highest level of awareness.
+            </p>
+            <p>
+                At this level, the organization accesses its full creative capacity. Once embedded this becomes the dominant operating energy, influencing behavior, decisions, and performance. This is where conscious growth becomes a strategic advantage.
+            </p>
+            <p>
+                Momentum is observable and measurable through indicators such as decision latency, escalation frequency, leadership stability, customer consistency, and organisational focus.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-main2-split">
+        <div class="about-main2-text"><p>Systemic reinvention connects strategy, leadership behavior, team coherence, and execution energy — so transformation becomes measurable in both momentum and outcomes.</p></div>
+        <div class="about-main2-bg" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Videos/Intro4.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </section>
+
+    <section id="framework" class="section-content">
+        <h2>THE 6SENZUS REINVENTION FRAMEWORK</h2>
+        <div class="framework-circles">
+            <article class="framework-item" data-twirl>
+                <h3>Re-Alignment</h3>
+                <p>Restoring clarity, intention, and direction. Leaders reconnect with what truly matters, enabling faster alignment and clearer priorities.</p>
+            </article>
+            <article class="framework-item" data-twirl>
+                <h3>Systemic Perception</h3>
+                <p>Seeing how the system actually operates beneath the surface. Root causes are revealed, ownership becomes clear, and recurring issues dissolve.</p>
+            </article>
+            <article class="framework-item" data-twirl>
+                <h3>Conscious Leadership</h3>
+                <p>Leadership stability under pressure. Decision quality improves, friction decreases, engagement and retention rise, and margins strengthen.</p>
+            </article>
+            <article class="framework-item" data-twirl>
+                <h3>Sustainable Momentum</h3>
+                <p>Turning insight into aligned movement. Execution becomes coherent and growth becomes sustainable.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="offerings" class="section-content">
+        <h2>Our offerings</h2>
+        <h2 id="offering-leadership">Leadership Reinvention</h2>
+        <p class="offer-glow">
+            We develop leaders who move beyond control-driven and purely cognitive leadership into presence, systemic awareness, and strategic intuition — creating clarity, not noise, and momentum, not friction.
         </p>
 
-        <h2>Systemic Insight</h2>
+        <h2 id="offering-team">Team Reinvention</h2>
         <p>
-            By surfacing hidden loyalties and unspoken tensions, leaders can release patterns that
-            drain energy and restore momentum across the organization.
+            We help teams surface hidden dynamics, rebuild trust, restore coherence, and unlock collective intelligence. This is not team-building - it is transformational alignment.
         </p>
+        <ul>
+            <li>Reveal what’s been hidden - and shift it safely</li>
+            <li>Move from silence to shared understanding</li>
+            <li>Rebuild trust, coherence, and direction</li>
+            <li>Access team intelligence and systemic flow</li>
+        </ul>
 
-        <h2>Renewed Direction</h2>
+        <h2 id="offering-enterprise">Organization Reinvention</h2>
+        <p class="offer-fold-reveal">
+            We support enterprise-wide reinvention by aligning strategy with highest intent, releasing patterns that no longer serve, and enabling organisations to evolve toward resilient, future-ready performance.
+        </p>
         <p>
-            With greater awareness, leaders set direction that feels honest and achievable—making
-            space for teams to move with trust and purpose.
+            Transformation is not just a strategy — it’s a shift in consciousness. And when a company leads from that place, momentum and profit are a natural outcome — not a forced one.
         </p>
     </section>
+
+    <footer class="site-footer-slogan">
+        <p>We don’t just develop leaders — we awaken them.</p>
+        <p>To themselves.</p>
+        <p>To their organizations.</p>
+        <p>To the wider ecosystems they influence.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

@@ -401,4 +401,63 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }, { passive: true });
     }
+
+    const slideBullets = Array.from(document.querySelectorAll(".about-slide-bullets li"));
+    if (slideBullets.length > 0 && "IntersectionObserver" in window) {
+        const bulletObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const bullets = Array.from(entry.target.querySelectorAll("li"));
+                bullets.forEach((bullet, index) => {
+                    setTimeout(() => bullet.classList.add("is-visible"), index * 220);
+                });
+                bulletObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.35 });
+
+        document.querySelectorAll(".about-slide-bullets").forEach((list) => bulletObserver.observe(list));
+    }
+
+    const twirlItems = Array.from(document.querySelectorAll("[data-twirl]"));
+    if (twirlItems.length > 0 && "IntersectionObserver" in window) {
+        const twirlObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const items = Array.from(entry.target.parentElement?.querySelectorAll("[data-twirl]") || [entry.target]);
+                items.forEach((item, index) => setTimeout(() => item.classList.add("in-view"), index * 180));
+                twirlObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.24 });
+        twirlItems.forEach((item) => twirlObserver.observe(item));
+    }
+
+    const foldRevealItems = document.querySelectorAll(".offer-fold-reveal");
+    if (foldRevealItems.length > 0 && "IntersectionObserver" in window) {
+        const foldObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                entry.target.classList.toggle("in-view", entry.isIntersecting);
+            });
+        }, { threshold: 0.35 });
+        foldRevealItems.forEach((item) => foldObserver.observe(item));
+    }
+
+    const windowOpenSection = document.querySelector("[data-window-open]");
+    const windowPanel = document.querySelector(".offer-window-panel");
+    if (windowOpenSection && windowPanel && !prefersReducedMotion) {
+        const onWindowScroll = () => {
+            const rect = windowOpenSection.getBoundingClientRect();
+            const total = rect.height + window.innerHeight;
+            const progress = Math.min(Math.max((window.innerHeight - rect.top) / total, 0), 1);
+            const openProgress = Math.min(progress * 1.3, 1);
+            const slideProgress = Math.max((progress - 0.55) / 0.45, 0);
+            const scaleX = 1 - openProgress;
+            const translateX = slideProgress * 110;
+            windowPanel.style.transform = `translateX(${translateX}%) scaleX(${Math.max(scaleX, 0.03)})`;
+            windowPanel.style.opacity = `${1 - slideProgress}`;
+        };
+
+        onWindowScroll();
+        window.addEventListener("scroll", onWindowScroll, { passive: true });
+        window.addEventListener("resize", onWindowScroll);
+    }
 });
