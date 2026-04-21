@@ -262,143 +262,33 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const extraImages = document.querySelectorAll(".about-extra-img, .about-extra-img-right");
-    if (extraImages.length > 0 && "IntersectionObserver" in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                entry.target.classList.toggle("is-visible", entry.isIntersecting);
-            });
-        }, { threshold: 0.4 });
-
-        extraImages.forEach((image) => observer.observe(image));
-    }
-
-    const slideElements = document.querySelectorAll(".about-main2-text, .about-main2-bg");
-    if (slideElements.length > 0 && "IntersectionObserver" in window) {
-        const slideObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                entry.target.classList.toggle("in-view", entry.isIntersecting);
-            });
-        }, { threshold: 0.3 });
-
-        slideElements.forEach((el) => slideObserver.observe(el));
-    }
-
-    const methodGrain = document.querySelector(".method-grain");
-    if (methodGrain) {
-        window.addEventListener("scroll", () => {
-            const grainShift = window.scrollY * 0.2;
-            methodGrain.style.setProperty("--grain-shift", `${grainShift.toFixed(2)}px`);
-        }, { passive: true });
-    }
-
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const sections = Array.from(document.querySelectorAll("section"));
 
-    if (!prefersReducedMotion && sections.length > 0) {
-        sections.forEach((section) => {
-            section.style.opacity = "0";
-            section.style.transform = "translateY(54px)";
-            section.style.transition = "opacity 0.75s ease, transform 0.75s ease";
-            section.style.willChange = "opacity, transform";
-        });
-
-        const sectionObserver = new IntersectionObserver((entries) => {
+    const revealNodes = Array.from(document.querySelectorAll(".reveal"));
+    if (!prefersReducedMotion && revealNodes.length > 0 && "IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                entry.target.style.opacity = entry.isIntersecting ? "1" : "0";
-                entry.target.style.transform = entry.isIntersecting ? "translateY(0)" : "translateY(54px)";
-                entry.target.classList.toggle("section-active", entry.intersectionRatio >= 0.6);
+                if (!entry.isIntersecting) return;
+                const delay = entry.target.dataset.revealDelay || "0";
+                entry.target.style.setProperty("--reveal-delay", `${delay}s`);
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
             });
-        }, { threshold: [0, 0.3, 0.6, 1] });
+        }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
 
-        sections.forEach((section) => sectionObserver.observe(section));
-
-        let currentScroll = window.scrollY;
-        let targetScroll = window.scrollY;
-        let isAnimating = false;
-
-        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-        const getMaxScroll = () => Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
-        const isInteractiveTarget = (target) => target instanceof HTMLElement && (
-            target.closest("input, textarea, select, button, [contenteditable='true'], .palette-switcher, .submenu")
-        );
-
-        const animateScroll = () => {
-            currentScroll += (targetScroll - currentScroll) * 0.12;
-
-            if (Math.abs(targetScroll - currentScroll) < 0.5) {
-                currentScroll = targetScroll;
-            }
-
-            window.scrollTo(0, currentScroll);
-
-            if (currentScroll !== targetScroll) {
-                requestAnimationFrame(animateScroll);
-            } else {
-                isAnimating = false;
-            }
-        };
-
-        const requestAnimation = () => {
-            if (!isAnimating) {
-                isAnimating = true;
-                requestAnimationFrame(animateScroll);
-            }
-        };
-
-        window.addEventListener("wheel", (event) => {
-            if (isInteractiveTarget(event.target) || event.ctrlKey) return;
-
-            event.preventDefault();
-            targetScroll = clamp(targetScroll + event.deltaY, 0, getMaxScroll());
-            requestAnimation();
-        }, { passive: false });
-
-        window.addEventListener("keydown", (event) => {
-            if (isInteractiveTarget(event.target)) return;
-
-            const maxScroll = getMaxScroll();
-            const keyDelta = {
-                ArrowDown: 120,
-                ArrowUp: -120,
-                PageDown: window.innerHeight * 0.9,
-                PageUp: -window.innerHeight * 0.9
-            };
-
-            if (event.key === "Home") {
-                event.preventDefault();
-                targetScroll = 0;
-                requestAnimation();
-                return;
-            }
-
-            if (event.key === "End") {
-                event.preventDefault();
-                targetScroll = maxScroll;
-                requestAnimation();
-                return;
-            }
-
-            if (event.code === "Space") {
-                event.preventDefault();
-                const delta = window.innerHeight * (event.shiftKey ? -0.9 : 0.9);
-                targetScroll = clamp(targetScroll + delta, 0, maxScroll);
-                requestAnimation();
-                return;
-            }
-
-            if (!(event.key in keyDelta)) return;
-
-            event.preventDefault();
-            targetScroll = clamp(targetScroll + keyDelta[event.key], 0, maxScroll);
-            requestAnimation();
-        });
-
-        window.addEventListener("scroll", () => {
-            if (!isAnimating) {
-                currentScroll = window.scrollY;
-                targetScroll = window.scrollY;
-            }
-        }, { passive: true });
+        revealNodes.forEach((node) => revealObserver.observe(node));
+    } else {
+        revealNodes.forEach((node) => node.classList.add("is-visible"));
     }
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+            const id = anchor.getAttribute("href");
+            if (!id || id === "#") return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            event.preventDefault();
+            target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+        });
+    });
 });
