@@ -335,13 +335,12 @@ window.addEventListener("DOMContentLoaded", () => {
             section.style.willChange = "opacity, transform";
         });
 
-        const sectionObserver = new IntersectionObserver((entries, observer) => {
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-                entry.target.classList.add("section-active");
-                observer.unobserve(entry.target);
+                const isVisible = entry.isIntersecting;
+                entry.target.style.opacity = isVisible ? "1" : "0";
+                entry.target.style.transform = isVisible ? "translateY(0)" : "translateY(54px)";
+                entry.target.classList.toggle("section-active", isVisible);
             });
         }, { threshold: 0.24 });
 
@@ -350,14 +349,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const slideBullets = Array.from(document.querySelectorAll(".about-slide-bullets li"));
     if (slideBullets.length > 0 && "IntersectionObserver" in window) {
+        const bulletTimers = new WeakMap();
         const bulletObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
                 const bullets = Array.from(entry.target.querySelectorAll("li"));
-                bullets.forEach((bullet, index) => {
-                    setTimeout(() => bullet.classList.add("is-visible"), index * 220);
-                });
-                bulletObserver.unobserve(entry.target);
+                if (!entry.isIntersecting) {
+                    const timers = bulletTimers.get(entry.target) || [];
+                    timers.forEach((timerId) => clearTimeout(timerId));
+                    bulletTimers.set(entry.target, []);
+                    bullets.forEach((bullet) => bullet.classList.remove("is-visible"));
+                    return;
+                }
+
+                const timers = bullets.map((bullet, index) => setTimeout(() => {
+                    bullet.classList.add("is-visible");
+                }, index * 220));
+                bulletTimers.set(entry.target, timers);
             });
         }, { threshold: 0.35 });
 
