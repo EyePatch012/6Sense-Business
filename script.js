@@ -368,7 +368,54 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         }, { threshold: 0.35 });
 
-        document.querySelectorAll(".about-slide-bullets").forEach((list) => bulletObserver.observe(list));
+        document.querySelectorAll(".about-slide-bullets:not(.wheel-bullets)").forEach((list) => bulletObserver.observe(list));
+    }
+
+
+    const wheelBulletLists = Array.from(document.querySelectorAll(".wheel-bullets"));
+    if (wheelBulletLists.length > 0) {
+        wheelBulletLists.forEach((list) => {
+            const items = Array.from(list.querySelectorAll("li"));
+            if (items.length === 0) return;
+
+            let activeIndex = 0;
+            let cycleTimer = null;
+
+            const showItem = (index) => {
+                items.forEach((item, idx) => item.classList.toggle("active", idx === index));
+            };
+
+            const startCycle = () => {
+                if (cycleTimer) return;
+                showItem(activeIndex);
+                cycleTimer = window.setInterval(() => {
+                    activeIndex = (activeIndex + 1) % items.length;
+                    showItem(activeIndex);
+                }, 1800);
+            };
+
+            const stopCycle = () => {
+                if (!cycleTimer) return;
+                clearInterval(cycleTimer);
+                cycleTimer = null;
+            };
+
+            if ("IntersectionObserver" in window) {
+                const wheelObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            startCycle();
+                        } else {
+                            stopCycle();
+                            items.forEach((item) => item.classList.remove("active"));
+                        }
+                    });
+                }, { threshold: 0.4 });
+                wheelObserver.observe(list);
+            } else {
+                startCycle();
+            }
+        });
     }
 
     const twirlItems = Array.from(document.querySelectorAll("[data-twirl]"));

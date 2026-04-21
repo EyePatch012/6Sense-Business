@@ -503,6 +503,7 @@ body {
     margin-left: calc(-50vw + 50%);
     display: grid;
     align-items: center;
+    min-height: 96px;
     padding: 18px 24px;
 }
 
@@ -521,30 +522,48 @@ body {
     width: 100vw;
     margin: 18px 0 10px;
     margin-left: calc(-50vw + 50%);
+    min-height: 96px;
     padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.diagnosis-bullet-bar .about-slide-bullets {
-    position: relative;
-    z-index: 1;
+.diagnosis-bullet-bar .wheel-bullets {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    padding-left: 22px;
+    width: 100%;
+    position: relative;
+    min-height: 34px;
 }
 
-.diagnosis-bullet-bar .about-slide-bullets li {
+.diagnosis-bullet-bar .wheel-bullets li {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max-content;
+    max-width: min(90vw, 860px);
+    text-align: center;
     color: #f0f4ef;
-    margin: 10px 0;
-    transform: translateX(-32px);
+    opacity: 0;
+    transform: translate(-50%, 18px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    margin: 0;
 }
 
+.diagnosis-bullet-bar .wheel-bullets li.active {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
 
 .who-body-split .about-main2-text p {
     max-width: 760px;
     margin: 0;
 }
 
-
 .intro-teaser-strip {
+
     background: #f2f4ef;
     padding: 18px 24px 26px;
 }
@@ -559,13 +578,3 @@ body {
     font-weight: 600;
 }
 
-
-.diagnosis-bullet-bar .about-slide-bullets li {
-    opacity: 0;
-    transform: translateX(-48px);
-}
-
-.diagnosis-bullet-bar .about-slide-bullets li.is-visible {
-    opacity: 1;
-    transform: translateX(0);
-}
