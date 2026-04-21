@@ -1,5 +1,103 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Contact – 6Sense Business</title><link rel="stylesheet" href="style.css" /></head><body>
-<header class="topbar"><div class="logo" onclick="location.href='index.html'">6Sense Business</div><nav class="navbar" aria-label="Primary navigation"><ul class="nav-list"><li><a href="who-we-are.html" class="nav-link">Who We Are</a></li><li class="dropdown"><a href="what-we-offer.html" class="nav-link">What We Offer</a><ul class="submenu"><li><a href="leadership.html">Leadership Reinvention</a></li><li><a href="team.html">Team Reinvention</a></li><li><a href="enterprise.html">Enterprise Reinvention</a></li></ul></li><li><a href="our-approach.html" class="nav-link">Our Approach</a></li><li><a href="insights.html" class="nav-link">Insights &amp; Keynote Speakers</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul></nav><div class="search-container"><input type="text" id="searchInput" placeholder="Search..." /><button id="searchBtn">Search</button></div></header>
-<div class="palette-switcher"><label for="paletteSelect">Palette</label><select id="paletteSelect" aria-label="Color palette"><option value="anchorGreyMistyGreenMistyBlue">F&amp;B Anchor Grey / Misty Green / Misty Blue</option><option value="springDustYellowstoneYellowstoneDark">F&amp;B Spring Dust / Yellowstone / Yellowstone Dark</option><option value="stickyBlueLightStickyBlueDarkStickyBlue">F&amp;B Sticky Blue / Light Sticky Blue / Dark Sticky Blue</option><option value="greyUltraLightGreyBlue">F&amp;B Grey / Ultra Light Grey / Blue</option><option value="greenUltraLightGreyBlue">F&amp;B Green / Ultra Light Grey / Blue</option><option value="greenLightGreenWhite">F&amp;B Green / Light Green / White</option><option value="lightBlueLightBlueGreyDarkBlueGrey">F&amp;B Light Blue / Blue Grey / Dark Blue Grey</option><option value="greenBlueGreenDarkBlue">F&amp;B Green / Blue Green / Dark Blue</option><option value="lightGreyDarkGreyBlueNavyBlue">F&amp;B Light Grey / Dark Grey Blue / Navy Blue</option><option value="goldSandCream">F&amp;B Gold / Sand / Cream</option><option value="goldGoldCream">F&amp;B Gold / Gold / Cream</option><option value="greyBlueGreyWhite">Grey Blue / Grey / White</option><option value="forestGreenLightForestGreenWhite">Forest Green / Light Forest Green / White</option></select></div>
-<main class="shell page-pad"><section class="section reveal" data-reveal="up"><h1>Contact</h1><p class="lead">If you are navigating strategic pressure, leadership misalignment, or transformation fatigue, we welcome a focused conversation.</p><a class="cta-link" href="mailto:hello@6sensebusiness.com">Request a consultation</a></section><section class="section reveal" data-reveal="up"><form class="contact-form"><label for="contactName">Your Name</label><input id="contactName" type="text" placeholder="Your name" /><label for="contactEmail">Your Email</label><input id="contactEmail" type="email" placeholder="you@company.com" /><label for="contactMessage">Message</label><textarea id="contactMessage" rows="5" placeholder="Tell us about your strategic challenge"></textarea><button type="submit">Send Message</button></form><p class="contact-email-note">Prefer your own mail client? Email us directly at <strong>hello@6sensebusiness.com</strong>.</p></section></main>
-<footer class="site-footer reveal" data-reveal="up"><p>We don’t just develop leaders — we awaken them.</p><p>To themselves.</p><p>To their organizations.</p><p>To the wider ecosystems they influence.</p></footer><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact – 6Sense Business</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- TOP NAV BAR -->
+    <header class="topbar">
+        <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
+        <nav class="navbar" aria-label="Primary navigation">
+            <ul class="nav-list">
+                <li><a href="who-we-are.html" class="nav-link">Who We Are</a></li>
+                <li class="dropdown">
+                    <span class="nav-link">What We Offer</span>
+                    <ul class="submenu">
+                        <li><a href="leadership.html">Leadership Reinvention</a></li>
+                        <li><a href="team.html">Team Reinvention</a></li>
+                        <li><a href="enterprise.html">Enterprise Reinvention</a></li>
+                    </ul>
+                </li>
+                <li><a href="our-approach.html" class="nav-link">Our Approach</a></li>
+                <li><a href="insights.html" class="nav-link">Insights &amp; Keynote Speakers</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button id="searchBtn">Search</button>
+        </div>
+    </header>
+    <div class="palette-switcher">
+        <label for="paletteSelect">Palette</label>
+        <select id="paletteSelect" aria-label="Color palette">
+            <option value="anchorGreyMistyGreenMistyBlue">F&amp;B Anchor Grey / Misty Green / Misty Blue</option>
+            <option value="springDustYellowstoneYellowstoneDark">F&amp;B Spring Dust / Yellowstone / Yellowstone Dark</option>
+            <option value="stickyBlueLightStickyBlueDarkStickyBlue">F&amp;B Sticky Blue / Light Sticky Blue / Dark Sticky Blue</option>
+            <option value="greyUltraLightGreyBlue">F&amp;B Grey / Ultra Light Grey / Blue</option>
+            <option value="greenUltraLightGreyBlue">F&amp;B Green / Ultra Light Grey / Blue</option>
+            <option value="greenLightGreenWhite">F&amp;B Green / Light Green / White</option>
+            <option value="lightBlueLightBlueGreyDarkBlueGrey">F&amp;B Light Blue / Blue Grey / Dark Blue Grey</option>
+            <option value="greenBlueGreenDarkBlue">F&amp;B Green / Blue Green / Dark Blue</option>
+            <option value="lightGreyDarkGreyBlueNavyBlue">F&amp;B Light Grey / Dark Grey Blue / Navy Blue</option>
+            <option value="goldSandCream">F&amp;B Gold / Sand / Cream</option>
+            <option value="goldGoldCream">F&amp;B Gold / Gold / Cream</option>
+            <option value="greyBlueGreyWhite">Grey Blue / Grey / White</option>
+            <option value="forestGreenLightForestGreenWhite">Forest Green / Light Forest Green / White</option>
+        </select>
+    </div>
+
+
+    <section class="hero section-hero">
+        <div class="hero-bg" data-palette-video-target>
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Videos/Intro4.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div class="hero-darken"></div>
+        <div class="hero-content">
+            <h1>Contact</h1>
+            <p>
+                We welcome conversations with leaders, teams, and organizations ready to reconnect
+                with momentum.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-content">
+        <h2>Start the Conversation</h2>
+        <p>
+            Whether you are exploring leadership reinvention, team alignment, or enterprise-wide
+            transformation, we can help you sense what is ready to shift.
+        </p>
+
+        <h2>Email Us</h2>
+        <p>
+            Share a short overview of your organization, the challenge you are navigating, and
+            the momentum you want to restore.
+        </p>
+        <form class="contact-form">
+            <label for="contactName">Your Name</label>
+            <input id="contactName" type="text" placeholder="Your name" />
+
+            <label for="contactEmail">Your Email</label>
+            <input id="contactEmail" type="email" placeholder="you@company.com" />
+
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" rows="5" placeholder="How can we help?"></textarea>
+
+            <button type="submit">Send Email</button>
+        </form>
+        <p class="contact-email-note">
+            Prefer your own mail client? Email us directly at <strong>hello@6sensebusiness.com</strong>.
+        </p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
