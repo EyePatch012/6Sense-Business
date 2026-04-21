@@ -242,6 +242,19 @@ window.addEventListener("DOMContentLoaded", () => {
             if (url.origin !== window.location.origin) return;
             if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
+            const isSamePath = url.pathname === window.location.pathname;
+            const hasHash = Boolean(url.hash);
+
+            if (isSamePath && hasHash) {
+                const target = document.querySelector(url.hash);
+                if (!target) return;
+                event.preventDefault();
+                const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+                history.replaceState(null, "", url.hash);
+                return;
+            }
+
             event.preventDefault();
             document.body.classList.add("page-fade-out");
             setTimeout(() => {
@@ -362,11 +375,11 @@ window.addEventListener("DOMContentLoaded", () => {
             const rect = windowOpenSection.getBoundingClientRect();
             const total = rect.height + window.innerHeight;
             const progress = Math.min(Math.max((window.innerHeight - rect.top) / total, 0), 1);
-            const openProgress = Math.min(progress * 1.2, 1);
-            const slideProgress = Math.max((progress - 0.6) / 0.4, 0);
-            const translateX = (openProgress * 55) + (slideProgress * 115);
+            const openProgress = Math.min(progress * 1.1, 1);
+            const slideProgress = Math.max((progress - 0.62) / 0.38, 0);
+            const translateX = (openProgress * 38) + (slideProgress * 92);
             windowPanel.style.transform = `translateX(${translateX}%)`;
-            windowPanel.style.opacity = `${1 - (openProgress * 0.5) - (slideProgress * 0.45)}`;
+            windowPanel.style.opacity = `${0.42 - (openProgress * 0.18) - (slideProgress * 0.22)}`;
         };
 
         onWindowScroll();

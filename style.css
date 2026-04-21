@@ -579,7 +579,7 @@ ul {
 }
 
 .offer-window .palette-video {
-    opacity: 0.52;
+    opacity: 0.38;
 }
 
 .offer-window-content {
@@ -592,10 +592,11 @@ ul {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 42%;
+    width: 50%;
     z-index: 2;
     pointer-events: none;
-    background: linear-gradient(90deg, rgba(18,28,22,0.62), rgba(18,28,22,0.1));
+    opacity: 0.42;
+    background: radial-gradient(140% 100% at left center, rgba(15,24,19,0.55), rgba(15,24,19,0.16) 52%, transparent 76%);
     transform: translateX(0%);
 }
 
