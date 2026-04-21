@@ -575,11 +575,11 @@ ul {
 .offer-window {
     position: relative;
     overflow: hidden;
-    background: #23352c;
+    background: color-mix(in srgb, var(--hero-l2) 62%, var(--hero-l1) 38%);
 }
 
 .offer-window .palette-video {
-    opacity: 0.38;
+    opacity: 0.32;
 }
 
 .offer-window-content {
@@ -589,14 +589,11 @@ ul {
 
 .offer-window-panel {
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 50%;
+    inset: 0;
     z-index: 2;
     pointer-events: none;
-    opacity: 0.42;
-    background: radial-gradient(140% 100% at left center, rgba(15,24,19,0.55), rgba(15,24,19,0.16) 52%, transparent 76%);
+    opacity: 0.34;
+    background: radial-gradient(120% 100% at left center, rgba(8,14,11,0.45), rgba(8,14,11,0.12) 55%, transparent 78%);
     transform: translateX(0%);
 }
 
@@ -628,4 +625,31 @@ ul {
 @media (max-width: 900px) {
     .offer-grid { grid-template-columns: 1fr; }
     .offer-quick-menu { position: static; grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+
+.gradient-demo-mode .hero-bg,
+.gradient-demo-mode .offer-window,
+.gradient-demo-mode .about-main2-bg,
+.gradient-demo-mode .about-highlight-full,
+.gradient-demo-mode .about-result-box,
+.gradient-demo-mode .method-bg {
+    background: linear-gradient(120deg, var(--hero-l2), var(--hero-l1), var(--hero-l3), var(--hero-l2));
+    background-size: 240% 240%;
+    animation: paletteGradientFlow 16s ease-in-out infinite;
+}
+
+.gradient-demo-mode video.palette-video,
+.gradient-demo-mode #hero-palette-video {
+    display: none !important;
+}
+
+.gradient-demo-mode .offer-window-panel {
+    opacity: 0.22;
+}
+
+@keyframes paletteGradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }

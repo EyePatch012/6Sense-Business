@@ -55,11 +55,24 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     const root = document.documentElement;
+
+    palettes.customGradientMotion = {
+        r1: "92,118,129", r2: "120,157,160", r3: "66,92,110", r4: "120,157,160",
+        l1: "#789da0", l2: "#5c7681", l3: "#425c6e"
+    };
+
     const paletteSelect = document.getElementById("paletteSelect");
     const pagePaletteStorageKey = `6sense-palette:${window.location.pathname}`;
     const heroVideo = document.getElementById("hero-palette-video");
     const heroVideoSource = heroVideo?.querySelector("source");
     const heroVideoFallbackSrc = "Videos/Intro4.mp4";
+
+    if (paletteSelect && !paletteSelect.querySelector("option[value=\"customGradientMotion\"]")) {
+        const gradientOption = document.createElement("option");
+        gradientOption.value = "customGradientMotion";
+        gradientOption.textContent = "Gradient Motion (No Video)";
+        paletteSelect.appendChild(gradientOption);
+    }
 
     const getPaletteVideoSrc = (paletteName) => `Videos/${paletteName}.mp4`;
 
@@ -178,7 +191,13 @@ window.addEventListener("DOMContentLoaded", () => {
         root.style.setProperty("--hero-l2", palette.l2);
         root.style.setProperty("--hero-l3", palette.l3);
         applyReadableText(palette);
-        applyPaletteVideos(name);
+
+        if (name === "customGradientMotion") {
+            document.body.classList.add("gradient-demo-mode");
+        } else {
+            document.body.classList.remove("gradient-demo-mode");
+            applyPaletteVideos(name);
+        }
 
         try {
             localStorage.setItem(pagePaletteStorageKey, name);
@@ -379,7 +398,8 @@ window.addEventListener("DOMContentLoaded", () => {
             const slideProgress = Math.max((progress - 0.62) / 0.38, 0);
             const translateX = (openProgress * 38) + (slideProgress * 92);
             windowPanel.style.transform = `translateX(${translateX}%)`;
-            windowPanel.style.opacity = `${0.42 - (openProgress * 0.18) - (slideProgress * 0.22)}`;
+            const panelOpacity = Math.max(0.06, 0.42 - (openProgress * 0.18) - (slideProgress * 0.22));
+            windowPanel.style.opacity = `${panelOpacity}`;
         };
 
         onWindowScroll();
