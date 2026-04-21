@@ -548,7 +548,9 @@ body {
     color: #f0f4ef;
     opacity: 0;
     transform: translate(-50%, 18px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-weight: 600;
     margin: 0;
 }
 
@@ -572,9 +574,29 @@ body {
     max-width: 860px;
     margin: 0 auto;
     text-align: center;
-    color: #2d4533;
-    font-size: clamp(1.18rem, 1.7vw, 1.45rem);
-    line-height: 1.5;
-    font-weight: 600;
+    color: #2b2b2b;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 400;
 }
 
+
+
+.left-align-copy h2 {
+    text-align: left !important;
+}
+
+
+.about-left-block {
+    max-width: 760px;
+    padding-left: 30px;
+    padding-right: 0;
+}
+
+.about-left-block::after {
+    display: none;
+}
+
+.about-left-block p {
+    text-align: left;
+}

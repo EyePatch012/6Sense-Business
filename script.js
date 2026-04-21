@@ -391,7 +391,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 cycleTimer = window.setInterval(() => {
                     activeIndex = (activeIndex + 1) % items.length;
                     showItem(activeIndex);
-                }, 1800);
+                }, 2800);
             };
 
             const stopCycle = () => {
