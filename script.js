@@ -450,10 +450,11 @@ window.addEventListener("DOMContentLoaded", () => {
             const progress = Math.min(Math.max((window.innerHeight - rect.top) / total, 0), 1);
             const openProgress = Math.min(progress * 1.3, 1);
             const slideProgress = Math.max((progress - 0.55) / 0.45, 0);
-            const scaleX = 1 - openProgress;
-            const translateX = slideProgress * 110;
-            windowPanel.style.transform = `translateX(${translateX}%) scaleX(${Math.max(scaleX, 0.03)})`;
-            windowPanel.style.opacity = `${1 - slideProgress}`;
+            const baseScale = 0.55;
+            const scaleX = Math.max(baseScale * (1 - openProgress), 0.03);
+            const translateX = slideProgress * 105;
+            windowPanel.style.transform = `translateX(${translateX}%) scaleX(${scaleX})`;
+            windowPanel.style.opacity = `${1 - slideProgress * 0.95}`;
         };
 
         onWindowScroll();

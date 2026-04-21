@@ -159,7 +159,7 @@ ul {
 }
 
 .dropdown > .nav-link {
-    cursor: default;
+    cursor: pointer;
 }
 
 .submenu {
@@ -554,11 +554,29 @@ ul {
 .offer-axis-lines::before { right: -1px; top: -6px; }
 .offer-axis-lines::after { left: -6px; bottom: -1px; transform: rotate(135deg); }
 
-.offer-window { position: relative; overflow: hidden; }
+.offer-window {
+    position: relative;
+    overflow: hidden;
+    background: #23352c;
+}
+
+.offer-window .palette-video {
+    opacity: 0.58;
+}
+
+.offer-window-content {
+    position: relative;
+    z-index: 3;
+}
+
 .offer-window-panel {
-    position: absolute; inset: 0; z-index: 2; pointer-events: none;
-    background: linear-gradient(90deg, rgba(24,35,28,0.78), rgba(24,35,28,0.15));
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(24,35,28,0.7), rgba(24,35,28,0.12));
     transform-origin: left center;
+    transform: scaleX(0.55);
 }
 
 .offer-grid { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 28px; }
