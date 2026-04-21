@@ -499,12 +499,11 @@ body {
     position: relative;
     overflow: hidden;
     width: 100vw;
-    margin: 20px 0;
+    margin: 18px 0 10px;
     margin-left: calc(-50vw + 50%);
-    min-height: 70px;
     display: grid;
     align-items: center;
-    padding: 8px 24px;
+    padding: 18px 24px;
 }
 
 .diagnosis-title-bar h2 {
@@ -554,7 +553,19 @@ body {
     max-width: 860px;
     margin: 0 auto;
     text-align: center;
-    color: #2b2b2b;
-    font-size: clamp(1rem, 1.45vw, 1.25rem);
-    line-height: 1.6;
+    color: #2d4533;
+    font-size: clamp(1.18rem, 1.7vw, 1.45rem);
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+
+.diagnosis-bullet-bar .about-slide-bullets li {
+    opacity: 0;
+    transform: translateX(-48px);
+}
+
+.diagnosis-bullet-bar .about-slide-bullets li.is-visible {
+    opacity: 1;
+    transform: translateX(0);
 }

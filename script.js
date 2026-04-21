@@ -325,7 +325,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const sections = Array.from(document.querySelectorAll("section"));
+    const sections = Array.from(document.querySelectorAll("section:not([data-static-section])"));
 
     if (!prefersReducedMotion && sections.length > 0) {
         sections.forEach((section) => {
