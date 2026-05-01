@@ -584,7 +584,16 @@ ul {
 }
 
 .offer-window .palette-video {
-    opacity: 0;
+    opacity: 0.42;
+}
+
+.offer-window::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.86);
+    pointer-events: none;
 }
 
 .offer-window-content {
