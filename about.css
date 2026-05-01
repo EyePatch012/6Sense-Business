@@ -593,6 +593,105 @@ body {
     padding-right: 0;
 }
 
+@media (max-width: 900px) {
+    .about-main,
+    .about-main1,
+    .about-highlight-box {
+        font-size: 18px;
+        line-height: 1.75;
+    }
+
+    .about-main2-split {
+        margin: 42px 0;
+    }
+
+    .about-main2-text {
+        padding: 34px 28px;
+    }
+
+    .about-align-left {
+        width: auto;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 24px 0 42px;
+    }
+
+    .about-right-wrapper {
+        flex-direction: column;
+        gap: 28px;
+        padding: 34px 24px;
+    }
+
+    .about-align-right {
+        max-width: 760px;
+        padding-right: 24px;
+    }
+
+    .about-align-right p {
+        text-align: left;
+    }
+
+    .about-extra-img-right {
+        width: 100%;
+        max-width: 760px;
+        align-self: center;
+    }
+
+    .about-left-block {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media (max-width: 560px) {
+    .about-hero {
+        height: 62svh;
+    }
+
+    .about-hero-content {
+        width: min(92vw, 620px);
+    }
+
+    .about-main,
+    .about-main1 {
+        margin: 42px auto;
+        padding: 0 18px 34px;
+        font-size: 16px;
+    }
+
+    .about-main1 {
+        font-size: 18px;
+    }
+
+    .about-highlight-full,
+    .diagnosis-title-bar,
+    .diagnosis-bullet-bar {
+        margin-left: calc(-50vw + 50%);
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .about-highlight-box,
+    .diagnosis-bullet-bar .wheel-bullets li {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .about-align-left {
+        padding-left: 34px;
+        padding-right: 18px;
+    }
+
+    .about-align-left::before {
+        left: 14px;
+    }
+
+    .about-result-box {
+        margin: 24px 18px;
+        padding: 24px 20px;
+    }
+}
+
 .about-left-block::after {
     display: none;
 }
@@ -619,4 +718,18 @@ body {
 
 .about-left-block {
     margin-right: auto;
+}
+
+@media (max-width: 900px) {
+    .about-main.left-align-copy {
+        margin: 42px auto;
+        padding: 0 24px 34px;
+    }
+}
+
+@media (max-width: 560px) {
+    .about-main.left-align-copy {
+        margin: 36px auto;
+        padding: 0 18px 30px;
+    }
 }

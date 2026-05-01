@@ -90,11 +90,47 @@ body {
 }
 
 @media (max-width: 768px) {
+    .method-content {
+        padding: 56px 0 96px;
+    }
+
+    .method-hero,
+    .method-detail {
+        min-height: auto;
+    }
+
     .method-card {
         padding: 32px;
     }
 
     .method-card h1 {
         font-size: 34px;
+    }
+
+    .method-card h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 520px) {
+    .method-content {
+        padding: 42px 0 82px;
+    }
+
+    .method-card {
+        padding: 26px 20px;
+    }
+
+    .method-card h1 {
+        font-size: 30px;
+    }
+
+    .method-card h2 {
+        font-size: 24px;
+    }
+
+    .method-card p {
+        font-size: 16px;
+        line-height: 1.7;
     }
 }

@@ -294,7 +294,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const extraImages = document.querySelectorAll(".about-extra-img, .about-extra-img-right");
+    const extraImages = document.querySelectorAll(".about-extra-img, .about-extra-img-right, .offer-extra-img-right");
     if (extraImages.length > 0 && "IntersectionObserver" in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -441,17 +441,35 @@ window.addEventListener("DOMContentLoaded", () => {
         foldRevealItems.forEach((item) => foldObserver.observe(item));
     }
 
+    const arcPanels = Array.from(document.querySelectorAll("[data-arc-panel]"));
+    if (arcPanels.length > 0 && !prefersReducedMotion) {
+        const updateArcPanels = () => {
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            arcPanels.forEach((panel) => {
+                const rect = panel.getBoundingClientRect();
+                const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight * 0.9), 0), 1);
+                const eased = progress * progress * (3 - 2 * progress);
+                panel.style.setProperty("--arc-grow", eased.toFixed(3));
+                panel.style.setProperty("--arc-reveal", `${((1 - eased) * 100).toFixed(1)}%`);
+            });
+        };
+
+        updateArcPanels();
+        window.addEventListener("scroll", updateArcPanels, { passive: true });
+        window.addEventListener("resize", updateArcPanels);
+    }
+
     const windowOpenSection = document.querySelector("[data-window-open]");
     const windowPanel = document.querySelector(".offer-window-panel");
     if (windowOpenSection && windowPanel && !prefersReducedMotion) {
         const onWindowScroll = () => {
-            const rect = windowOpenSection.getBoundingClientRect();
-            const total = rect.height + window.innerHeight;
-            const progress = Math.min(Math.max((window.innerHeight - rect.top) / total, 0), 1);
-            const openProgress = Math.min(progress * 1.1, 1);
-            const slideProgress = Math.max((progress - 0.62) / 0.38, 0);
-            const doorOpen = Math.min(openProgress + slideProgress * 0.35, 1);
-            const panelOpacity = Math.max(0.08, 0.34 - (openProgress * 0.18) - (slideProgress * 0.14));
+            const headerHeight = document.querySelector(".topbar")?.offsetHeight || 0;
+            const revealStart = Math.max(windowOpenSection.offsetTop - headerHeight, 0);
+            const revealDistance = Math.max(windowOpenSection.offsetHeight * 0.85, window.innerHeight * 0.65);
+            const progress = Math.min(Math.max((window.scrollY - revealStart) / revealDistance, 0), 1);
+            const openProgress = progress * progress * (3 - 2 * progress);
+            const doorOpen = openProgress;
+            const panelOpacity = Math.max(0.08, 0.34 - (openProgress * 0.26));
             windowPanel.style.setProperty("--door-open", `${doorOpen.toFixed(3)}`);
             windowPanel.style.setProperty("--door-fade", `${panelOpacity.toFixed(3)}`);
         };

@@ -50,36 +50,31 @@
         </select>
     </div>
 
-    <section class="hero section-hero offer-hero">
-        <div class="hero-bg" data-palette-video-target>
-            <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-                <source src="Videos/Intro4.mp4" type="video/mp4" />
-            </video>
+    <section class="offer-window offer-intro-window" data-window-open>
+        <div class="offer-window-panel" aria-hidden="true">
+            <div class="offer-window-door offer-window-door-left" data-palette-video-target>
+                <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                    <source src="Videos/Intro4.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="offer-window-door offer-window-door-right" data-palette-video-target>
+                <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                    <source src="Videos/Intro4.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <span class="door-seam" aria-hidden="true"></span>
         </div>
-        <div class="hero-darken"></div>
-        <div class="hero-content offer-axis-wrap">
+        <div class="section-content offer-window-content offer-axis-wrap">
             <h1>What we offer</h1>
             <p>Systemic reinvention for sustainable performance</p>
         </div>
     </section>
 
-    <section class="offer-window" data-window-open data-palette-video-target>
-        <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-            <source src="Videos/Intro4.mp4" type="video/mp4" />
-        </video>
-        <div class="offer-window-panel"><span class="door-seam" aria-hidden="true"></span></div>
-        <div class="section-content offer-window-content">
-            <p>
-                Every organisation is founded with a core intention - a reason it exists, creates value, and attracts people. Over time, pressure and growth can pull organisations away from this intention. Strategy becomes reactive and decisions are driven by urgency rather than clarity.
-            </p>
-            <p>
-                We help organisations realign strategy, leadership, and execution with their highest potential - restoring momentum and performance.
-            </p>
-        </div>
-    </section>
-
     <section class="section-content offer-grid">
-        <aside class="offer-quick-menu">
+        <aside class="offer-quick-menu" data-palette-video-target>
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Videos/Intro4.mp4" type="video/mp4" />
+            </video>
             <a href="#framework">Framework</a>
             <a href="#offerings">Our offerings</a>
             <a href="#offering-leadership">Leadership</a>
@@ -93,10 +88,16 @@
             <p>
                 At this level, the organization accesses its full creative capacity. Once embedded this becomes the dominant operating energy, influencing behavior, decisions, and performance. This is where conscious growth becomes a strategic advantage.
             </p>
+        </div>
+    </section>
+
+    <section class="offer-image-split">
+        <div class="offer-image-copy">
             <p>
                 Momentum is observable and measurable through indicators such as decision latency, escalation frequency, leadership stability, customer consistency, and organisational focus.
             </p>
         </div>
+        <img src="Pictures/riverfromabove.jpg" class="offer-extra-img-right" alt="River landscape from above" />
     </section>
 
     <section class="about-main2-split">
@@ -111,31 +112,59 @@
     <section id="framework" class="section-content">
         <h2>THE 6SENZUS REINVENTION FRAMEWORK</h2>
         <div class="framework-circles">
-            <article class="framework-item" data-twirl>
-                <h3>Re-Alignment</h3>
-                <p>Restoring clarity, intention, and direction. Leaders reconnect with what truly matters, enabling faster alignment and clearer priorities.</p>
+            <article class="framework-item" data-twirl tabindex="0">
+                <div class="framework-symbol" aria-hidden="true">&#8962;</div>
+                <div class="framework-copy">
+                    <h3>Re-Alignment</h3>
+                    <p>Restoring clarity, intention, and direction. Leaders reconnect with what truly matters, enabling faster alignment and clearer priorities.</p>
+                </div>
             </article>
-            <article class="framework-item" data-twirl>
-                <h3>Systemic Perception</h3>
-                <p>Seeing how the system actually operates beneath the surface. Root causes are revealed, ownership becomes clear, and recurring issues dissolve.</p>
+            <article class="framework-item" data-twirl tabindex="0">
+                <div class="framework-symbol" aria-hidden="true">&#9673;</div>
+                <div class="framework-copy">
+                    <h3>Systemic Perception</h3>
+                    <p>Seeing how the system actually operates beneath the surface. Root causes are revealed, ownership becomes clear, and recurring issues dissolve.</p>
+                </div>
             </article>
-            <article class="framework-item" data-twirl>
-                <h3>Conscious Leadership</h3>
-                <p>Leadership stability under pressure. Decision quality improves, friction decreases, engagement and retention rise, and margins strengthen.</p>
+            <article class="framework-item" data-twirl tabindex="0">
+                <div class="framework-symbol" aria-hidden="true">&#10022;</div>
+                <div class="framework-copy">
+                    <h3>Conscious Leadership</h3>
+                    <p>Leadership stability under pressure. Decision quality improves, friction decreases, engagement and retention rise, and margins strengthen.</p>
+                </div>
             </article>
-            <article class="framework-item" data-twirl>
-                <h3>Sustainable Momentum</h3>
-                <p>Turning insight into aligned movement. Execution becomes coherent and growth becomes sustainable.</p>
+            <article class="framework-item" data-twirl tabindex="0">
+                <div class="framework-symbol" aria-hidden="true">&#8599;</div>
+                <div class="framework-copy">
+                    <h3>Sustainable Momentum</h3>
+                    <p>Turning insight into aligned movement. Execution becomes coherent and growth becomes sustainable.</p>
+                </div>
             </article>
         </div>
     </section>
 
-    <section id="offerings" class="section-content">
-        <h2>Our offerings</h2>
-        <h2 id="offering-leadership">Leadership Reinvention</h2>
+    <section id="offerings" class="section-content offerings-video-section">
+        <div class="offerings-video-box" data-palette-video-target>
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Videos/Intro4.mp4" type="video/mp4" />
+            </video>
+            <div class="offerings-video-content">
+                <h2>Our offerings</h2>
+            </div>
+        </div>
+
+        <div class="offerings-body">
+        <h2 id="offering-leadership" class="offering-arc-heading">Leadership Reinvention</h2>
+        <div class="offering-arc-panel" data-arc-panel data-palette-video-target>
+            <div class="offering-arc-disc">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Videos/Intro4.mp4" type="video/mp4" />
+            </video>
         <p class="offer-glow">
             We develop leaders who move beyond control-driven and purely cognitive leadership into presence, systemic awareness, and strategic intuition — creating clarity, not noise, and momentum, not friction.
         </p>
+            </div>
+        </div>
 
         <h2 id="offering-team">Team Reinvention</h2>
         <p>
@@ -155,6 +184,7 @@
         <p>
             Transformation is not just a strategy — it’s a shift in consciousness. And when a company leads from that place, momentum and profit are a natural outcome — not a forced one.
         </p>
+        </div>
     </section>
 
     <footer class="site-footer-slogan">
