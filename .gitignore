@@ -1,0 +1,7 @@
+# Local editor and tooling state
+.vs/
+.codex_pdf_pages/
+
+# OS noise
+Thumbs.db
+Desktop.ini

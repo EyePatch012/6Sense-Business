@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
+    // Shared palette system: updates CSS color tokens and swaps video-backed color blocks.
     const palettes = {
         anchorGreyMistyGreenMistyBlue: {
             r1: "103,121,125", r2: "207,215,204", r3: "167,191,193", r4: "207,215,204",
@@ -99,7 +100,7 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     const ensurePaletteVideoLayers = () => {
-        const autoTargets = document.querySelectorAll(".hero-bg, .method-bg, .about-hero, .about-main2-bg, .about-highlight-full, .about-result-box");
+        const autoTargets = document.querySelectorAll(".hero-bg, .about-hero, .about-main2-bg, .about-highlight-full, .about-result-box");
         autoTargets.forEach((target) => {
             target.setAttribute("data-palette-video-target", "");
             ensureVideoLayer(target);
@@ -225,6 +226,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Homepage intro: fade out when the intro video is ready, with an error fallback.
     const intro = document.getElementById("intro-screen");
     const video = document.getElementById("intro-video");
 
@@ -251,6 +253,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Smooth in-site navigation with a subtle page fade.
     const pageLinks = document.querySelectorAll("a[href]");
     pageLinks.forEach((link) => {
         const href = link.getAttribute("href");
@@ -294,7 +297,8 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const extraImages = document.querySelectorAll(".about-extra-img, .about-extra-img-right, .offer-extra-img-right");
+    // Scroll reveals used by image-heavy editorial sections.
+    const extraImages = document.querySelectorAll(".about-extra-img, .about-extra-img-right, .offer-extra-img-right, .framework-side-img");
     if (extraImages.length > 0 && "IntersectionObserver" in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -325,6 +329,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // General section entrance animation. Kept lightweight: opacity + transform only.
     const sections = Array.from(document.querySelectorAll("section:not([data-static-section])"));
 
     if (!prefersReducedMotion && sections.length > 0) {
@@ -342,7 +347,10 @@ window.addEventListener("DOMContentLoaded", () => {
                 entry.target.style.transform = isVisible ? "translateY(0)" : "translateY(54px)";
                 entry.target.classList.toggle("section-active", isVisible);
             });
-        }, { threshold: 0.24 });
+        }, {
+            threshold: 0.01,
+            rootMargin: "0px 0px -6% 0px"
+        });
 
         sections.forEach((section) => sectionObserver.observe(section));
     }
@@ -418,14 +426,17 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Framework symbol reveal; replays when the section leaves and re-enters.
     const twirlItems = Array.from(document.querySelectorAll("[data-twirl]"));
     if (twirlItems.length > 0 && "IntersectionObserver" in window) {
         const twirlObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
                 const items = Array.from(entry.target.parentElement?.querySelectorAll("[data-twirl]") || [entry.target]);
+                if (!entry.isIntersecting) {
+                    items.forEach((item) => item.classList.remove("in-view"));
+                    return;
+                }
                 items.forEach((item, index) => setTimeout(() => item.classList.add("in-view"), index * 180));
-                twirlObserver.unobserve(entry.target);
             });
         }, { threshold: 0.24 });
         twirlItems.forEach((item) => twirlObserver.observe(item));
@@ -459,22 +470,63 @@ window.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("resize", updateArcPanels);
     }
 
+    // Team reveal arc removed: PDF-style Team section now uses static editorial layout.
+
     const windowOpenSection = document.querySelector("[data-window-open]");
     const windowPanel = document.querySelector(".offer-window-panel");
+
     if (windowOpenSection && windowPanel && !prefersReducedMotion) {
+        let ticking = false;
+
+        const easeInOutCubic = (t) =>
+            t < 0.5
+                ? 4 * t * t * t
+                : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
         const onWindowScroll = () => {
-            const headerHeight = document.querySelector(".topbar")?.offsetHeight || 0;
-            const revealStart = Math.max(windowOpenSection.offsetTop - headerHeight, 0);
-            const revealDistance = Math.max(windowOpenSection.offsetHeight * 0.85, window.innerHeight * 0.65);
-            const progress = Math.min(Math.max((window.scrollY - revealStart) / revealDistance, 0), 1);
-            const openProgress = progress * progress * (3 - 2 * progress);
-            const doorOpen = openProgress;
-            const panelOpacity = Math.max(0.08, 0.34 - (openProgress * 0.26));
-            windowPanel.style.setProperty("--door-open", `${doorOpen.toFixed(3)}`);
-            windowPanel.style.setProperty("--door-fade", `${panelOpacity.toFixed(3)}`);
+            if (ticking) return;
+
+            ticking = true;
+
+            requestAnimationFrame(() => {
+                const headerHeight = document.querySelector(".topbar")?.offsetHeight || 0;
+
+                const revealStart = Math.max(
+                    windowOpenSection.offsetTop - headerHeight - window.innerHeight * 0.15,
+                    0
+                );
+
+                // Larger distance = slower, smoother animation
+                const revealDistance = Math.max(
+                    windowOpenSection.offsetHeight * 1.35,
+                    window.innerHeight * 1.1
+                );
+
+                const rawProgress = Math.min(
+                    Math.max((window.scrollY - revealStart) / revealDistance, 0),
+                    1
+                );
+
+                const openProgress = easeInOutCubic(rawProgress);
+
+                // Slightly softened movement so it feels less abrupt
+                const doorOpen = openProgress * 0.92;
+
+                // More gradual fade
+                const panelOpacity = Math.max(
+                    0.08,
+                    0.36 - openProgress * 0.22
+                );
+
+                windowPanel.style.setProperty("--door-open", doorOpen.toFixed(3));
+                windowPanel.style.setProperty("--door-fade", panelOpacity.toFixed(3));
+
+                ticking = false;
+            });
         };
 
         onWindowScroll();
+
         window.addEventListener("scroll", onWindowScroll, { passive: true });
         window.addEventListener("resize", onWindowScroll);
     }

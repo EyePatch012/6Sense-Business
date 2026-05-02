@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Approach: The 6th Sense Method – 6Sense Business</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Our Approach: The 6th Sense Method - 6Sense Business</title>
     <link rel="stylesheet" href="method.css" />
 </head>
 <body>
     <header class="topbar">
         <div class="logo" onclick="location.href='index.html'">6Sense Business</div>
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Primary navigation">
             <ul class="nav-list">
                 <li><a href="about.html" class="nav-link">Who We Are</a></li>
                 <li class="dropdown">
@@ -26,26 +25,256 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
-        <div class="search-container"><input type="text" id="searchInput" placeholder="Search..." /><button id="searchBtn">Search</button></div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button id="searchBtn" type="button">Search</button>
+        </div>
     </header>
-    <div class="palette-switcher"> <label for="paletteSelect">Palette</label><select id="paletteSelect" aria-label="Color palette"><option value="anchorGreyMistyGreenMistyBlue">F&amp;B Anchor Grey / Misty Green / Misty Blue</option><option value="springDustYellowstoneYellowstoneDark">F&amp;B Spring Dust / Yellowstone / Yellowstone Dark</option><option value="stickyBlueLightStickyBlueDarkStickyBlue">F&amp;B Sticky Blue / Light Sticky Blue / Dark Sticky Blue</option><option value="greyUltraLightGreyBlue">F&amp;B Grey / Ultra Light Grey / Blue</option><option value="greenUltraLightGreyBlue">F&amp;B Green / Ultra Light Grey / Blue</option><option value="greenLightGreenWhite">F&amp;B Green / Light Green / White</option><option value="lightBlueLightBlueGreyDarkBlueGrey">F&amp;B Light Blue / Blue Grey / Dark Blue Grey</option><option value="greenBlueGreenDarkBlue">F&amp;B Green / Blue Green / Dark Blue</option><option value="lightGreyDarkGreyBlueNavyBlue">F&amp;B Light Grey / Dark Grey Blue / Navy Blue</option><option value="goldSandCream">F&amp;B Gold / Sand / Cream</option><option value="goldGoldCream">F&amp;B Gold / Gold / Cream</option><option value="greyBlueGreyWhite">Grey Blue / Grey / White</option><option value="forestGreenLightForestGreenWhite">Forest Green / Light Forest Green / White</option></select></div>
 
-    <div class="method-bg" data-palette-video-target aria-hidden="true"><video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="Videos/Intro4.mp4" type="video/mp4" /></video></div>
-    <div class="method-grain" aria-hidden="true"></div>
+    <div class="palette-switcher">
+        <label for="paletteSelect">Palette</label>
+        <select id="paletteSelect" aria-label="Color palette">
+            <option value="lightBlueLightBlueGreyDarkBlueGrey">F&amp;B Light Blue / Blue Grey / Dark Blue Grey</option>
+            <option value="anchorGreyMistyGreenMistyBlue">F&amp;B Anchor Grey / Misty Green / Misty Blue</option>
+            <option value="springDustYellowstoneYellowstoneDark">F&amp;B Spring Dust / Yellowstone / Yellowstone Dark</option>
+            <option value="greenUltraLightGreyBlue">F&amp;B Green / Ultra Light Grey / Blue</option>
+            <option value="goldSandCream">F&amp;B Gold / Sand / Cream</option>
+            <option value="forestGreenLightForestGreenWhite">Forest Green / Light Forest Green / White</option>
+        </select>
+    </div>
 
-    <main class="method-content">
-        <section class="method-hero"><div class="method-card"><p class="method-eyebrow">Seeing what data can’t</p><h1>How Leadership Actually Operates Under Pressure</h1><p>The 6th Sense Method integrates systemic diagnostics, leadership stabilisation, and strategic intuition.</p><p>Momentum isn’t lost because leaders move too slowly. It’s lost because they act before clarity is present. Real momentum follows a proven sequence: carry pressure → integrate → act consciously.</p><p>Leadership does not operate in one mode. It shifts depending on stress, context, and system dynamics. This is the foundation of the 3-Lane Road within the 6th Sense Method.</p></div></section>
+    <main class="method-page">
+        <section class="method-cover">
+            <div class="method-cover-title">
+                <p>Our Approach: The 6Sense</p>
+                <p>Method</p>
+            </div>
+            <div class="video-slab cover-slab" data-palette-video-target>
+                <video class="palette-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                    <source src="Videos/Intro4.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
 
-        <section class="method-detail"><div class="method-card"><h2>The 3-Lane Road: How Leadership Really Operates Under Pressure versus how they should operate</h2><p><strong>Lane 1 — Reactive Leadership</strong><br>Description: Leadership driven by fear, control, and protection.<br>Business Impact: Slow decisions, politics, energy loss.</p><p><strong>Lane 2 — Containment / Emotional Load Capacity</strong><br>Description: Leaders fully carry emotional pressure without acting it out. This creates inner space.<br>Business Impact: Stability under pressure, clearer dialogue, reduces volatility.</p><p><strong>Lane 3 — Conscious</strong><br>Description: Stable presence, systemic awareness, intuitive clarity. Leaders act from highest consciousness.<br>Business Impact: Speed, trust, sustained momentum. Momentum restored, fast alignment, trust, durable results.</p></div></section>
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
 
-        <section class="method-detail"><div class="method-card"><p>Most leadership approaches interrupt this process, pushing action too early — Lane 1 reactivity disguised as decisiveness — resulting in noise, misalignment, and wasted energy. Sustainable business momentum only happens when capacity turns into conscious execution. The 6th Sense Method goes further, enabling leaders to operate consistently in Lane 3 where clarity drives decisive action, trust builds naturally, and results last.</p><p>At the core of every thriving organization lies one essential yet often invisible force: momentum — the natural flow in which ideas, decisions, collaboration, and profitability align. When momentum is present, growth feels effortless. But when energy begins to leak through unspoken tensions, unresolved patterns, or systemic misalignments, progress slows and performance plateaus.</p><p>This is where Chetanya de Wit, intuitive strategist and systemic oracle for modern enterprises, steps in. She possesses a rare ability to perceive the deeper architecture of an organization within minutes. Her unique talent lies in distilling complex systemic dynamics into a sharp, accurate diagnosis, paired with a clear, future-oriented vision for resolution and renewed momentum. It’s truly like going to the doctors but now as a whole organization.</p><p>Supported by her professional team, systemic insight is translated into concrete action, enabling organizations to move from clarity to execution with precision and impact.</p><p>With Advanced Systemic Intelligence we view organizations as living, interconnected human systems. Through the 6th Sense Method we make the invisible visible.</p></div></section>
+        <section class="pressure-panel">
+            <div class="pressure-copy">
+                <p class="method-eyebrow">Seeing what data can't</p>
+                <h1>How Leadership Actually Operates Under Pressure</h1>
+                <p class="pressure-note">Momentum isn't lost because leaders move too slowly. It's lost because they act before clarity is present. Real momentum follows a proven sequence: carry pressure -> integrate -> act consciously.</p>
+                <p>Leadership does not operate in one mode. It shifts depending on stress, context, and system dynamics. This is the foundation of the 3-Lane Road within the 6th Sense Method.</p>
+            </div>
+            <div class="method-diamond" aria-label="6th Sense Method integration">
+                <div class="diamond-wave"></div>
+                <p>The 6th Sense Method integrates systemic diagnostics, leadership stabilisation, and strategic intuition.</p>
+            </div>
+        </section>
 
-        <section class="method-detail"><div class="method-card"><h2>Systemic Diagnostics</h2><p><strong>Seeing what data can’t</strong></p><p>Hidden dynamics (Unresolved system patterns that distort decisions, roles, and execution)</p><p>Energetic blocks (Leadership and organisational stress points where momentum leaks)</p><p>Field sensing (Advanced systemic pattern recognition beyond data)</p><p>Constellations are used as a systemic diagnostic approach to map role tensions, decision bottlenecks, and structural constraints that standard reporting may miss. This gives boards and executive teams an additional evidence-informed lens for prioritising intervention and restoring execution flow.</p><h3>Momentum Indicators</h3><ul><li>Decision latency ↓</li><li>Escalations ↓</li><li>Alignment speed ↑</li><li>Customer consistency ↑</li><li>Leadership energy stability ↑</li></ul></div></section>
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
 
-        <section class="method-detail"><div class="method-card"><h2>From Unconscious to Conscious Leadership/Organization</h2><p>Every human and every organization operates from two layers: the unconscious personality and the conscious personality.</p><p>The unconscious personality, shaped by conditioning, fear, and scarcity thinking, manifests in business as control, competition, burnout, and perpetual striving. It reacts. It protects. It limits.</p><p>The conscious personality is rooted in abundance, clarity, inner leadership, and authentic expression. It doesn’t react — it creates. It sees opportunity instead of obstacles, cultivates collaboration instead of ego, and builds sustainable success from the inside out.</p><p>At 6Senzus, we believe organizations truly thrive when leaders operate from this conscious layer — shifting from scarcity to abundance, from fragmentation to coherence, from unconscious patterns to intentional leadership.</p><p>This is the path to a resilient, future-ready enterprise: grounded, aligned, and capable of sustained momentum.</p><p>At 6Senzus we believe that companies truly begin to thrive when leaders, teams, and individuals operate from their conscious personality. This means:</p><ul><li>Thinking in terms of abundance, not scarcity</li><li>Leading from vision instead of fear</li><li>Acting from inner alignment instead of external pressure</li><li>Building cultures of trust, creativity, and authentic impact</li></ul></div></section>
+        <section class="lane-title">
+            <h2>The 3-Lane Road: How Leadership Really Operates Under Pressure versus how they should operate</h2>
+            <div class="lane-cards" aria-label="Leadership lanes">
+                <article>
+                    <span>Lane 1</span>
+                    <h3>Reactive Leadership</h3>
+                    <p>Fear, control, politics, slow decisions, and energy loss.</p>
+                </article>
+                <article>
+                    <span>Lane 2</span>
+                    <h3>Containment</h3>
+                    <p>Pressure is carried without acting it out, creating stability and clearer dialogue.</p>
+                </article>
+                <article>
+                    <span>Lane 3</span>
+                    <h3>Conscious Action</h3>
+                    <p>Presence, systemic awareness, trust, speed, and sustained momentum.</p>
+                </article>
+            </div>
+        </section>
+
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
+
+        <section class="method-text-block">
+            <p>Most leadership approaches interrupt this process, pushing action too early - Lane 1 reactivity disguised as decisiveness - resulting in noise, misalignment, and wasted energy. Sustainable business momentum only happens when capacity turns into conscious execution. The 6th Sense Method goes further, enabling leaders to operate consistently in Lane 3 where clarity drives decisive action, trust builds naturally, and results last.</p>
+        </section>
+
+        <section class="momentum-field">
+            <p class="field-intro">At the core of every thriving organization lies one essential yet often invisible force: momentum - the natural flow in which ideas, decisions, collaboration, and profitability align. When momentum is present, growth feels effortless. But when energy begins to leak through unspoken tensions, unresolved patterns, or systemic misalignments, progress slows and performance plateaus.</p>
+            <div class="oracle-split">
+                <div class="oracle-copy">
+                    <p>This is where Chetanya de Wit, intuitive strategist and systemic oracle for modern enterprises, steps in. She possesses a rare ability to perceive the deeper architecture of an organization within minutes. Her unique talent lies in distilling complex systemic dynamics into a sharp, accurate diagnosis, paired with a clear, future-oriented vision for resolution and renewed momentum.</p>
+                    <p>Supported by her professional team, systemic insight is translated into concrete action, enabling organizations to move from clarity to execution with precision and impact.</p>
+                    <p>With Advanced Systemic Intelligence we view organizations as living, interconnected human systems. Through the 6th Sense Method we make the invisible visible.</p>
+                </div>
+                <img src="Pictures/labeachatnight.jpg" alt="Evening beach landscape" />
+            </div>
+        </section>
+
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
+
+        <section class="diagnostic-clouds">
+            <h2>Recommendation: Always pair "spiritual" language with operational translation for the board</h2>
+            <div class="cloud-row">
+                <article class="cloud-reveal">
+                    <p>Hidden dynamics</p>
+                    <span>Unresolved system patterns that distort decisions, roles, and execution</span>
+                </article>
+                <article class="cloud-reveal">
+                    <p>Energetic blocks</p>
+                    <span>Leadership and organisational stress points where momentum leaks</span>
+                </article>
+                <article class="cloud-reveal">
+                    <p>Field sensing</p>
+                    <span>Advanced systemic pattern recognition beyond data</span>
+                </article>
+            </div>
+        </section>
+
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
+
+        <section class="systemic-diagnostics">
+            <h2>Systemic Diagnostics</h2>
+            <p><strong>Seeing what data can't</strong></p>
+            <p>Constellations are used as a systemic diagnostic approach to map role tensions, decision bottlenecks, and structural constraints that standard reporting may miss.</p>
+            <p>Boards accept diagnostics when the outcomes are clear and measurable.</p>
+        </section>
+
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
+
+        <section class="momentum-measure">
+            <div class="measure-copy">
+                <h2>Make "Momentum" Measurable</h2>
+                <p>You asked in the document if it should be measurable >> yes, absolutely</p>
+                <ul>
+                    <li>Decision latency down</li>
+                    <li>Escalations down</li>
+                    <li>Alignment speed up</li>
+                    <li>Customer consistency up</li>
+                    <li>Leadership energy stability up</li>
+                </ul>
+                <p>You don't need numbers yet, just signals executives recognise.</p>
+            </div>
+            <img src="Pictures/newyorkcitybusiness.jpg" alt="New York business skyline at sunset" />
+        </section>
+
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
+
+        <section class="conscious-section">
+            <h2>From Unconscious to Conscious Leadership/Organization</h2>
+            <img src="Pictures/new_york_day.jpg" alt="New York daytime street scene" />
+            <div class="conscious-copy">
+                <p>Every human and every organization operates from two layers: the unconscious personality and the conscious personality.</p>
+                <p>The unconscious personality, shaped by conditioning, fear, and scarcity thinking, manifests in business as control, competition, burnout, and perpetual striving. It reacts. It protects. It limits.</p>
+                <p>The conscious personality is rooted in abundance, clarity, inner leadership, and authentic expression. It doesn't react - it creates. It sees opportunity instead of obstacles, cultivates collaboration instead of ego, and builds sustainable success from the inside out.</p>
+                <p>This is the path to a resilient, future-ready enterprise: grounded, aligned, and capable of sustained momentum.</p>
+            </div>
+        </section>
+
+        <div class="video-divider" data-palette-video-target aria-hidden="true">
+            <video class="palette-video" autoplay muted loop playsinline preload="metadata"><source src="Videos/Intro4.mp4" type="video/mp4" /></video>
+        </div>
+
+        <section class="abundance-split">
+            <div>
+                <p>At 6Senzus we believe that companies truly begin to thrive when leaders, teams, and individuals operate from their conscious personality. This means:</p>
+                <ul>
+                    <li>Thinking in terms of abundance, not scarcity</li>
+                    <li>Leading from vision instead of fear</li>
+                    <li>Acting from inner alignment instead of external pressure</li>
+                    <li>Building cultures of trust, creativity, and authentic impact</li>
+                </ul>
+            </div>
+            <img src="Pictures/newyorkatnightaesthetic.jpg" alt="New York at night" />
+        </section>
     </main>
 
-    <footer class="site-footer-slogan"><p>We don’t just develop leaders — we awaken them.</p><p>To themselves.</p><p>To their organizations.</p><p>To the wider ecosystems they influence.</p></footer>
-    <script src="script.js"></script>
+    <footer class="site-footer-slogan">
+        <p>We don't just develop leaders - we awaken them.</p>
+        <p>To themselves.</p>
+        <p>To their organizations.</p>
+        <p>To the wider ecosystems they influence.</p>
+    </footer>
+
+    <script>
+        const paletteSelect = document.getElementById("paletteSelect");
+        const paletteMap = {
+            lightBlueLightBlueGreyDarkBlueGrey: "Videos/lightBlueLightBlueGreyDarkBlueGrey.mp4",
+            anchorGreyMistyGreenMistyBlue: "Videos/anchorGreyMistyGreenMistyBlue.mp4",
+            springDustYellowstoneYellowstoneDark: "Videos/springDustYellowstoneYellowstoneDark.mp4",
+            greenUltraLightGreyBlue: "Videos/greenUltraLightGreyBlue.mp4",
+            goldSandCream: "Videos/goldSandCream.mp4",
+            forestGreenLightForestGreenWhite: "Videos/forestGreenLightForestGreenWhite.mp4"
+        };
+
+        function setPalette(value) {
+            document.querySelectorAll(".palette-video").forEach((video) => {
+                const source = video.querySelector("source");
+                if (!source || source.getAttribute("src") === paletteMap[value]) return;
+                source.setAttribute("src", paletteMap[value]);
+                video.load();
+                video.play().catch(() => {});
+            });
+        }
+
+        if (paletteSelect) {
+            setPalette(paletteSelect.value);
+            paletteSelect.addEventListener("change", (event) => setPalette(event.target.value));
+        }
+
+        const searchBtn = document.getElementById("searchBtn");
+        const searchInput = document.getElementById("searchInput");
+        if (searchBtn && searchInput) {
+            searchBtn.addEventListener("click", () => {
+                if (searchInput.value.trim()) alert(`You searched for: ${searchInput.value.trim()}`);
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                entry.target.classList.toggle("is-visible", entry.isIntersecting);
+                entry.target.classList.toggle("in-view", entry.isIntersecting);
+            });
+        }, { threshold: 0.22 });
+
+        const replayTargets = document.querySelectorAll(".method-cover-title, .cover-slab");
+        replayTargets.forEach((el) => requestAnimationFrame(() => el.classList.add("can-replay")));
+
+        document.querySelectorAll([
+            ".cloud-reveal",
+            ".method-diamond",
+            ".method-page img",
+            ".lane-cards article",
+            ".method-cover-title",
+            ".cover-slab",
+            ".video-divider",
+            ".pressure-copy",
+            ".lane-title h2",
+            ".method-text-block p",
+            ".field-intro",
+            ".oracle-copy",
+            ".diagnostic-clouds h2",
+            ".systemic-diagnostics",
+            ".measure-copy",
+            ".conscious-section h2",
+            ".conscious-copy",
+            ".abundance-split > div"
+        ].join(", ")).forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>

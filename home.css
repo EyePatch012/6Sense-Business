@@ -1,4 +1,8 @@
-﻿/* Inherits topbar and search from global site CSS */
+﻿/* Home page styles
+   Mirrors the Who We Are continuation sections used after the homepage intro.
+   Kept standalone so the homepage does not depend on another page CSS file. */
+
+/* Inherits topbar and search from global site CSS */
 html {
     scroll-behavior: auto;
 }
@@ -891,3 +895,4 @@ body {
         padding: 0 18px 30px;
     }
 }
+

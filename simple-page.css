@@ -1,0 +1,29 @@
+/* Simple content page styles
+   Used by lighter informational pages that share the global hero/content system. */
+
+.section-content {
+    position: relative;
+}
+
+.section-content > h2 {
+    padding-top: 8px;
+}
+
+.section-content > h2::after {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 2px;
+    margin-top: 10px;
+    background: rgba(45, 69, 51, 0.34);
+}
+
+.section-content p,
+.section-content li {
+    text-wrap: pretty;
+}
+
+.section-content ul {
+    display: grid;
+    gap: 10px;
+}
