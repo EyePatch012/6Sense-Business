@@ -1,4 +1,7 @@
 :root {
+    --hero-l1: #a5b9a6;
+    --hero-l2: #384a40;
+    --hero-l3: #697e62;
     --surface-bg: #f4f6f1;
     --surface-card: rgba(255, 255, 250, 0.86);
     --ink-main: #18221d;
@@ -393,35 +396,55 @@ body::before {
     display: grid;
     place-items: center;
     justify-self: center;
-    width: min(46vw, 620px);
-    aspect-ratio: 2.35;
-    padding: clamp(34px, 4vw, 58px) clamp(104px, 9vw, 150px);
+    width: min(34vw, 420px);
+    aspect-ratio: 1;
+    padding: clamp(42px, 5vw, 72px);
+    border-radius: 50%;
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.8s ease, transform 1s ease;
+    transform: translateY(16px) scale(0.96);
+    transition:
+        opacity 0.8s ease,
+        transform 0.75s cubic-bezier(0.19, 1, 0.22, 1),
+        filter 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+    filter: drop-shadow(0 24px 44px rgba(68, 91, 78, 0.16));
+    will-change: transform, filter;
 }
 
 .method-diamond.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     animation: diamondDrift 9s ease-in-out infinite;
+}
+
+.method-diamond.is-visible:hover,
+.method-diamond.is-visible:focus-within {
+    animation: diamondHoverSettle 0.75s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    transform: translateY(-8px) scale(1.07);
+    filter: drop-shadow(0 32px 64px rgba(75, 113, 96, 0.3));
 }
 
 .method-diamond::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 250, 0.56);
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 38% 30%, rgba(255, 255, 250, 0.94), rgba(239, 244, 237, 0.78) 48%, rgba(194, 211, 199, 0.56) 100%);
+    border: 1px solid rgba(74, 95, 82, 0.28);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 250, 0.72) inset,
+        0 0 38px rgba(141, 177, 158, 0.38),
+        0 22px 70px rgba(33, 48, 39, 0.16);
 }
 
 .method-diamond::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 10px;
     z-index: 1;
-    background: #18221d;
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%, 50% 0, 50% 1px, 1px 50%, 50% calc(100% - 1px), calc(100% - 1px) 50%, 50% 1px);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 250, 0.56);
+    box-shadow: 0 0 30px rgba(255, 255, 250, 0.34) inset;
     pointer-events: none;
 }
 
@@ -429,7 +452,7 @@ body::before {
     position: absolute;
     inset: 1px;
     overflow: hidden;
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    border-radius: 50%;
 }
 
 .diamond-wave::before {
@@ -444,17 +467,26 @@ body::before {
 .method-diamond p {
     position: relative;
     z-index: 2;
-    max-width: min(82%, 380px);
+    max-width: min(78%, 300px);
     margin: 0;
-    font-size: clamp(0.95rem, 1.35vw, 1.32rem);
+    font-size: clamp(0.92rem, 1.18vw, 1.18rem);
     font-weight: 800;
     line-height: 1.28;
     text-align: center;
 }
 
 @keyframes diamondDrift {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(2deg); }
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.015); }
+}
+
+@keyframes diamondHoverSettle {
+    from {
+        transform: translateY(-3px) scale(1.018);
+    }
+    to {
+        transform: translateY(-8px) scale(1.07);
+    }
 }
 
 @keyframes diamondWave {
@@ -625,16 +657,55 @@ body::before {
     content: "";
     position: absolute;
     inset: 8px 16px;
-    border: 1px solid rgba(24, 34, 29, 0.62);
+    border: 1px solid rgba(54, 74, 62, 0.52);
     border-radius: 50%;
-    background: rgba(255, 255, 250, 0.22);
+    background:
+        radial-gradient(circle at 42% 30%, rgba(255, 255, 250, 0.72), rgba(232, 239, 231, 0.36) 58%, rgba(179, 201, 186, 0.22) 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 250, 0.42) inset,
+        0 0 28px rgba(142, 178, 158, 0.22),
+        0 20px 46px rgba(23, 35, 28, 0.08);
     filter: blur(0.2px);
+    transition: border-color 0.8s ease, box-shadow 0.8s ease, background 0.8s ease, transform 0.8s ease;
+}
+
+.cloud-reveal::after {
+    content: "";
+    position: absolute;
+    inset: 20px 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(190, 218, 198, 0.34), transparent 68%);
+    opacity: 0;
+    filter: blur(14px);
+    transition: opacity 1.2s ease;
 }
 
 .cloud-reveal.is-visible {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+.cloud-reveal.is-visible::before {
+    border-color: rgba(55, 84, 67, 0.64);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 250, 0.58) inset,
+        0 0 42px rgba(139, 185, 158, 0.38),
+        0 24px 54px rgba(23, 35, 28, 0.12);
+}
+
+.cloud-reveal.is-visible::after {
+    opacity: 1;
+}
+
+.cloud-reveal:hover::before,
+.cloud-reveal:focus-within::before {
+    transform: scale(1.025);
+    border-color: rgba(55, 84, 67, 0.78);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 250, 0.7) inset,
+        0 0 56px rgba(139, 185, 158, 0.52),
+        0 28px 62px rgba(23, 35, 28, 0.14);
 }
 
 .cloud-reveal p,
@@ -739,9 +810,12 @@ body::before {
 }
 
 .conscious-section img {
-    width: min(55vw, 650px);
-    height: clamp(320px, 36vw, 520px);
+    width: min(72vw, 780px);
+    height: auto;
+    aspect-ratio: 3 / 2;
     margin: 0 auto 34px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .conscious-section img.is-visible {
@@ -804,18 +878,24 @@ body::before {
 }
 
 .site-footer-slogan {
-    position: relative;
-    z-index: 2;
-    padding: 36px 24px 42px;
-    border-top: 1px solid var(--line);
-    background: rgba(244, 246, 241, 0.9);
-    text-align: center;
-    color: var(--ink-green);
-    font-weight: 700;
+    width: 100%;
+    margin: 30px 0 0;
+    padding: 28px 24px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #f2f6ef;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--hero-l2, #384a40) 82%, #111 18%), color-mix(in srgb, var(--hero-l1, #a5b9a6) 74%, #111 26%));
+    border-top: 1px solid rgba(255,255,255,0.14);
+    font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
 }
 
 .site-footer-slogan p {
-    margin: 6px 0;
+    margin: 0;
+    max-width: 980px;
+    margin-inline: auto;
+    font-size: 1rem;
+    line-height: 1.65;
 }
 
 @media (max-width: 900px) {
@@ -900,7 +980,8 @@ body::before {
     }
 
     .method-diamond {
-        padding: 34px 52px;
+        width: min(82vw, 360px);
+        padding: 34px;
     }
 
     .method-diamond p {

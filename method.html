@@ -177,7 +177,7 @@
 
         <section class="conscious-section">
             <h2>From Unconscious to Conscious Leadership/Organization</h2>
-            <img src="Pictures/new_york_day.jpg" alt="New York daytime street scene" />
+            <img src="Pictures/brooklynbridgesunset.jpg" alt="Brooklyn Bridge at sunset" />
             <div class="conscious-copy">
                 <p>Every human and every organization operates from two layers: the unconscious personality and the conscious personality.</p>
                 <p>The unconscious personality, shaped by conditioning, fear, and scarcity thinking, manifests in business as control, competition, burnout, and perpetual striving. It reacts. It protects. It limits.</p>
@@ -221,8 +221,23 @@
             goldSandCream: "Videos/goldSandCream.mp4",
             forestGreenLightForestGreenWhite: "Videos/forestGreenLightForestGreenWhite.mp4"
         };
+        const paletteColors = {
+            lightBlueLightBlueGreyDarkBlueGrey: { l1: "#9fbdbf", l2: "#98b3ab", l3: "#546061" },
+            anchorGreyMistyGreenMistyBlue: { l1: "#67797d", l2: "#cfd7cc", l3: "#a7bfc1" },
+            springDustYellowstoneYellowstoneDark: { l1: "#d9c485", l2: "#dfbe61", l3: "#705f31" },
+            greenUltraLightGreyBlue: { l1: "#ced8cd", l2: "#d1d7d9", l3: "#7da1b0" },
+            goldSandCream: { l1: "#d9be6f", l2: "#ece2c2", l3: "#fefaee" },
+            forestGreenLightForestGreenWhite: { l1: "#6c8680", l2: "#9fb9b3", l3: "#f1f3f5" }
+        };
 
         function setPalette(value) {
+            const colors = paletteColors[value];
+            if (colors) {
+                document.documentElement.style.setProperty("--hero-l1", colors.l1);
+                document.documentElement.style.setProperty("--hero-l2", colors.l2);
+                document.documentElement.style.setProperty("--hero-l3", colors.l3);
+            }
+
             document.querySelectorAll(".palette-video").forEach((video) => {
                 const source = video.querySelector("source");
                 if (!source || source.getAttribute("src") === paletteMap[value]) return;
