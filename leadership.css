@@ -166,7 +166,10 @@
     opacity: calc(var(--door-fade) * 0.6);
     z-index: 3;
 }
-
+.offer-subtitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
 
 .offer-grid {
     max-width: none;
@@ -328,7 +331,7 @@
     padding: 0 clamp(16px, 3vw, 60px) 80px;
     grid-template-columns: minmax(0, 58vw) minmax(420px, 1fr) minmax(96px, 122px);
     column-gap: clamp(28px, 4vw, 64px);
-    align-items: start;
+    align-items: center;
     overflow: hidden;
 }
 
@@ -370,7 +373,7 @@
     grid-row: 2;
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(16px, 2vw, 22px);
+    gap: clamp(55px, 6vw, 90px);
     align-items: start;
     justify-content: end;
     margin-top: 20px;
@@ -424,17 +427,14 @@
     transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
 }
 
-.framework-item:hover .framework-symbol,
-.framework-item:focus-visible .framework-symbol,
-.framework-item.is-auto-active .framework-symbol {
+.framework-item.in-view .framework-symbol
+{
     transform: translateY(-4px) scale(1.04);
     background: rgba(205,216,203,0.72);
     box-shadow: 0 24px 42px rgba(23, 35, 28, 0.14), inset 0 1px 0 rgba(255,255,255,0.68);
 }
 
-.framework-item:hover .framework-copy,
-.framework-item:focus-visible .framework-copy,
-.framework-item.is-auto-active .framework-copy {
+.framework-item.in-view .framework-copy {
     opacity: 1;
     visibility: visible;
     transform: translateY(-50%) translateX(0);
@@ -861,7 +861,7 @@
     .framework-circles {
         grid-column: 3;
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: clamp(60px, 7vw, 100px);
     }
 
     .framework-copy {

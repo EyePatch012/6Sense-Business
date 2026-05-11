@@ -147,10 +147,9 @@ body {
     }
 }
 
-/* Main Content After Split Box */
 .about-main {
     max-width: 980px;
-    margin: 60px auto;
+    margin: 100px auto; /* increased top/bottom gap */
     padding: 0 24px 40px;
     font-size: 18px;
     line-height: 1.85;
@@ -559,20 +558,19 @@ body {
 }
 
 .intro-teaser-strip {
-
     background: #f2f4ef;
     padding: 18px 24px 26px;
 }
 
-.intro-teaser-strip p {
-    max-width: 860px;
-    margin: 0 auto;
-    text-align: center;
-    color: #2b2b2b;
-    font-size: 18px;
-    line-height: 1.85;
-    font-weight: 400;
-}
+    .intro-teaser-strip p {
+        max-width: 860px;
+        margin: 0 0 0 85px;
+        text-align: left;
+        color: #2b2b2b;
+        font-size: 18px;
+        line-height: 1.85;
+        font-weight: 700;
+    }
 
 
 
@@ -799,6 +797,23 @@ body {
     margin: 0;
     object-fit: cover;
 }
+.momentum-result-block {
+    margin-top: 36px;
+    margin-left: -120px;
+    padding: 28px 40px;
+    width: calc(100% + 160px);
+    background: #dfe7df;
+    border-left: 4px solid #5f7c6a;
+    /* animation */
+    opacity: 0;
+    transform: translateX(-120px);
+    transition: all 1s ease;
+}
+
+    .momentum-result-block.slide-in {
+        opacity: 1;
+        transform: translateX(0);
+    }
 
 .diagnosis-capability-wrap {
     width: 100%;

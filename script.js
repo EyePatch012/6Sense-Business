@@ -320,6 +320,22 @@ window.addEventListener("DOMContentLoaded", () => {
         slideElements.forEach((el) => slideObserver.observe(el));
     }
 
+
+    /* ADD THIS HERE */
+    const momentumBlock = document.querySelector(".momentum-result-block");
+
+    if (momentumBlock && "IntersectionObserver" in window) {
+        const momentumObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                entry.target.classList.toggle("slide-in", entry.isIntersecting);
+            });
+        }, { threshold: 0.3 });
+
+        momentumObserver.observe(momentumBlock);
+    }
+    /* END */
+
+
     const methodGrain = document.querySelector(".method-grain");
     if (methodGrain) {
         window.addEventListener("scroll", () => {
@@ -327,7 +343,6 @@ window.addEventListener("DOMContentLoaded", () => {
             methodGrain.style.setProperty("--grain-shift", `${grainShift.toFixed(2)}px`);
         }, { passive: true });
     }
-
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     // General section entrance animation. Kept lightweight: opacity + transform only.
     const sections = Array.from(document.querySelectorAll("section:not([data-static-section])"));
@@ -429,92 +444,47 @@ window.addEventListener("DOMContentLoaded", () => {
     // Framework symbols reveal one by one, then cycle the copy automatically.
     // Hover/focus pauses the cycle so only the active item being touched is shown.
     const frameworkGroups = Array.from(document.querySelectorAll(".framework-circles"));
+
     frameworkGroups.forEach((group) => {
         const items = Array.from(group.querySelectorAll("[data-twirl]"));
         if (items.length === 0) return;
 
-        let cycleIndex = 0;
         let revealTimers = [];
-        let cycleTimer = null;
 
         const clearRevealTimers = () => {
             revealTimers.forEach((timerId) => clearTimeout(timerId));
             revealTimers = [];
         };
 
-        const setActiveItem = (index) => {
-            items.forEach((item, itemIndex) => {
-                item.classList.toggle("is-auto-active", itemIndex === index);
-            });
-        };
-
-        const stopCycle = () => {
-            if (!cycleTimer) return;
-            clearInterval(cycleTimer);
-            cycleTimer = null;
-        };
-
-        const startCycle = () => {
-            if (cycleTimer || group.classList.contains("is-hovering")) return;
-            setActiveItem(cycleIndex);
-            cycleTimer = setInterval(() => {
-                cycleIndex = (cycleIndex + 1) % items.length;
-                setActiveItem(cycleIndex);
-            }, 2600);
-        };
-
         const resetGroup = () => {
             clearRevealTimers();
-            stopCycle();
-            cycleIndex = 0;
-            group.classList.remove("is-hovering");
-            items.forEach((item) => item.classList.remove("in-view", "is-auto-active"));
-        };
-
-        const revealGroup = () => {
-            clearRevealTimers();
-            items.forEach((item, index) => {
-                revealTimers.push(setTimeout(() => item.classList.add("in-view"), index * 180));
+            items.forEach((item) => {
+                item.classList.remove("in-view", "is-auto-active");
             });
-            revealTimers.push(setTimeout(startCycle, items.length * 180 + 260));
         };
 
-        group.addEventListener("mouseenter", () => {
-            group.classList.add("is-hovering");
-            stopCycle();
-        });
+        const revealOneByOne = () => {
+            clearRevealTimers();
 
-        group.addEventListener("mouseleave", () => {
-            group.classList.remove("is-hovering");
-            startCycle();
-        });
-
-        group.addEventListener("focusin", () => {
-            group.classList.add("is-hovering");
-            stopCycle();
-        });
-
-        group.addEventListener("focusout", () => {
-            if (!group.contains(document.activeElement)) {
-                group.classList.remove("is-hovering");
-                startCycle();
-            }
-        });
+            items.forEach((item, index) => {
+                revealTimers.push(setTimeout(() => {
+                    item.classList.add("in-view");
+                }, index * 220));
+            });
+        };
 
         if ("IntersectionObserver" in window) {
             const twirlObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        revealGroup();
+                        revealOneByOne();
                     } else {
                         resetGroup();
                     }
                 });
             }, { threshold: 0.24 });
+
             twirlObserver.observe(group);
-        } else {
-            items.forEach((item) => item.classList.add("in-view"));
-            startCycle();
         }
     });
 
